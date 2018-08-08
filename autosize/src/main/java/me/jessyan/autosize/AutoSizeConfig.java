@@ -24,6 +24,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.util.DisplayMetrics;
 
+import me.jessyan.autosize.utils.LogUtils;
 import me.jessyan.autosize.utils.Preconditions;
 import me.jessyan.autosize.utils.ScreenUtils;
 
@@ -118,6 +119,7 @@ public class AutoSizeConfig {
         int[] screenSize = ScreenUtils.getScreenSize(application);
         mScreenWidth = screenSize[0];
         mScreenHeight = screenSize[1];
+        LogUtils.d("designWidthInDp = " + mDesignWidthInDp + " , designHeightInDp = " + mDesignHeightInDp + " , screenWidth = " + mScreenWidth + " ,screenHeight = " + mScreenHeight);
 
         mInitDensity = displayMetrics.density;
         mInitScaledDensity = displayMetrics.scaledDensity;
@@ -127,6 +129,7 @@ public class AutoSizeConfig {
                 if (newConfig != null && newConfig.fontScale > 0) {
                     mInitScaledDensity =
                             application.getResources().getDisplayMetrics().scaledDensity;
+                    LogUtils.d("initScaledDensity = " + mInitScaledDensity + " on ConfigurationChanged");
                 }
             }
 
@@ -135,6 +138,7 @@ public class AutoSizeConfig {
 
             }
         });
+        LogUtils.d("initDensity = " + mInitDensity + " , initScaledDensity = " + mInitScaledDensity);
         application.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacksImpl());
         return this;
     }
@@ -158,6 +162,16 @@ public class AutoSizeConfig {
      */
     public AutoSizeConfig setUseDeviceSize(boolean useDeviceSize) {
         isUseDeviceSize = useDeviceSize;
+        return this;
+    }
+
+    /**
+     * 是否打印 Log
+     *
+     * @param log {@code true} 为打印
+     */
+    public AutoSizeConfig setLog(boolean log) {
+        LogUtils.setDebug(log);
         return this;
     }
 
