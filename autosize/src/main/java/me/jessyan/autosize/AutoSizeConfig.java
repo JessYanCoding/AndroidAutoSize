@@ -93,6 +93,11 @@ public class AutoSizeConfig {
     private AutoSizeConfig() {
     }
 
+    public Application getApplication() {
+        Preconditions.checkNotNull(mApplication, "Please call the AutoSizeConfig#init() first");
+        return mApplication;
+    }
+
     /**
      * 建议在 Application 启动时完成初始化, 只能调用一次初始化方法, 否则报错
      * 此方法默认使用以宽度进行等比例适配, 如想使用以高度进行等比例适配, 请调用 {@link #init(Application, boolean)}
