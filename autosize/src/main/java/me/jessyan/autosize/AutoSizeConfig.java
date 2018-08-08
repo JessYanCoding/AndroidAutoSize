@@ -237,6 +237,24 @@ public class AutoSizeConfig {
     }
 
     /**
+     * 获取 {@link #mInitDensity}
+     *
+     * @return {@link #mInitDensity}
+     */
+    public float getInitDensity() {
+        return mInitDensity;
+    }
+
+    /**
+     * 获取 {@link #mInitScaledDensity}
+     *
+     * @return {@link #mInitScaledDensity}
+     */
+    public float getInitScaledDensity() {
+        return mInitScaledDensity;
+    }
+
+    /**
      * 获取使用者在 AndroidManifest 中填写的 Meta 信息
      * <p>
      * Example usage:
