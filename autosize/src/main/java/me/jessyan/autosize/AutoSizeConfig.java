@@ -210,10 +210,11 @@ public final class AutoSizeConfig {
      *
      * @param autoAdaptStrategy {@link AutoAdaptStrategy}
      */
-    public void setAutoAdaptStrategy(AutoAdaptStrategy autoAdaptStrategy) {
+    public AutoSizeConfig setAutoAdaptStrategy(AutoAdaptStrategy autoAdaptStrategy) {
         Preconditions.checkNotNull(autoAdaptStrategy, "autoAdaptStrategy == null");
         Preconditions.checkNotNull(mActivityLifecycleCallbacks, "Please call the AutoSizeConfig#init() first");
         mActivityLifecycleCallbacks.setAutoAdaptStrategy(autoAdaptStrategy);
+        return this;
     }
 
     /**
