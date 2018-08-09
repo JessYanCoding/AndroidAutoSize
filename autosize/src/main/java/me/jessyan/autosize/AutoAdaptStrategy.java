@@ -15,12 +15,26 @@
  */
 package me.jessyan.autosize;
 
+import android.app.Activity;
+import android.app.Application;
+
 /**
  * ================================================
+ * 屏幕适配逻辑策略类, 可通过 {@link AutoSizeConfig#init(Application, boolean, AutoAdaptStrategy)}
+ * 和 {@link AutoSizeConfig#setAutoAdaptStrategy(AutoAdaptStrategy)} 切换策略
+ *
+ * @see DefaultAutoAdaptStrategy
  * Created by JessYan on 2018/8/9 15:13
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public interface AdaptStrategy {
+public interface AutoAdaptStrategy {
+
+    /**
+     * 开始执行屏幕适配逻辑
+     *
+     * @param activity 需要屏幕适配的 {@link Activity}
+     */
+    void applyAdapt(Activity activity);
 }
