@@ -82,7 +82,7 @@ public final class AutoSizeConfig {
     private boolean isUseDeviceSize = true;
     /**
      * {@link #mActivityLifecycleCallbacks} 可用来代替在 BaseActivity 中加入适配代码的传统方式
-     * {@link #mActivityLifecycleCallbacks} 这种方案类似于 AOP, 面向接口, 侵入性低, 方便统一管理, 扩展性强, 并且也支持适配三方库
+     * {@link #mActivityLifecycleCallbacks} 这种方案类似于 AOP, 面向接口, 侵入性低, 方便统一管理, 扩展性强, 并且也支持适配三方库的 {@link Activity}
      */
     private ActivityLifecycleCallbacksImpl mActivityLifecycleCallbacks;
     /**
