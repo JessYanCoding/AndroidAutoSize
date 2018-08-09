@@ -15,9 +15,12 @@
  */
 package me.jessyan.autosize.internal;
 
+import android.app.Activity;
+
 /**
  * ================================================
- * 实现此接口即可自定义用于适配的一些参数, 从而影响适配的最终效果
+ * 如果某些页面不想使用 AndroidAutoSize 初始化时设置的默认适配参数, 请让该页面 {@link Activity} 实现此接口
+ * 实现此接口即可自定义用于适配的一些参数, 从而影响最终的适配效果
  * <p>
  * Created by JessYan on 2018/8/9 10:25
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
