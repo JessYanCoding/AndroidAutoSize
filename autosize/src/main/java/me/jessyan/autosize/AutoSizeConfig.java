@@ -80,6 +80,18 @@ public class AutoSizeConfig {
      * {@link #isUseDeviceSize} 为 {@code false} 表示 {@link #mScreenHeight} 不包含状态栏的高度, 默认为 {@code true}
      */
     private boolean isUseDeviceSize = true;
+    /**
+     * {@link #mActivityLifecycleCallbacks} 可用来代替在 BaseActivity 中加入适配代码的传统方式
+     * {@link #mActivityLifecycleCallbacks} 这种方案类似于 AOP, 面向接口, 侵入性低, 方便统一管理, 扩展性强, 并且也支持适配三方库
+     */
+    private ActivityLifecycleCallbacksImpl mActivityLifecycleCallbacks;
+    /**
+     * 框架具有 热插拔 特性, 支持在项目运行中动态停止和重新启动适配功能
+     *
+     * @see #stop()
+     * @see #restart()
+     */
+    private boolean isStop;
 
     public static AutoSizeConfig getInstance() {
         if (sInstance == null) {
@@ -146,8 +158,37 @@ public class AutoSizeConfig {
             }
         });
         LogUtils.d("initDensity = " + mInitDensity + " , initScaledDensity = " + mInitScaledDensity);
-        application.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacksImpl());
+        mActivityLifecycleCallbacks = new ActivityLifecycleCallbacksImpl();
+        application.registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks);
         return this;
+    }
+
+    /**
+     * 重新开始框架的运行
+     * 框架具有 热插拔 特性, 支持在项目运行中动态停止和重新启动适配功能
+     */
+    public void restart() {
+        Preconditions.checkNotNull(mActivityLifecycleCallbacks, "Please call the AutoSizeConfig#init() first");
+        synchronized (AutoSizeConfig.class) {
+            if (isStop) {
+                mApplication.registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks);
+                isStop = false;
+            }
+        }
+    }
+
+    /**
+     * 停止框架的运行
+     * 框架具有 热插拔 特性, 支持在项目运行中动态停止和重新启动适配功能
+     */
+    public void stop() {
+        Preconditions.checkNotNull(mActivityLifecycleCallbacks, "Please call the AutoSizeConfig#init() first");
+        synchronized (AutoSizeConfig.class) {
+            if (!isStop) {
+                mApplication.unregisterActivityLifecycleCallbacks(mActivityLifecycleCallbacks);
+                isStop = true;
+            }
+        }
     }
 
     /**
