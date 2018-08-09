@@ -41,7 +41,7 @@ public interface CustomAdapt {
      * {@link #getSizeInDp} 须配合 {@link #isBaseOnWidth()} 使用, 规则如下:
      * 如果 {@link #isBaseOnWidth()} 返回 {@code true}, {@link #getSizeInDp} 则应该返回设计图的总宽度
      * 如果 {@link #isBaseOnWidth()} 返回 {@code false}, {@link #getSizeInDp} 则应该返回设计图的总高度
-     * 如果您不需要自定义设计图上的设计尺寸, 想继续使用在 AndroidManifest 上填写的设计图尺寸, {@link #getSizeInDp} 则返回 {@code 0}
+     * 如果您不需要自定义设计图上的设计尺寸, 想继续使用在 AndroidManifest 中填写的设计图尺寸, {@link #getSizeInDp} 则返回 {@code 0}
      *
      * @return 设计图上的设计尺寸, 单位 dp
      */
