@@ -42,5 +42,5 @@ public interface CustomAdapt {
      *
      * @return 设计图上的设计尺寸, 单位 dp
      */
-    int getSizeInDp();
+    float getSizeInDp();
 }
