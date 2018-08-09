@@ -37,7 +37,7 @@ import me.jessyan.autosize.utils.ScreenUtils;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public class AutoSizeConfig {
+public final class AutoSizeConfig {
     private static volatile AutoSizeConfig sInstance;
     private static final String KEY_DESIGN_WIDTH_IN_DP = "design_width_in_dp";
     private static final String KEY_DESIGN_HEIGHT_IN_DP = "design_height_in_dp";
