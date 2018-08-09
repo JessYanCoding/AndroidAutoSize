@@ -30,6 +30,8 @@ import me.jessyan.autosize.utils.ScreenUtils;
 
 /**
  * ================================================
+ * AndroidAutoSize 参数配置类, 给 AndroidAutoSize 配置一些必要的自定义参数
+ * <p>
  * Created by JessYan on 2018/8/8 09:58
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
