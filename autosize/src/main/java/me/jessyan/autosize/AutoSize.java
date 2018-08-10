@@ -21,6 +21,8 @@ import android.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.View;
 
+import java.util.Locale;
+
 import me.jessyan.autosize.internal.CancelAdapt;
 import me.jessyan.autosize.internal.CustomAdapt;
 import me.jessyan.autosize.utils.LogUtils;
@@ -137,7 +139,7 @@ public final class AutoSize {
         activityDisplayMetrics.densityDpi = targetDensityDpi;
         activityDisplayMetrics.scaledDensity = targetScaledDensity;
 
-        LogUtils.d(String.format("The %s has been adapted! \nInfo: isBaseOnWidth = %s, %s = %f, targetDensity = %f, targetScaledDensity = %f, targetDensityDpi = %d"
+        LogUtils.d(String.format(Locale.ENGLISH, "The %s has been adapted! \nInfo: isBaseOnWidth = %s, %s = %f, targetDensity = %f, targetScaledDensity = %f, targetDensityDpi = %d"
                 , activity.getClass().getName(), isBaseOnWidth, isBaseOnWidth ? "designWidthInDp"
                         : "designHeightInDp", sizeInDp, targetDensity, targetScaledDensity, targetDensityDpi));
     }
