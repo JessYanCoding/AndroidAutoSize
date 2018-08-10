@@ -152,7 +152,7 @@ public final class AutoSizeConfig {
         int[] screenSize = ScreenUtils.getScreenSize(application);
         mScreenWidth = screenSize[0];
         mScreenHeight = screenSize[1];
-        LogUtils.d("designWidthInDp = " + mDesignWidthInDp + " , designHeightInDp = " + mDesignHeightInDp + " , screenWidth = " + mScreenWidth + " ,screenHeight = " + mScreenHeight);
+        LogUtils.d("designWidthInDp = " + mDesignWidthInDp + ", designHeightInDp = " + mDesignHeightInDp + ", screenWidth = " + mScreenWidth + ", screenHeight = " + mScreenHeight);
 
         mInitDensity = displayMetrics.density;
         mInitScaledDensity = displayMetrics.scaledDensity;
@@ -171,7 +171,7 @@ public final class AutoSizeConfig {
 
             }
         });
-        LogUtils.d("initDensity = " + mInitDensity + " , initScaledDensity = " + mInitScaledDensity);
+        LogUtils.d("initDensity = " + mInitDensity + ", initScaledDensity = " + mInitScaledDensity);
         mActivityLifecycleCallbacks = new ActivityLifecycleCallbacksImpl(strategy == null ? new DefaultAutoAdaptStrategy() : strategy);
         application.registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks);
         return this;

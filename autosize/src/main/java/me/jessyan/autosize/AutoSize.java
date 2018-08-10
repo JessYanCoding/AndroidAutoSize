@@ -23,6 +23,7 @@ import android.view.View;
 
 import me.jessyan.autosize.internal.CancelAdapt;
 import me.jessyan.autosize.internal.CustomAdapt;
+import me.jessyan.autosize.utils.LogUtils;
 import me.jessyan.autosize.utils.Preconditions;
 
 /**
@@ -118,7 +119,8 @@ public final class AutoSize {
         } else {
             targetDensity = AutoSizeConfig.getInstance().getScreenHeight() * 1.0f / sizeInDp;
         }
-        final float targetScaledDensity = targetDensity * (AutoSizeConfig.getInstance().getInitScaledDensity() * 1.0f / AutoSizeConfig.getInstance().getInitDensity());
+        final float targetScaledDensity = targetDensity * (AutoSizeConfig.getInstance().
+                getInitScaledDensity() * 1.0f / AutoSizeConfig.getInstance().getInitDensity());
         final int targetDensityDpi = (int) (targetDensity * 160);
 
         //Application
@@ -134,5 +136,9 @@ public final class AutoSize {
         activityDisplayMetrics.density = targetDensity;
         activityDisplayMetrics.densityDpi = targetDensityDpi;
         activityDisplayMetrics.scaledDensity = targetScaledDensity;
+
+        LogUtils.d(String.format("The %s has been adapted! \nInfo: isBaseOnWidth = %s, %s = %f, targetDensity = %f, targetScaledDensity = %f, targetDensityDpi = %d"
+                , activity.getClass().getName(), isBaseOnWidth, isBaseOnWidth ? "designWidthInDp"
+                        : "designHeightInDp", sizeInDp, targetDensity, targetScaledDensity, targetDensityDpi));
     }
 }

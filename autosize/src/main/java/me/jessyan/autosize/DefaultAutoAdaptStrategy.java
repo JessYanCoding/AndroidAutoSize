@@ -20,6 +20,7 @@ import android.app.Application;
 
 import me.jessyan.autosize.internal.CancelAdapt;
 import me.jessyan.autosize.internal.CustomAdapt;
+import me.jessyan.autosize.utils.LogUtils;
 
 /**
  * ================================================
@@ -37,13 +38,16 @@ public class DefaultAutoAdaptStrategy implements AutoAdaptStrategy {
     public void applyAdapt(Activity activity) {
         //如果 activity 实现 CancelAdapt 接口表示放弃适配, 所有的适配效果都将失效
         if (activity instanceof CancelAdapt) {
+            LogUtils.w(String.format("%s canceled the adaptation!", activity.getClass().getName()));
             return;
         }
 
         //如果 activity 实现 CustomAdapt 接口表示该 activity 想自定义一些用于适配的参数, 从而改变最终的适配效果
         if (activity instanceof CustomAdapt) {
+            LogUtils.d(String.format("%s implemented by %s!", activity.getClass().getName(), CustomAdapt.class.getName()));
             AutoSize.autoConvertDensityOfCustomAdapt(activity, (CustomAdapt) activity);
         } else {
+            LogUtils.d(String.format("%s used the global configuration.", activity.getClass().getName()));
             AutoSize.autoConvertDensityOfGlobal(activity);
         }
     }
