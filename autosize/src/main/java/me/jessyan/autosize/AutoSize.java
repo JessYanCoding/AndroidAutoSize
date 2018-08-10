@@ -23,6 +23,8 @@ import android.view.View;
 
 import java.util.Locale;
 
+import me.jessyan.autosize.external.ExternalAdaptInfo;
+import me.jessyan.autosize.external.ExternalAdaptManager;
 import me.jessyan.autosize.internal.CancelAdapt;
 import me.jessyan.autosize.internal.CustomAdapt;
 import me.jessyan.autosize.utils.LogUtils;
@@ -80,6 +82,27 @@ public final class AutoSize {
             }
         }
         autoConvertDensity(activity, sizeInDp, customAdapt.isBaseOnWidth());
+    }
+
+    /**
+     * 使用外部三方库的 {@link Activity} 的自定义适配参数进行适配
+     *
+     * @param activity    {@link Activity}
+     * @param externalAdaptInfo 三方库的 {@link Activity} 提供的适配参数, 需要配合 {@link ExternalAdaptManager#addExternalAdaptInfoOfActivity(Class, ExternalAdaptInfo)}
+     */
+    public static void autoConvertDensityOfExternalAdaptInfo(Activity activity, ExternalAdaptInfo externalAdaptInfo) {
+        Preconditions.checkNotNull(externalAdaptInfo, "externalAdaptInfo == null");
+        float sizeInDp = externalAdaptInfo.getSizeInDp();
+
+        //如果 ExternalAdaptInfo#getSizeInDp() 返回 0, 则使用在 AndroidManifest 上填写的设计图尺寸
+        if (sizeInDp <= 0) {
+            if (externalAdaptInfo.isBaseOnWidth()) {
+                sizeInDp = AutoSizeConfig.getInstance().getDesignWidthInDp();
+            } else {
+                sizeInDp = AutoSizeConfig.getInstance().getDesignHeightInDp();
+            }
+        }
+        autoConvertDensity(activity, sizeInDp, externalAdaptInfo.isBaseOnWidth());
     }
 
     /**

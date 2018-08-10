@@ -38,20 +38,20 @@ public class ExternalAdaptInfo implements Parcelable {
     private boolean isBaseOnWidth;
     /**
      * 设计图上的设计尺寸, 单位 dp (三方库页面的设计图尺寸可能无法获知, 所以如果想让三方库的适配效果达到最好, 只有靠不断的尝试)
-     * {@link #sizeInD} 须配合 {@link #isBaseOnWidth} 使用, 规则如下:
-     * 如果 {@link #isBaseOnWidth} 设置为 {@code true}, {@link #sizeInD} 则应该设置为设计图的总宽度
-     * 如果 {@link #isBaseOnWidth} 设置为 {@code false}, {@link #sizeInD} 则应该设置为设计图的总高度
-     * 如果您不需要自定义设计图上的设计尺寸, 想继续使用在 AndroidManifest 中填写的设计图尺寸, {@link #sizeInD} 则设置为 {@code 0}
+     * {@link #sizeInDp} 须配合 {@link #isBaseOnWidth} 使用, 规则如下:
+     * 如果 {@link #isBaseOnWidth} 设置为 {@code true}, {@link #sizeInDp} 则应该设置为设计图的总宽度
+     * 如果 {@link #isBaseOnWidth} 设置为 {@code false}, {@link #sizeInDp} 则应该设置为设计图的总高度
+     * 如果您不需要自定义设计图上的设计尺寸, 想继续使用在 AndroidManifest 中填写的设计图尺寸, {@link #sizeInDp} 则设置为 {@code 0}
      */
-    private float sizeInD;
+    private float sizeInDp;
 
     public ExternalAdaptInfo(boolean isBaseOnWidth) {
         this.isBaseOnWidth = isBaseOnWidth;
     }
 
-    public ExternalAdaptInfo(boolean isBaseOnWidth, float sizeInD) {
+    public ExternalAdaptInfo(boolean isBaseOnWidth, float sizeInDp) {
         this.isBaseOnWidth = isBaseOnWidth;
-        this.sizeInD = sizeInD;
+        this.sizeInDp = sizeInDp;
     }
 
     public boolean isBaseOnWidth() {
@@ -62,12 +62,12 @@ public class ExternalAdaptInfo implements Parcelable {
         isBaseOnWidth = baseOnWidth;
     }
 
-    public float getSizeInD() {
-        return sizeInD;
+    public float getSizeInDp() {
+        return sizeInDp;
     }
 
-    public void setSizeInD(float sizeInD) {
-        this.sizeInD = sizeInD;
+    public void setSizeInDp(float sizeInDp) {
+        this.sizeInDp = sizeInDp;
     }
 
     @Override
@@ -78,12 +78,12 @@ public class ExternalAdaptInfo implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeByte(this.isBaseOnWidth ? (byte) 1 : (byte) 0);
-        dest.writeFloat(this.sizeInD);
+        dest.writeFloat(this.sizeInDp);
     }
 
     protected ExternalAdaptInfo(Parcel in) {
         this.isBaseOnWidth = in.readByte() != 0;
-        this.sizeInD = in.readFloat();
+        this.sizeInDp = in.readFloat();
     }
 
     public static final Creator<ExternalAdaptInfo> CREATOR = new Creator<ExternalAdaptInfo>() {
@@ -102,7 +102,7 @@ public class ExternalAdaptInfo implements Parcelable {
     public String toString() {
         return "ExternalAdaptInfo{" +
                 "isBaseOnWidth=" + isBaseOnWidth +
-                ", sizeInD=" + sizeInD +
+                ", sizeInDp=" + sizeInDp +
                 '}';
     }
 }
