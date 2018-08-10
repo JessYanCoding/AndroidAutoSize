@@ -21,7 +21,7 @@ import android.os.Parcelable;
 
 /**
  * ================================================
- * {@link externalAdaptInfo} 用来存储外部三方库的适配参数, 因为 AndroidAutoSize 默认会对项目中的所有模块都进行适配
+ * {@link ExternalAdaptInfo} 用来存储外部三方库的适配参数, 因为 AndroidAutoSize 默认会对项目中的所有模块都进行适配
  * 三方库的 {@link Activity} 也不例外, 但三方库的适配参数可能和自己项目中的适配参数不一致, 导致三方库的适配效果和理想的效果差别很大
  * 所以需要向 AndroidAutoSize 提供三方库的适配参数, 已完成对三方库的屏幕适配
  * <p>
@@ -30,12 +30,7 @@ import android.os.Parcelable;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public class externalAdaptInfo implements Parcelable {
-    /**
-     * 是否取消适配
-     * {@code true} 取消适配, {@code false} 继续使用适配, 如果为 {@code true}, 下面的字段也将失效
-     */
-    private boolean isCancelAdapt;
+public class ExternalAdaptInfo implements Parcelable {
     /**
      * 是否按照宽度进行等比例适配 (为了保证在高宽比不同的屏幕上也能正常适配, 所以只能在宽度和高度之中选一个作为基准进行适配)
      * {@code true} 为按照宽度适配, {@code false} 为按照高度适配
@@ -50,21 +45,13 @@ public class externalAdaptInfo implements Parcelable {
      */
     private float sizeInD;
 
-    public externalAdaptInfo(boolean isCancelAdapt) {
-        this.isCancelAdapt = isCancelAdapt;
+    public ExternalAdaptInfo(boolean isBaseOnWidth) {
+        this.isBaseOnWidth = isBaseOnWidth;
     }
 
-    public externalAdaptInfo(boolean isBaseOnWidth, float sizeInD) {
+    public ExternalAdaptInfo(boolean isBaseOnWidth, float sizeInD) {
         this.isBaseOnWidth = isBaseOnWidth;
         this.sizeInD = sizeInD;
-    }
-
-    public boolean isCancelAdapt() {
-        return isCancelAdapt;
-    }
-
-    public void setCancelAdapt(boolean cancelAdapt) {
-        isCancelAdapt = cancelAdapt;
     }
 
     public boolean isBaseOnWidth() {
@@ -90,34 +77,31 @@ public class externalAdaptInfo implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeByte(this.isCancelAdapt ? (byte) 1 : (byte) 0);
         dest.writeByte(this.isBaseOnWidth ? (byte) 1 : (byte) 0);
         dest.writeFloat(this.sizeInD);
     }
 
-    protected externalAdaptInfo(Parcel in) {
-        this.isCancelAdapt = in.readByte() != 0;
+    protected ExternalAdaptInfo(Parcel in) {
         this.isBaseOnWidth = in.readByte() != 0;
         this.sizeInD = in.readFloat();
     }
 
-    public static final Creator<externalAdaptInfo> CREATOR = new Creator<externalAdaptInfo>() {
+    public static final Creator<ExternalAdaptInfo> CREATOR = new Creator<ExternalAdaptInfo>() {
         @Override
-        public externalAdaptInfo createFromParcel(Parcel source) {
-            return new externalAdaptInfo(source);
+        public ExternalAdaptInfo createFromParcel(Parcel source) {
+            return new ExternalAdaptInfo(source);
         }
 
         @Override
-        public externalAdaptInfo[] newArray(int size) {
-            return new externalAdaptInfo[size];
+        public ExternalAdaptInfo[] newArray(int size) {
+            return new ExternalAdaptInfo[size];
         }
     };
 
     @Override
     public String toString() {
-        return "externalAdaptInfo{" +
-                "isCancelAdapt=" + isCancelAdapt +
-                ", isBaseOnWidth=" + isBaseOnWidth +
+        return "ExternalAdaptInfo{" +
+                "isBaseOnWidth=" + isBaseOnWidth +
                 ", sizeInD=" + sizeInD +
                 '}';
     }
