@@ -20,6 +20,7 @@ import android.app.Application;
 
 import java.util.Locale;
 
+import me.jessyan.autosize.external.ExternalAdaptInfo;
 import me.jessyan.autosize.internal.CancelAdapt;
 import me.jessyan.autosize.internal.CustomAdapt;
 import me.jessyan.autosize.utils.LogUtils;
@@ -38,6 +39,23 @@ import me.jessyan.autosize.utils.LogUtils;
 public class DefaultAutoAdaptStrategy implements AutoAdaptStrategy {
     @Override
     public void applyAdapt(Activity activity) {
+
+        //检查是否开启了外部三方库的适配模式, 只要不主动调用 ExternalAdaptManager 的方法, 下面的代码就不会执行
+        if (AutoSizeConfig.getInstance().getExternalAdaptManager().isRun()) {
+            if (AutoSizeConfig.getInstance().getExternalAdaptManager().isCancelAdapt(activity.getClass())) {
+                LogUtils.w(String.format(Locale.ENGLISH, "%s canceled the adaptation!", activity.getClass().getName()));
+                return;
+            } else {
+                ExternalAdaptInfo info = AutoSizeConfig.getInstance().getExternalAdaptManager()
+                        .getExternalAdaptInfoOfActivity(activity.getClass());
+                if (info != null) {
+                    LogUtils.d(String.format(Locale.ENGLISH, "%s used %s for adaptation!", activity.getClass().getName(), ExternalAdaptInfo.class.getName()));
+                    AutoSize.autoConvertDensityOfExternalAdaptInfo(activity, info);
+                    return;
+                }
+            }
+        }
+
         //如果 activity 实现 CancelAdapt 接口表示放弃适配, 所有的适配效果都将失效
         if (activity instanceof CancelAdapt) {
             LogUtils.w(String.format(Locale.ENGLISH, "%s canceled the adaptation!", activity.getClass().getName()));
