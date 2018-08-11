@@ -22,6 +22,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 
 import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import me.jessyan.autosize.external.ExternalAdaptInfo;
 import me.jessyan.autosize.external.ExternalAdaptManager;
@@ -45,6 +47,7 @@ import me.jessyan.autosize.utils.Preconditions;
  * ================================================
  */
 public final class AutoSize {
+    private static Map<String, DisplayMetricsInfo> mCache = new ConcurrentHashMap<>();
 
     private AutoSize() {
         throw new IllegalStateException("you can't instantiate me!");
@@ -138,15 +141,33 @@ public final class AutoSize {
      */
     public static void autoConvertDensity(Activity activity, float sizeInDp, boolean isBaseOnWidth) {
         Preconditions.checkNotNull(activity, "activity == null");
-        float targetDensity;
-        if (isBaseOnWidth) {
-            targetDensity = AutoSizeConfig.getInstance().getScreenWidth() * 1.0f / sizeInDp;
+
+        String key = sizeInDp + "|" + isBaseOnWidth + "|"
+                + AutoSizeConfig.getInstance().isUseDeviceSize() + "|"
+                + AutoSizeConfig.getInstance().getInitScaledDensity();
+
+        DisplayMetricsInfo displayMetricsInfo = mCache.get(key);
+
+        float targetDensity = 0;
+        int targetDensityDpi = 0;
+        float targetScaledDensity = 0;
+
+        if (displayMetricsInfo == null) {
+            if (isBaseOnWidth) {
+                targetDensity = AutoSizeConfig.getInstance().getScreenWidth() * 1.0f / sizeInDp;
+            } else {
+                targetDensity = AutoSizeConfig.getInstance().getScreenHeight() * 1.0f / sizeInDp;
+            }
+            targetScaledDensity = targetDensity * (AutoSizeConfig.getInstance().
+                    getInitScaledDensity() * 1.0f / AutoSizeConfig.getInstance().getInitDensity());
+            targetDensityDpi = (int) (targetDensity * 160);
+
+            mCache.put(key, new DisplayMetricsInfo(targetDensity, targetDensityDpi, targetScaledDensity));
         } else {
-            targetDensity = AutoSizeConfig.getInstance().getScreenHeight() * 1.0f / sizeInDp;
+            targetDensity = displayMetricsInfo.density;
+            targetDensityDpi = displayMetricsInfo.densityDpi;
+            targetScaledDensity = displayMetricsInfo.scaledDensity;
         }
-        final float targetScaledDensity = targetDensity * (AutoSizeConfig.getInstance().
-                getInitScaledDensity() * 1.0f / AutoSizeConfig.getInstance().getInitDensity());
-        final int targetDensityDpi = (int) (targetDensity * 160);
 
         setDensity(activity, targetDensity, targetDensityDpi, targetScaledDensity);
 
