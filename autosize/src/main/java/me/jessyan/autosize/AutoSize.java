@@ -87,7 +87,7 @@ public final class AutoSize {
     /**
      * 使用外部三方库的 {@link Activity} 的自定义适配参数进行适配
      *
-     * @param activity    {@link Activity}
+     * @param activity          {@link Activity}
      * @param externalAdaptInfo 三方库的 {@link Activity} 提供的适配参数, 需要配合 {@link ExternalAdaptManager#addExternalAdaptInfoOfActivity(Class, ExternalAdaptInfo)}
      */
     public static void autoConvertDensityOfExternalAdaptInfo(Activity activity, ExternalAdaptInfo externalAdaptInfo) {
@@ -165,5 +165,23 @@ public final class AutoSize {
         LogUtils.d(String.format(Locale.ENGLISH, "The %s has been adapted! \nInfo: isBaseOnWidth = %s, %s = %f, targetDensity = %f, targetScaledDensity = %f, targetDensityDpi = %d"
                 , activity.getClass().getName(), isBaseOnWidth, isBaseOnWidth ? "designWidthInDp"
                         : "designHeightInDp", sizeInDp, targetDensity, targetScaledDensity, targetDensityDpi));
+    }
+
+    /**
+     * 取消适配
+     *
+     * @param activity {@link Activity}
+     */
+    public static void cancelAdapt(Activity activity) {
+        final DisplayMetrics appDisplayMetrics = AutoSizeConfig.getInstance().getApplication().getResources().getDisplayMetrics();
+        final DisplayMetrics activityDisplayMetrics = activity.getResources().getDisplayMetrics();
+
+        activityDisplayMetrics.density = AutoSizeConfig.getInstance().getInitDensity();
+        activityDisplayMetrics.densityDpi = AutoSizeConfig.getInstance().getInitDensityDpi();
+        activityDisplayMetrics.scaledDensity = AutoSizeConfig.getInstance().getInitScaledDensity();
+
+        appDisplayMetrics.density = AutoSizeConfig.getInstance().getInitDensity();
+        appDisplayMetrics.densityDpi = AutoSizeConfig.getInstance().getInitDensityDpi();
+        appDisplayMetrics.scaledDensity = AutoSizeConfig.getInstance().getInitScaledDensity();
     }
 }
