@@ -44,6 +44,7 @@ public class DefaultAutoAdaptStrategy implements AutoAdaptStrategy {
         if (AutoSizeConfig.getInstance().getExternalAdaptManager().isRun()) {
             if (AutoSizeConfig.getInstance().getExternalAdaptManager().isCancelAdapt(activity.getClass())) {
                 LogUtils.w(String.format(Locale.ENGLISH, "%s canceled the adaptation!", activity.getClass().getName()));
+                AutoSize.cancelAdapt(activity);
                 return;
             } else {
                 ExternalAdaptInfo info = AutoSizeConfig.getInstance().getExternalAdaptManager()
@@ -59,6 +60,7 @@ public class DefaultAutoAdaptStrategy implements AutoAdaptStrategy {
         //如果 activity 实现 CancelAdapt 接口表示放弃适配, 所有的适配效果都将失效
         if (activity instanceof CancelAdapt) {
             LogUtils.w(String.format(Locale.ENGLISH, "%s canceled the adaptation!", activity.getClass().getName()));
+            AutoSize.cancelAdapt(activity);
             return;
         }
 
