@@ -78,7 +78,7 @@ public class ExternalAdaptManager {
             isRun = true;
         }
         if (mExternalAdaptInfos == null) {
-            mExternalAdaptInfos = new HashMap<>(30);
+            mExternalAdaptInfos = new HashMap<>(16);
         }
         mExternalAdaptInfos.put(activityClass.getCanonicalName(), info);
         return this;
