@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
 import me.jessyan.autosize.external.ExternalAdaptManager;
@@ -52,10 +53,13 @@ public final class AutoSizeConfig {
      */
     private float mInitDensity = -1;
     /**
+     * 最初的 {@link DisplayMetrics#densityDpi}
+     */
+    private int mInitDensityDpi;
+    /**
      * 最初的 {@link DisplayMetrics#scaledDensity}
      */
     private float mInitScaledDensity;
-
     /**
      * 设计图上的总宽度, 单位 dp
      */
@@ -151,7 +155,7 @@ public final class AutoSizeConfig {
         Preconditions.checkNotNull(application, "application == null");
         this.mApplication = application;
         this.isBaseOnWidth = isBaseOnWidth;
-        final DisplayMetrics displayMetrics = application.getResources().getDisplayMetrics();
+        final DisplayMetrics displayMetrics = Resources.getSystem().getDisplayMetrics();
 
         getMetaData(application);
         int[] screenSize = ScreenUtils.getScreenSize(application);
@@ -160,13 +164,14 @@ public final class AutoSizeConfig {
         LogUtils.d("designWidthInDp = " + mDesignWidthInDp + ", designHeightInDp = " + mDesignHeightInDp + ", screenWidth = " + mScreenWidth + ", screenHeight = " + mScreenHeight);
 
         mInitDensity = displayMetrics.density;
+        mInitDensityDpi = displayMetrics.densityDpi;
         mInitScaledDensity = displayMetrics.scaledDensity;
         application.registerComponentCallbacks(new ComponentCallbacks() {
             @Override
             public void onConfigurationChanged(Configuration newConfig) {
                 if (newConfig != null && newConfig.fontScale > 0) {
                     mInitScaledDensity =
-                            application.getResources().getDisplayMetrics().scaledDensity;
+                            Resources.getSystem().getDisplayMetrics().scaledDensity;
                     LogUtils.d("initScaledDensity = " + mInitScaledDensity + " on ConfigurationChanged");
                 }
             }
@@ -296,7 +301,7 @@ public final class AutoSizeConfig {
      * @return {@link #mScreenHeight}
      */
     public int getScreenHeight() {
-        return isUseDeviceSize() ? mScreenHeight : mScreenHeight - ScreenUtils.getStatusBarHeight(mApplication);
+        return isUseDeviceSize() ? mScreenHeight : mScreenHeight - ScreenUtils.getStatusBarHeight();
     }
 
     /**
@@ -326,6 +331,15 @@ public final class AutoSizeConfig {
      */
     public float getInitDensity() {
         return mInitDensity;
+    }
+
+    /**
+     * 获取 {@link #mInitDensityDpi}
+     *
+     * @return {@link #mInitDensityDpi}
+     */
+    public int getInitDensityDpi() {
+        return mInitDensityDpi;
     }
 
     /**
