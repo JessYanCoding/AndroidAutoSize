@@ -171,8 +171,8 @@ public final class AutoSize {
 
         setDensity(activity, targetDensity, targetDensityDpi, targetScaledDensity);
 
-        LogUtils.d(String.format(Locale.ENGLISH, "The %s has been adapted! \nInfo: isBaseOnWidth = %s, %s = %f, targetDensity = %f, targetScaledDensity = %f, targetDensityDpi = %d"
-                , activity.getClass().getName(), isBaseOnWidth, isBaseOnWidth ? "designWidthInDp"
+        LogUtils.d(String.format(Locale.ENGLISH, "The %s has been adapted! \n%s Info: isBaseOnWidth = %s, %s = %f, targetDensity = %f, targetScaledDensity = %f, targetDensityDpi = %d"
+                , activity.getClass().getName(), activity.getClass().getSimpleName(), isBaseOnWidth, isBaseOnWidth ? "designWidthInDp"
                         : "designHeightInDp", sizeInDp, targetDensity, targetScaledDensity, targetDensityDpi));
     }
 
