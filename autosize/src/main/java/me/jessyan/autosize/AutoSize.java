@@ -148,19 +148,7 @@ public final class AutoSize {
                 getInitScaledDensity() * 1.0f / AutoSizeConfig.getInstance().getInitDensity());
         final int targetDensityDpi = (int) (targetDensity * 160);
 
-        //Application
-        final DisplayMetrics appDisplayMetrics = AutoSizeConfig.getInstance().getApplication().getResources().getDisplayMetrics();
-
-        appDisplayMetrics.density = targetDensity;
-        appDisplayMetrics.densityDpi = targetDensityDpi;
-        appDisplayMetrics.scaledDensity = targetScaledDensity;
-
-        //Activity
-        final DisplayMetrics activityDisplayMetrics = activity.getResources().getDisplayMetrics();
-
-        activityDisplayMetrics.density = targetDensity;
-        activityDisplayMetrics.densityDpi = targetDensityDpi;
-        activityDisplayMetrics.scaledDensity = targetScaledDensity;
+        setDensity(activity, targetDensity, targetDensityDpi, targetScaledDensity);
 
         LogUtils.d(String.format(Locale.ENGLISH, "The %s has been adapted! \nInfo: isBaseOnWidth = %s, %s = %f, targetDensity = %f, targetScaledDensity = %f, targetDensityDpi = %d"
                 , activity.getClass().getName(), isBaseOnWidth, isBaseOnWidth ? "designWidthInDp"
@@ -173,15 +161,29 @@ public final class AutoSize {
      * @param activity {@link Activity}
      */
     public static void cancelAdapt(Activity activity) {
-        final DisplayMetrics appDisplayMetrics = AutoSizeConfig.getInstance().getApplication().getResources().getDisplayMetrics();
+        setDensity(activity, AutoSizeConfig.getInstance().getInitDensity()
+                , AutoSizeConfig.getInstance().getInitDensityDpi()
+                , AutoSizeConfig.getInstance().getInitScaledDensity());
+    }
+
+    /**
+     * 赋值
+     *
+     * @param activity      {@link Activity}
+     * @param density       {@link DisplayMetrics#density}
+     * @param densityDpi    {@link DisplayMetrics#densityDpi}
+     * @param scaledDensity {@link DisplayMetrics#scaledDensity}
+     */
+    private static void setDensity(Activity activity, float density, int densityDpi, float scaledDensity) {
         final DisplayMetrics activityDisplayMetrics = activity.getResources().getDisplayMetrics();
+        final DisplayMetrics appDisplayMetrics = AutoSizeConfig.getInstance().getApplication().getResources().getDisplayMetrics();
 
-        activityDisplayMetrics.density = AutoSizeConfig.getInstance().getInitDensity();
-        activityDisplayMetrics.densityDpi = AutoSizeConfig.getInstance().getInitDensityDpi();
-        activityDisplayMetrics.scaledDensity = AutoSizeConfig.getInstance().getInitScaledDensity();
+        activityDisplayMetrics.density = density;
+        activityDisplayMetrics.densityDpi = densityDpi;
+        activityDisplayMetrics.scaledDensity = scaledDensity;
 
-        appDisplayMetrics.density = AutoSizeConfig.getInstance().getInitDensity();
-        appDisplayMetrics.densityDpi = AutoSizeConfig.getInstance().getInitDensityDpi();
-        appDisplayMetrics.scaledDensity = AutoSizeConfig.getInstance().getInitScaledDensity();
+        appDisplayMetrics.density = density;
+        appDisplayMetrics.densityDpi = densityDpi;
+        appDisplayMetrics.scaledDensity = scaledDensity;
     }
 }
