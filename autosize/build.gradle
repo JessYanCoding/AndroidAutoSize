@@ -26,3 +26,5 @@ android {
 
 dependencies {
 }
+
+apply from: 'bintray.gradle'
