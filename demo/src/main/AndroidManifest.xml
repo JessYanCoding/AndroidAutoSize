@@ -3,6 +3,7 @@
           package="me.jessyan.autosize.demo">
 
     <application
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,6 +17,15 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".TestActivity"/>
+
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="360"/>
+
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="640"/>
     </application>
 
 </manifest>
