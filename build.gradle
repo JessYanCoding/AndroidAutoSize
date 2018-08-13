@@ -7,6 +7,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.novoda:bintray-release:0.8.0'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -28,6 +29,6 @@ ext {
     targetSdkVersion = 27
     compileSdkVersion = 27
     buildToolsVersion = "27.0.3"
-    versionCode = 1
-    versionName = "1.0.0"
+    versionCode = 10
+    versionName = "0.5.0"
 }
