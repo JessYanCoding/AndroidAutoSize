@@ -67,7 +67,9 @@ public class BaseApplication extends Application {
          * {@link ExternalAdaptManager} 是一个管理外部三方库的适配信息和状态的管理类, 详细介绍请看 {@link ExternalAdaptManager} 的类注释
          */
         AutoSizeConfig.getInstance().getExternalAdaptManager()
+                //加入的 Activity 将会放弃屏幕适配, 一般用于三方库的 Activity, 详情请看方法注释
                 .addCancelAdaptOfActivity(MainActivity.class)
+                //为指定的 Activity 提供自定义适配参数,  AndroidAutoSize 将会按照提供的适配参数进行适配, 详情请看方法注释
                 .addExternalAdaptInfoOfActivity(TestActivity.class, new ExternalAdaptInfo(true, 480));
 
     }
