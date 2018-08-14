@@ -26,7 +26,8 @@ import me.jessyan.autosize.internal.CustomAdapt;
  * {@link CustomAdaptActivity} 展示项目内部的 {@link Activity} 自定义适配参数的用法, 需要实现 {@link CustomAdapt}
  * 经过 {@link BaseApplication} 的初始化设置后, 现在 AndroidAutoSize 是全局以屏幕宽度为基准进行适配的
  * 这里就展示怎么让 {@link CustomAdaptActivity} 单个页面, 有别于全局设置, 以屏幕高度为基准进行适配
- * 这里为了方便展示就不改变设计图尺寸, 直接使用在 AndroidManifest 中填写的全局设计图尺寸, 如果您有需求, 可以改变设计图尺寸试试 {@link #getSizeInDp()}
+ * 这里为了方便展示就不改变设计图尺寸, 直接使用在 AndroidManifest 中填写的全局设计图尺寸
+ * 如果这个页面的设计图尺寸有别于其他页面, 可以改变设计图尺寸试试 {@link #getSizeInDp()}
  * <p>
  * Created by JessYan on 2018/8/11 11:31
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
