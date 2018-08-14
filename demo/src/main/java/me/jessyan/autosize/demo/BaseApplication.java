@@ -18,7 +18,6 @@ package me.jessyan.autosize.demo;
 import android.app.Application;
 
 import me.jessyan.autosize.AutoSizeConfig;
-import me.jessyan.autosize.external.ExternalAdaptInfo;
 import me.jessyan.autosize.external.ExternalAdaptManager;
 
 /**
@@ -52,10 +51,10 @@ public class BaseApplication extends Application {
                 //这个 init 方法, 可以快捷设置 setBaseOnWidth(false) 和 setAutoAdaptStrategy(new AutoAdaptStrategy())
 //                .init(this, false, new AutoAdaptStrategy())
 
-                //是否使用设备的实际尺寸做适配, 设置为 false, AutoSize 会将屏幕总高度减去状态栏高度来做适配
-//                .setUseDeviceSize(false)
+                //是否使用设备的实际尺寸做适配, 默认为 true, 设置为 false, 在以屏幕高度为基准进行适配时, AutoSize 会将屏幕总高度减去状态栏高度来做适配
+                .setUseDeviceSize(false)
 
-                //是否全局按照宽度进行等比例适配, 设置为 false, AutoSize 会全局按照高度进行适配
+                //是否全局按照宽度进行等比例适配, 默认为 true, 设置为 false, AutoSize 会全局按照高度进行适配
 //                .setBaseOnWidth(false)
 
                 //设置屏幕适配逻辑策略类, 一般不用设置, 使用框架默认的就好
@@ -66,11 +65,11 @@ public class BaseApplication extends Application {
         /**
          * {@link ExternalAdaptManager} 是一个管理外部三方库的适配信息和状态的管理类, 详细介绍请看 {@link ExternalAdaptManager} 的类注释
          */
-        AutoSizeConfig.getInstance().getExternalAdaptManager()
+//        AutoSizeConfig.getInstance().getExternalAdaptManager()
                 //加入的 Activity 将会放弃屏幕适配, 一般用于三方库的 Activity, 详情请看方法注释
-                .addCancelAdaptOfActivity(MainActivity.class)
+//                .addCancelAdaptOfActivity(MainActivity.class)
                 //为指定的 Activity 提供自定义适配参数,  AndroidAutoSize 将会按照提供的适配参数进行适配, 详情请看方法注释
-                .addExternalAdaptInfoOfActivity(TestActivity.class, new ExternalAdaptInfo(true, 480));
+//                .addExternalAdaptInfoOfActivity(TestActivity.class, new ExternalAdaptInfo(true, 480));
 
     }
 }
