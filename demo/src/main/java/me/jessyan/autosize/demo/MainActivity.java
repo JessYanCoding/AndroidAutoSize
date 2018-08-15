@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void stop(View view) {
         Toast.makeText(getApplicationContext(), "AndroidAutoSize stops working!", Toast.LENGTH_SHORT).show();
-        AutoSizeConfig.getInstance().stop();
+        AutoSizeConfig.getInstance().stop(this);
     }
 
     /**
