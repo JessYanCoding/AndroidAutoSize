@@ -98,7 +98,7 @@ public final class AutoSizeConfig {
     /**
      * 框架具有 热插拔 特性, 支持在项目运行中动态停止和重新启动适配功能
      *
-     * @see #stop()
+     * @see #stop(Activity)
      * @see #restart()
      */
     private boolean isStop;
@@ -206,11 +206,12 @@ public final class AutoSizeConfig {
      * 停止框架的运行
      * 框架具有 热插拔 特性, 支持在项目运行中动态停止和重新启动适配功能
      */
-    public void stop() {
+    public void stop(Activity activity) {
         Preconditions.checkNotNull(mActivityLifecycleCallbacks, "Please call the AutoSizeConfig#init() first");
         synchronized (AutoSizeConfig.class) {
             if (!isStop) {
                 mApplication.unregisterActivityLifecycleCallbacks(mActivityLifecycleCallbacks);
+                AutoSize.cancelAdapt(activity);
                 isStop = true;
             }
         }
