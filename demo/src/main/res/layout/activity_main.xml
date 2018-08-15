@@ -57,13 +57,18 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="260dp"
+            android:layout_width="250dp"
             android:layout_height="100dp"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:text="W-260dp"
+            android:text="W-250dp"
             android:textColor="#0d0"
             android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="100dp"
+            />
 
         <TextView
             android:layout_width="100dp"
