@@ -77,4 +77,16 @@ public class ScreenUtils {
         return size;
     }
 
+    public static int getHeightOfNavigationBar(Context context) {
+        Display d = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+
+        int realHeight = getScreenSize(context)[1];
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        d.getMetrics(displayMetrics);
+
+        int displayHeight = displayMetrics.heightPixels;
+
+        return realHeight - displayHeight;
+    }
 }
