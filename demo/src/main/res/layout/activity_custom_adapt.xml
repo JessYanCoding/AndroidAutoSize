@@ -83,8 +83,6 @@
             android:text="H-267dp"
             android:textColor="#fff"
             android:textSize="20sp"/>
-
-
     </LinearLayout>
 
 </LinearLayout>
