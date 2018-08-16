@@ -66,16 +66,16 @@
             android:textSize="20sp"/>
 
         <TextView
-            android:layout_width="10dp"
+            android:layout_width="1dp"
             android:layout_height="100dp"
             />
 
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="109dp"
             android:layout_height="100dp"
             android:background="#d0a"
             android:gravity="center"
-            android:text="W-100dp"
+            android:text="W-109dp"
             android:textColor="#0d0"
             android:textSize="20sp"/>
     </LinearLayout>
