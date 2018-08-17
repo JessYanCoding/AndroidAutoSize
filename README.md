@@ -30,6 +30,46 @@
  implementation 'me.jessyan:autosize:0.6.0'
 ```
 
+## Usage
+### Step 1 
+In AndroidManifest
+```xml
+<manifest>
+    <application>
+                
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="360"/>
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="640"/>
+            
+     </application>           
+</manifest>
+```
+
+### Step 2
+In Application
+```java
+public class BaseApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        AutoSizeConfig.getInstance()
+                .setLog(true)
+                .init(this)
+                .setUseDeviceSize(false);
+    }
+}    
+```
+
+## ProGuard
+```
+ -keep class me.jessyan.autosize.** { *; }
+ -keep interface me.jessyan.autosize.** { *; }
+```
+
+
 ## Donate
 ![alipay](https://raw.githubusercontent.com/JessYanCoding/MVPArms/master/image/pay_alipay.jpg) ![](https://raw.githubusercontent.com/JessYanCoding/MVPArms/master/image/pay_wxpay.jpg)
 
