@@ -63,6 +63,8 @@ public class BaseApplication extends Application {
 
 ### Advanced
 #### In Activity:
+
+**Customize the adaptation parameters of the Activity**
 ```java
 public class CustomAdaptActivity extends AppCompatActivity implements CustomAdapt {
 
@@ -79,6 +81,7 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
 
 ```
 
+**Cancel the adaptation of the Activity**
 ```java
 public class CancelAdaptActivity extends AppCompatActivity implements CancelAdapt {
 
