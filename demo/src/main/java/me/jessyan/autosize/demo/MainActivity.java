@@ -16,6 +16,8 @@
 package me.jessyan.autosize.demo;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +32,7 @@ import me.jessyan.autosize.internal.CustomAdapt;
 /**
  * ================================================
  * 本框架核心原理来自于 <a href="https://mp.weixin.qq.com/s/d9QCoBP6kV9VSWvVldVVwA">今日头条官方适配方案</a>
+ * 此方案不光可以适配 {@link Activity}, 这个 {@link Activity} 下的所有 {@link Fragment}、{@link Dialog}、{@link View} 都会自动适配
  * <p>
  * {@link MainActivity} 是以屏幕宽度为基准进行适配的, 并且使用的是在 AndroidManifest 中填写的全局设计图尺寸 360 * 640
  * 不懂什么叫基准的话, 请看 {@link AutoSizeConfig#isBaseOnWidth}) 的注释, AndroidAutoSize 默认全局以屏幕宽度为基准进行适配
@@ -42,6 +45,8 @@ import me.jessyan.autosize.internal.CustomAdapt;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
+//实现 CancelAdapt 即可取消当前 Activity 的屏幕适配, 并且这个 Activity 下的所有 Fragment 和 View 都会被取消适配
+//public class MainActivity extends AppCompatActivity implements CancelAdapt {
 public class MainActivity extends AppCompatActivity {
 
     @Override
