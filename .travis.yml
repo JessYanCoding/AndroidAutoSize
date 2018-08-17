@@ -1,0 +1,28 @@
+language: android
+jdk: oraclejdk8
+before_install:
+- yes | sdkmanager "platforms;android-27"
+
+env:
+  global:
+    - ANDROID_API_LEVEL=27
+    - ANDROID_BUILD_TOOLS_VERSION=27.0.3
+    - TRAVIS_SECURE_ENV_VARS=true
+
+android:
+  components:
+    # The BuildTools version used by your project
+    - tools
+    - platform-tools
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    - extra-android-m2repository
+    - extra-google-android-support
+
+    # The SDK version used to compile your project
+    - android-$ANDROID_API_LEVEL
+  licenses:
+    - '.+'
+
+script:
+    - ./gradlew clean
+    - ./gradlew assembleDebug
