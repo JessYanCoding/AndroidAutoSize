@@ -1,5 +1,26 @@
 ![Logo](art/autosize_banner.jpg)
 
+<p align="center">
+   <a href="https://bintray.com/jessyancoding/maven/autosize/_latestVersion">
+    <img src="https://img.shields.io/badge/Jcenter-v0.6.0-brightgreen.svg?style=flat-square" alt="Latest Stable Version" />
+  </a>
+  <a href="https://travis-ci.org/JessYanCoding/AndroidAutoSize">
+    <img src="https://travis-ci.org/JessYanCoding/AndroidAutoSize.svg?branch=master" alt="Build Status" />
+  </a>
+  <a href="https://developer.android.com/about/versions/android-4.0.html">
+    <img src="https://img.shields.io/badge/API-14%2B-blue.svg?style=flat-square" alt="Min Sdk Version" />
+  </a>
+  <a href="http://www.apache.org/licenses/LICENSE-2.0">
+    <img src="http://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square" alt="License" />
+  </a>
+  <a href="https://www.jianshu.com/u/1d0c0bc634db">
+    <img src="https://img.shields.io/badge/Author-JessYan-orange.svg?style=flat-square" alt="Author" />
+  </a>
+  <a href="https://shang.qq.com/wpa/qunwpa?idkey=1a5dc5e9b2e40a780522f46877ba243eeb64405d42398643d544d3eec6624917">
+    <img src="https://img.shields.io/badge/QQ群-301733278-orange.svg?style=flat-square" alt="QQ Group" />
+  </a>
+</p>
+
 
 ## A low-cost Android screen adaptation solution (今日头条屏幕适配方案终极版，一个极低成本的 Android 屏幕适配方案).
 
