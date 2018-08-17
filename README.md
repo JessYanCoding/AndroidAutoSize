@@ -32,24 +32,22 @@
 
 ## Usage
 ### Step 1 
-In AndroidManifest
+#### In AndroidManifest:
 ```xml
 <manifest>
-    <application>
-                
+    <application>            
         <meta-data
             android:name="design_width_in_dp"
             android:value="360"/>
         <meta-data
             android:name="design_height_in_dp"
-            android:value="640"/>
-            
+            android:value="640"/>           
      </application>           
 </manifest>
 ```
 
 ### Step 2
-In Application
+#### In Application:
 ```java
 public class BaseApplication extends Application {
     @Override
@@ -61,6 +59,31 @@ public class BaseApplication extends Application {
                 .setUseDeviceSize(false);
     }
 }    
+```
+
+### Advanced
+#### In Activity:
+```java
+public class CustomAdaptActivity extends AppCompatActivity implements CustomAdapt {
+
+    @Override
+    public boolean isBaseOnWidth() {
+        return false;
+    }
+
+    @Override
+    public float getSizeInDp() {
+        return 667;
+    }
+}
+
+```
+
+```java
+public class CancelAdaptActivity extends AppCompatActivity implements CancelAdapt {
+
+}
+
 ```
 
 ## ProGuard
