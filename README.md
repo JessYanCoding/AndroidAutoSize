@@ -61,7 +61,7 @@ public class BaseApplication extends Application {
 }    
 ```
 
-### Advanced
+## Advanced
 
 **Customize the adaptation parameters of the Activity**
 ```java
