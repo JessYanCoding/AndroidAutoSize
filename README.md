@@ -33,6 +33,13 @@
    <img src="art/1440x2880_external.png" width="30%" height="30%">
 </p>
 
+### Pixel XL | 1440 x 2560 | 560dpi:
+<p>
+   <img src="art/1440x2560_width.png" width="30%" height="30%">
+   <img src="art/1440x2560_height.png" width="30%" height="30%">
+   <img src="art/1440x2560_external.png" width="30%" height="30%">
+</p>
+
 ### Nexus 5X | 1080 x 1920 | 420dpi:
 <p>
    <img src="art/1080x1920_width.png" width="30%" height="30%">
