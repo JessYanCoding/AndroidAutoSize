@@ -26,13 +26,14 @@
 
 
 ## Overview
-### Nexus 5x | 1080 x 1920 | 420dpi:
+
+* **Nexus 5x | 1080 x 1920 | 420dpi:**
 <p>
    <img src="art/1080x1920_width.png" width="30%" height="30%">
    <img src="art/1080x1920_height.png" width="30%" height="30%">
 </p
-
-### Pixel 2 XL | 1440 x 2880 | 560dpi:
+    
+* **Pixel 2 XL | 1440 x 2880 | 560dpi:**
 <p>
    <img src="art/1440x2880_width.png" width="30%" height="30%">
    <img src="art/1440x2880_height.png" width="30%" height="30%">
@@ -45,7 +46,7 @@
 
 ## Usage
 ### Step 1 
-#### In AndroidManifest:
+* **In AndroidManifest:**
 ```xml
 <manifest>
     <application>            
@@ -60,7 +61,7 @@
 ```
 
 ### Step 2
-#### In Application:
+* **In Application:**
 ```java
 public class BaseApplication extends Application {
     @Override
@@ -76,7 +77,7 @@ public class BaseApplication extends Application {
 
 ## Advanced
 
-**Customize the adaptation parameters of the Activity**
+* **Customize the adaptation parameters of the Activity**
 ```java
 public class CustomAdaptActivity extends AppCompatActivity implements CustomAdapt {
 
@@ -93,7 +94,7 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
 
 ```
 
-**Cancel the adaptation of the Activity**
+* **Cancel the adaptation of the Activity**
 ```java
 public class CancelAdaptActivity extends AppCompatActivity implements CancelAdapt {
 
