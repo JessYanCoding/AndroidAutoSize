@@ -61,7 +61,7 @@
             android:layout_height="100dp"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:text="W-250dp"
+            android:text="W-250dp(total:360dp)"
             android:textColor="#0d0"
             android:textSize="20sp"/>
 
