@@ -40,6 +40,12 @@
    <img src="art/1080x1920_external.png" width="30%" height="30%">
 </p>
 
+### Nexus 4 | 768 * 1280 | 320dpi:
+<p>
+   <img src="art/768x1280_width.png" width="30%" height="30%">
+   <img src="art/768x1280_height.png" width="30%" height="30%">
+   <img src="art/768x1280_external.png" width="30%" height="30%">
+</p>
 
 ## Download
 ``` gradle
