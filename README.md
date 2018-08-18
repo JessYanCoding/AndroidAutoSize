@@ -30,6 +30,12 @@
 <p>
    <img src="art/1080x1920_width.png" width="30%" height="30%">
    <img src="art/1080x1920_height.png" width="30%" height="30%">
+</p
+
+### Pixel 2 XL | 1440 x 2880 | 560dpi:
+<p>
+   <img src="art/1440x2880_width.png" width="30%" height="30%">
+   <img src="art/1440x2880_height.png" width="30%" height="30%">
 </p>
 
 ## Download
