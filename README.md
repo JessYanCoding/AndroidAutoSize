@@ -22,16 +22,15 @@
 </p>
 
 
-## A low-cost Android screen adaptation solution.
-### 今日头条屏幕适配方案终极版，一个极低成本的 Android 屏幕适配方案.
+## A low-cost Android screen adaptation solution (今日头条屏幕适配方案终极版，一个极低成本的 Android 屏幕适配方案).
+
 
 ## Overview
-<div>
-   <p>
-      <img src="art/cover_1.png" width="35%" height="35%">
-      <img src="art/cover_2.png" width="35%" height="35%">
-   </p>
-</div>
+### Nexus 5x | 1080 x 1920 | 420dpi:
+<p>
+   <img src="art/1080x1920_width.png" width="30%" height="30%">
+   <img src="art/1080x1920_height.png" width="30%" height="30%">
+</p>
 
 ## Download
 ``` gradle
