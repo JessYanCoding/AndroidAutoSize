@@ -30,6 +30,7 @@
 <p>
    <img src="art/1440x2880_width.png" width="30%" height="30%">
    <img src="art/1440x2880_height.png" width="30%" height="30%">
+   <img src="art/1440x2880_external.png" width="30%" height="30%">
 </p>
 
 ### Nexus 5x | 1080 x 1920 | 420dpi:
