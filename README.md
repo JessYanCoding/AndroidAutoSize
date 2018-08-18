@@ -66,9 +66,9 @@
  implementation 'me.jessyan:autosize:0.6.0'
 ```
 
-## Usage
+## Usage (just two steps)
 ### Step 1 
-* **In AndroidManifest:**
+* **Initialize in AndroidManifest:**
 ```xml
 <manifest>
     <application>            
@@ -83,7 +83,7 @@
 ```
 
 ### Step 2
-* **In Application:**
+* **Initialize in Application:**
 ```java
 public class BaseApplication extends Application {
     @Override
