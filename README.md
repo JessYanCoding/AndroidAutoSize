@@ -37,6 +37,7 @@
 <p>
    <img src="art/1080x1920_width.png" width="30%" height="30%">
    <img src="art/1080x1920_height.png" width="30%" height="30%">
+   <img src="art/1080x1920_external.png" width="30%" height="30%">
 </p>
 
 
