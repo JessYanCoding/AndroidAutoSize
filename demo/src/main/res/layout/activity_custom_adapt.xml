@@ -8,21 +8,30 @@
     tools:context=".CustomAdaptActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="250dp"
+            android:layout_width="match_parent"
+            android:layout_height="248dp"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:text="H-250dp"
+            android:text="H-248dp\n(Height Total:667dp)"
             android:textColor="#fff"
             android:textSize="20sp"/>
 
+        <!--把高度设置为 2 dp 的原因是想展示 AndroidAutoSize 可以把适配精度精确到 1 dp (写 2 dp 是为了更显眼, 写 1 dp 也是可以的)
+        如果您看得到屏幕中间高度为 2 dp 的白色间隙, 说明本适配方案, 能精确适配, 您可以放心填写 dp 值-->
+
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#fff"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="#0f3"
             android:gravity="center"
@@ -32,7 +41,7 @@
             />
 
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="125dp"
             android:background="#d0f"
             android:gravity="center"
@@ -41,7 +50,7 @@
             android:textSize="20sp"/>
 
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="192dp"
             android:background="#d21"
             android:gravity="center"
@@ -49,17 +58,4 @@
             android:textColor="#fff"
             android:textSize="20sp"/>
     </LinearLayout>
-
-    <!--把高度设置为 666 dp 的原因是想展示 AndroidAutoSize 可以把适配精度精确到 1 dp (667dp - 666dp = 1dp)
-    如果您看得到屏幕下方高度为 1 dp 的白色间隙, 说明本适配方案, 能精确适配, 您可以放心填写 dp 值-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="666dp"
-        android:background="#0ff"
-        android:gravity="center"
-        android:text="H-666dp\n(total:667dp)"
-        android:textColor="#fff"
-        android:textSize="30sp"/>
-
-
 </LinearLayout>
