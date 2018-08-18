@@ -28,8 +28,8 @@
 ## Overview
 <div>
    <p>
-      <img src="art/cover_1.png" width="40%" height="40%">
-      <img src="art/cover_2.png" width="40%" height="40%">
+      <img src="art/cover_1.png" width="35%" height="35%">
+      <img src="art/cover_2.png" width="35%" height="35%">
    </p>
 </div>
 
