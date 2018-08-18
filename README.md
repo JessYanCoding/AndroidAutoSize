@@ -33,18 +33,25 @@
    <img src="art/1440x2880_external.png" width="30%" height="30%">
 </p>
 
-### Nexus 5x | 1080 x 1920 | 420dpi:
+### Nexus 5X | 1080 x 1920 | 420dpi:
 <p>
    <img src="art/1080x1920_width.png" width="30%" height="30%">
    <img src="art/1080x1920_height.png" width="30%" height="30%">
    <img src="art/1080x1920_external.png" width="30%" height="30%">
 </p>
 
-### Nexus 4 | 768 * 1280 | 320dpi:
+### Nexus 4 | 768 x 1280 | 320dpi:
 <p>
    <img src="art/768x1280_width.png" width="30%" height="30%">
    <img src="art/768x1280_height.png" width="30%" height="30%">
    <img src="art/768x1280_external.png" width="30%" height="30%">
+</p>
+
+### Nexus S | 480 x 800 | 240dpi:
+<p>
+   <img src="art/480x800_width.png" width="30%" height="30%">
+   <img src="art/480x800_height.png" width="30%" height="30%">
+   <img src="art/480x800_external.png" width="30%" height="30%">
 </p>
 
 ## Download
