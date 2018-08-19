@@ -30,7 +30,7 @@ import me.jessyan.autosize.internal.CustomAdapt;
  * <p>
  * 本框架源码的注释都很详细, 欢迎阅读学习
  * <p>
- * 记得在 App 启动时初始化 AndroidAutoSize
+ * AndroidAutoSize 会在 APP 启动时自动完成初始化, 如果您想设置自定义参数可以在 {@link Application#onCreate()} 中设置
  * <p>
  * Created by JessYan on 2018/8/9 17:05
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
@@ -41,36 +41,26 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         /**
-         * {@link AutoSizeConfig} 的每个方法的注释都写的很详细, 使用前请一定记得跳进源码，查看方法的注释, 下面的注释只是简单描述!!!
+         * 以下是 AndroidAutoSize 可以自定义的参数, {@link AutoSizeConfig} 的每个方法的注释都写的很详细
+         * 使用前请一定记得跳进源码，查看方法的注释, 下面的注释只是简单描述!!!
          */
-        AutoSizeConfig.getInstance()
+//        AutoSizeConfig.getInstance()
 
-                //是否打印 AutoSize 的内部日志, setLog 方法一定要在 init 方法前面调用, 因为执行 init 方法时就会打印日志
-                .setLog(true)
+                //是否打印 AutoSize 的内部日志, 默认为 true, 如果您不想 AutoSize 打印日志, 则请设置为 false
+//                .setLog(false)
 
-                //init 方法只能调用一次, 一般调用一个参数的 init 方法就可以了, 如果有其他扩展需求可以尝试下面的两个参数和三个参数的 init 重载方法
-                .init(this)
-
-                //这个 init 方法, 可以快捷设置 setBaseOnWidth(false)
-//                .init(this, false)
-
-                //这个 init 方法, 可以快捷设置 setBaseOnWidth(false) 和 setAutoAdaptStrategy(new AutoAdaptStrategy())
-//                .init(this, false, new AutoAdaptStrategy())
-
-                //是否使用设备的实际尺寸做适配, 默认为 true, 如果设置为 false, 在以屏幕高度为基准进行适配时
+                //是否使用设备的实际尺寸做适配, 默认为 false, 如果设置为 false, 在以屏幕高度为基准进行适配时
                 //AutoSize 会将屏幕总高度减去状态栏高度来做适配, 如果设备上有导航栏还会减去导航栏的高度
-                .setUseDeviceSize(false)
+                //设置为 true 则使用设备的实际屏幕高度, 不会减去状态栏以及导航栏高度
+//                .setUseDeviceSize(true)
 
                 //是否全局按照宽度进行等比例适配, 默认为 true, 如果设置为 false, AutoSize 会全局按照高度进行适配
 //                .setBaseOnWidth(false)
 
                  //设置屏幕适配逻辑策略类, 一般不用设置, 使用框架默认的就好
 //                .setAutoAdaptStrategy(new AutoAdaptStrategy())
-
-        ;
-
+//        ;
         customAdaptForExternal();
     }
 
