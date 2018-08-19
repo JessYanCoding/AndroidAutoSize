@@ -66,7 +66,7 @@
  implementation 'me.jessyan:autosize:0.7.0'
 ```
 
-## Usage (just two steps)
+## Usage (just one steps)
 ### Step 1 
 * **Initialize in AndroidManifest:**
 ```xml
@@ -80,21 +80,6 @@
             android:value="640"/>           
      </application>           
 </manifest>
-```
-
-### Step 2
-* **Initialize in Application:**
-```java
-public class BaseApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        AutoSizeConfig.getInstance()
-                .setLog(true)
-                .init(this)
-                .setUseDeviceSize(false);
-    }
-}    
 ```
 
 ## Advanced
