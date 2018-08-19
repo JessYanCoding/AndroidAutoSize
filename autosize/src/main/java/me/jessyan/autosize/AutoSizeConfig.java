@@ -123,35 +123,35 @@ public final class AutoSizeConfig {
     }
 
     /**
-     * 建议在 Application 启动时完成初始化, 只能调用一次初始化方法, 否则报错
+     * v0.6.0 以后, 框架会在 APP 启动时自动调用此方法进行初始化, 使用者无需手动初始化, 初始化方法只能调用一次, 否则报错
      * 此方法默认使用以宽度进行等比例适配, 如想使用以高度进行等比例适配, 请调用 {@link #init(Application, boolean)}
      *
      * @param application {@link Application}
      */
-    public AutoSizeConfig init(Application application) {
+    AutoSizeConfig init(Application application) {
         return init(application, true, null);
     }
 
     /**
-     * 建议在 Application 启动时完成初始化, 只能调用一次初始化方法, 否则报错
+     * v0.6.0 以后, 框架会在 APP 启动时自动调用此方法进行初始化, 使用者无需手动初始化, 初始化方法只能调用一次, 否则报错
      * 此方法使用默认的 {@link AutoAdaptStrategy} 策略, 如想使用自定义的 {@link AutoAdaptStrategy} 策略
      * 请调用 {@link #init(Application, boolean, AutoAdaptStrategy)}
      *
      * @param application   {@link Application}
      * @param isBaseOnWidth 详情请查看 {@link #isBaseOnWidth} 的注释
      */
-    public AutoSizeConfig init(Application application, boolean isBaseOnWidth) {
+    AutoSizeConfig init(Application application, boolean isBaseOnWidth) {
         return init(application, isBaseOnWidth, null);
     }
 
     /**
-     * 建议在 Application 启动时完成初始化, 只能调用一次初始化方法, 否则报错
+     * v0.6.0 以后, 框架会在 APP 启动时自动调用此方法进行初始化, 使用者无需手动初始化, 初始化方法只能调用一次, 否则报错
      *
      * @param application   {@link Application}
      * @param isBaseOnWidth 详情请查看 {@link #isBaseOnWidth} 的注释
      * @param strategy      {@link AutoAdaptStrategy}, 传 {@code null} 则使用 {@link DefaultAutoAdaptStrategy}
      */
-    public AutoSizeConfig init(final Application application, boolean isBaseOnWidth, AutoAdaptStrategy strategy) {
+    AutoSizeConfig init(final Application application, boolean isBaseOnWidth, AutoAdaptStrategy strategy) {
         Preconditions.checkArgument(mInitDensity == -1, "AutoSizeConfig#init() can only be called once");
         Preconditions.checkNotNull(application, "application == null");
         this.mApplication = application;
@@ -366,22 +366,27 @@ public final class AutoSizeConfig {
      *
      * @param context {@link Context}
      */
-    private void getMetaData(Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        ApplicationInfo applicationInfo;
-        try {
-            applicationInfo = packageManager.getApplicationInfo(context
-                    .getPackageName(), PackageManager.GET_META_DATA);
-            if (applicationInfo != null && applicationInfo.metaData != null) {
-                if (applicationInfo.metaData.containsKey(KEY_DESIGN_WIDTH_IN_DP)) {
-                    mDesignWidthInDp = (int) applicationInfo.metaData.get(KEY_DESIGN_WIDTH_IN_DP);
-                }
-                if (applicationInfo.metaData.containsKey(KEY_DESIGN_HEIGHT_IN_DP)) {
-                    mDesignHeightInDp = (int) applicationInfo.metaData.get(KEY_DESIGN_HEIGHT_IN_DP);
+    private void getMetaData(final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                PackageManager packageManager = context.getPackageManager();
+                ApplicationInfo applicationInfo;
+                try {
+                    applicationInfo = packageManager.getApplicationInfo(context
+                            .getPackageName(), PackageManager.GET_META_DATA);
+                    if (applicationInfo != null && applicationInfo.metaData != null) {
+                        if (applicationInfo.metaData.containsKey(KEY_DESIGN_WIDTH_IN_DP)) {
+                            mDesignWidthInDp = (int) applicationInfo.metaData.get(KEY_DESIGN_WIDTH_IN_DP);
+                        }
+                        if (applicationInfo.metaData.containsKey(KEY_DESIGN_HEIGHT_IN_DP)) {
+                            mDesignHeightInDp = (int) applicationInfo.metaData.get(KEY_DESIGN_HEIGHT_IN_DP);
+                        }
+                    }
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
                 }
             }
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
+        }).start();
     }
 }
