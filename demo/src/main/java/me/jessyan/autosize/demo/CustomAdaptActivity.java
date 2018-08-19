@@ -26,7 +26,7 @@ import me.jessyan.autosize.internal.CustomAdapt;
  * 本框架核心原理来自于 <a href="https://mp.weixin.qq.com/s/d9QCoBP6kV9VSWvVldVVwA">今日头条官方适配方案</a>
  * <p>
  * {@link CustomAdaptActivity} 展示项目内部的 {@link Activity} 自定义适配参数的用法, 需要实现 {@link CustomAdapt}
- * 经过 {@link BaseApplication} 的初始化设置后, 现在 AndroidAutoSize 是全局以屏幕宽度为基准进行适配的, 并且全局的设计图尺寸为 360 * 640
+ * 现在 AndroidAutoSize 是全局以屏幕宽度为基准进行适配的, 并且全局的设计图尺寸为 360 * 640
  * 这里就展示怎么让 {@link CustomAdaptActivity} 单个页面, 有别于全局设置, 以屏幕高度为基准进行适配, 并且更改设计图尺寸为 IPhone 的设计图尺寸
  * 如果这个页面的设计图尺寸有别于其他页面, AndroidAutoSize 允许您改变单个页面的设计图尺寸, {@link #getSizeInDp()}
  * <p>
