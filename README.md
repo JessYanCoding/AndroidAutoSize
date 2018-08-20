@@ -64,6 +64,8 @@
 ## Notice
 [Devices Info](https://material.io/tools/devices/)
 
+[Analysis](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
+
 ## Download
 ``` gradle
  implementation 'me.jessyan:autosize:0.7.0'
