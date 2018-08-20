@@ -61,6 +61,9 @@
    <img src="art/480x800_external.png" width="30%" height="30%">
 </p>
 
+## Notice
+[Devices Info](https://material.io/tools/devices/)
+
 ## Download
 ``` gradle
  implementation 'me.jessyan:autosize:0.7.0'
