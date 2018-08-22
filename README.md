@@ -91,7 +91,7 @@
 </manifest>
 ```
 
-## Advanced
+## Advance (see demo)
 
 * **Customize the adaptation parameters of the Activity:**
 ```java
