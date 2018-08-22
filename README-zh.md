@@ -22,9 +22,8 @@
 </p>
 
 
-## A low-cost Android screen adaptation solution (今日头条屏幕适配方案终极版，一个极低成本的 Android 屏幕适配方案).
+## 今日头条屏幕适配方案终极版，一个极低成本的 Android 屏幕适配方案.
 
-[中文说明](README-zh.md)
 
 ## Overview
 ### Pixel 2 XL | 1440 x 2880 | 560dpi:
@@ -63,18 +62,20 @@
 </p>
 
 ## Notice
-[Devices Info](https://material.io/tools/devices/)
+* [主流机型设备信息，可以作为参考](https://material.io/tools/devices/)
 
-[Analysis](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
+* [原理分析](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
+
+* 对于老项目的使用，**AndroidAutoSize** 可以和 [**AndroidAutoLayout**](https://github.com/hongyangAndroid/AndroidAutoLayout) 一起使用，因为 **AndroidAutoLayout** 使用的 **px**，所以对它不会有影响，如果某些老项目的某些页面之前使用了 **dp** 进行布局，并且 **AndroidAutoSize** 对这些页面产生了不良影响，可以让之前使用了 **dp** 的旧 **Activity**，实现 **CancelAdapt** 取消适配
 
 ## Download
 ``` gradle
  implementation 'me.jessyan:autosize:0.7.0'
 ```
 
-## Usage (just one steps)
+## Usage (只需要这一步框架就可以运行)
 ### Step 1 
-* **Initialize in AndroidManifest:**
+* **请在 AndroidManifest 中填写全局设计图尺寸 (单位 dp)**
 ```xml
 <manifest>
     <application>            
@@ -88,9 +89,9 @@
 </manifest>
 ```
 
-## Advanced
+## Advanced (以下用法不懂？答应我，认真看 Demo 好不好？)
 
-* **Customize the adaptation parameters of the Activity:**
+* **当某个页面的设计图尺寸与在 AndroidManifest 中填写的全局设计图尺寸不同时，可以实现 CustomAdapt 接口扩展适配参数**
 ```java
 public class CustomAdaptActivity extends AppCompatActivity implements CustomAdapt {
 
@@ -107,7 +108,7 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
 
 ```
 
-* **Cancel the adaptation of the Activity:**
+* **当某个页面想放弃适配，请实现 CancelAdapt 接口**
 ```java
 public class CancelAdaptActivity extends AppCompatActivity implements CancelAdapt {
 
