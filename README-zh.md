@@ -73,7 +73,7 @@
  implementation 'me.jessyan:autosize:0.7.0'
 ```
 
-## Usage (只需要这一步框架就可以运行)
+## Usage (真的不吹牛逼，只需要这一步框架就可以运行，对所有页面进行适配)
 ### Step 1 
 * **请在 AndroidManifest 中填写全局设计图尺寸 (单位 dp)**
 ```xml
