@@ -73,8 +73,8 @@
  implementation 'me.jessyan:autosize:0.7.0'
 ```
 
-## Usage (真的不吹牛逼，只需要这一步框架就可以运行，对所有页面进行适配)
-### Step 1 
+## Usage
+### Step 1 (真的不吹牛逼，只需要这一步框架就可以对项目中的所有页面进行适配)
 * **请在 AndroidManifest 中填写全局设计图尺寸 (单位 dp)**
 ```xml
 <manifest>
@@ -89,7 +89,7 @@
 </manifest>
 ```
 
-## Advanced (以下用法不懂？答应我，认真看 Demo 好不好？)
+## Advanced (以下用法看不懂？答应我，认真看 Demo 好不好？)
 
 * **当某个页面的设计图尺寸与在 AndroidManifest 中填写的全局设计图尺寸不同时，可以实现 CustomAdapt 接口扩展适配参数**
 ```java
