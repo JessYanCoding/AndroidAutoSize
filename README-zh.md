@@ -66,7 +66,7 @@
 
 * [原理分析](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
 
-* 对于老项目的使用，**AndroidAutoSize** 可以和 [**AndroidAutoLayout**](https://github.com/hongyangAndroid/AndroidAutoLayout) 一起使用，因为 **AndroidAutoLayout** 使用的 **px**，所以对它不会有影响，如果某些老项目的某些页面之前使用了 **dp** 进行布局，并且 **AndroidAutoSize** 对这些页面产生了不良影响，可以让之前使用了 **dp** 的旧 **Activity**，实现 **CancelAdapt** 取消适配
+* 对于老项目的使用，**AndroidAutoSize** 可以和 [**AndroidAutoLayout**](https://github.com/hongyangAndroid/AndroidAutoLayout) 一起使用，因为 **AndroidAutoLayout** 使用的是 **px**，所以对它不会产生任何影响，如果老项目的某些页面之前使用了 **dp** 进行布局，并且 **AndroidAutoSize** 对这些页面已经产生了不良影响，可以让之前使用了 **dp** 的旧 **Activity** 实现 **CancelAdapt** 取消适配 
 
 ## Download
 ``` gradle
