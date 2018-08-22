@@ -24,7 +24,11 @@
 
 ## A low-cost Android screen adaptation solution (今日头条屏幕适配方案终极版，一个极低成本的 Android 屏幕适配方案).
 
-[中文说明](README-zh.md)
+<p align="center">
+  <a href="README-zh.md">
+    <b>中文说明</b>
+  </a>
+</p>
 
 ## Overview
 ### Pixel 2 XL | 1440 x 2880 | 560dpi:
