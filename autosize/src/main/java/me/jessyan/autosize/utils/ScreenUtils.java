@@ -32,6 +32,10 @@ import android.view.WindowManager;
  */
 public class ScreenUtils {
 
+    private ScreenUtils() {
+        throw new IllegalStateException("you can't instantiate me!");
+    }
+
     public static int getStatusBarHeight() {
         int result = 0;
         try {
