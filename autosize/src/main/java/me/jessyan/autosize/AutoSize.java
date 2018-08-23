@@ -18,9 +18,11 @@ package me.jessyan.autosize;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.Fragment;
+import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.View;
 
+import java.lang.reflect.Field;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -191,7 +193,7 @@ public final class AutoSize {
     }
 
     /**
-     * 赋值
+     * 给几大 {@link DisplayMetrics} 赋值
      *
      * @param activity      {@link Activity}
      * @param density       {@link DisplayMetrics#density}
@@ -202,12 +204,54 @@ public final class AutoSize {
         final DisplayMetrics activityDisplayMetrics = activity.getResources().getDisplayMetrics();
         final DisplayMetrics appDisplayMetrics = AutoSizeConfig.getInstance().getApplication().getResources().getDisplayMetrics();
 
-        activityDisplayMetrics.density = density;
-        activityDisplayMetrics.densityDpi = densityDpi;
-        activityDisplayMetrics.scaledDensity = scaledDensity;
+        setDensity(activityDisplayMetrics, density, densityDpi, scaledDensity);
 
-        appDisplayMetrics.density = density;
-        appDisplayMetrics.densityDpi = densityDpi;
-        appDisplayMetrics.scaledDensity = scaledDensity;
+        setDensity(appDisplayMetrics, density, densityDpi, scaledDensity);
+
+        //兼容 MIUI
+        DisplayMetrics activityDisplayMetricsOnMIUI = getMetricsOnMiui(activity.getResources());
+        DisplayMetrics appDisplayMetricsOnMIUI = getMetricsOnMiui(AutoSizeConfig.getInstance().getApplication().getResources());
+
+        if (activityDisplayMetricsOnMIUI != null) {
+            setDensity(activityDisplayMetricsOnMIUI, density, densityDpi, scaledDensity);
+        }
+
+        if (appDisplayMetricsOnMIUI != null) {
+            setDensity(appDisplayMetricsOnMIUI, density, densityDpi, scaledDensity);
+        }
+    }
+
+    /**
+     * 赋值
+     *
+     * @param displayMetrics {@link DisplayMetrics}
+     * @param density        {@link DisplayMetrics#density}
+     * @param densityDpi     {@link DisplayMetrics#densityDpi}
+     * @param scaledDensity  {@link DisplayMetrics#scaledDensity}
+     */
+    private static void setDensity(DisplayMetrics displayMetrics, float density, int densityDpi, float scaledDensity) {
+        displayMetrics.density = density;
+        displayMetrics.densityDpi = densityDpi;
+        displayMetrics.scaledDensity = scaledDensity;
+    }
+
+    /**
+     * 解决 MIUI 更改框架导致的 MIUI7 + Android5.1.1 上出现的失效问题 (以及极少数基于这部分 MIUI 去掉 ART 然后置入 XPosed 的手机)
+     * 来源于: https://github.com/Firedamp/Rudeness/blob/master/rudeness-sdk/src/main/java/com/bulong/rudeness/RudenessScreenHelper.java#L61:5
+     *
+     * @param resources {@link Resources}
+     * @return {@link DisplayMetrics}, 可能为 {@code null}
+     */
+    private static DisplayMetrics getMetricsOnMiui(Resources resources) {
+        if ("MiuiResources".equals(resources.getClass().getSimpleName()) || "XResources".equals(resources.getClass().getSimpleName())) {
+            try {
+                Field field = Resources.class.getDeclaredField("mTmpMetrics");
+                field.setAccessible(true);
+                return (DisplayMetrics) field.get(resources);
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        return null;
     }
 }
