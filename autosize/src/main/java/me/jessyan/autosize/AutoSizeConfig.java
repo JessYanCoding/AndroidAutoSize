@@ -170,10 +170,15 @@ public final class AutoSizeConfig {
         application.registerComponentCallbacks(new ComponentCallbacks() {
             @Override
             public void onConfigurationChanged(Configuration newConfig) {
-                if (newConfig != null && newConfig.fontScale > 0) {
-                    mInitScaledDensity =
-                            Resources.getSystem().getDisplayMetrics().scaledDensity;
-                    LogUtils.d("initScaledDensity = " + mInitScaledDensity + " on ConfigurationChanged");
+                if (newConfig != null) {
+                    if (newConfig.fontScale > 0) {
+                        mInitScaledDensity =
+                                Resources.getSystem().getDisplayMetrics().scaledDensity;
+                        LogUtils.d("initScaledDensity = " + mInitScaledDensity + " on ConfigurationChanged");
+                    }
+                    int[] screenSize = ScreenUtils.getScreenSize(application);
+                    mScreenWidth = screenSize[0];
+                    mScreenHeight = screenSize[1];
                 }
             }
 
