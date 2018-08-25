@@ -118,6 +118,12 @@ public class CancelAdaptActivity extends AppCompatActivity implements CancelAdap
 ```
 
 ### Fragment
+* **首先开启支持 Fragment 自定义参数的功能**
+
+```java
+AutoSizeConfig.getInstance().setCustomFragment(true);
+```
+
 * **当某个 Fragment 的设计图尺寸与在 AndroidManifest 中填写的全局设计图尺寸不同时，可以实现 CustomAdapt 接口扩展适配参数**
 ```java
 public class CustomAdaptFragment extends Fragment implements CustomAdapt {
