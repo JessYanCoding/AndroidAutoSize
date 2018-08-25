@@ -120,6 +120,7 @@ public class CancelAdaptActivity extends AppCompatActivity implements CancelAdap
 ```
 
 ### Fragment
+* **First enable the ability to support Fragment custom parameters**
 ```java
 AutoSizeConfig.getInstance().setCustomFragment(true);
 ```

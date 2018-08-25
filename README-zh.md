@@ -119,7 +119,6 @@ public class CancelAdaptActivity extends AppCompatActivity implements CancelAdap
 
 ### Fragment
 * **首先开启支持 Fragment 自定义参数的功能**
-
 ```java
 AutoSizeConfig.getInstance().setCustomFragment(true);
 ```
