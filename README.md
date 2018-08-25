@@ -2,7 +2,7 @@
 
 <p align="center">
    <a href="https://bintray.com/jessyancoding/maven/autosize/_latestVersion">
-    <img src="https://img.shields.io/badge/Jcenter-v0.7.0-brightgreen.svg?style=flat-square" alt="Latest Stable Version" />
+    <img src="https://img.shields.io/badge/Jcenter-v0.8.0-brightgreen.svg?style=flat-square" alt="Latest Stable Version" />
   </a>
   <a href="https://travis-ci.org/JessYanCoding/AndroidAutoSize">
     <img src="https://travis-ci.org/JessYanCoding/AndroidAutoSize.svg?branch=master" alt="Build Status" />
@@ -72,7 +72,7 @@
 
 ## Download
 ``` gradle
- implementation 'me.jessyan:autosize:0.7.0'
+ implementation 'me.jessyan:autosize:0.8.0'
 ```
 
 ## Usage (just one steps)
@@ -93,6 +93,7 @@
 
 ## Advance (see demo)
 
+### Activity
 * **Customize the adaptation parameters of the Activity:**
 ```java
 public class CustomAdaptActivity extends AppCompatActivity implements CustomAdapt {
@@ -113,6 +114,32 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
 * **Cancel the adaptation of the Activity:**
 ```java
 public class CancelAdaptActivity extends AppCompatActivity implements CancelAdapt {
+
+}
+
+```
+
+### Fragment
+* **Customize the adaptation parameters of the Fragment:**
+```java
+public class CustomAdaptFragment extends Fragment implements CustomAdapt {
+
+    @Override
+    public boolean isBaseOnWidth() {
+        return false;
+    }
+
+    @Override
+    public float getSizeInDp() {
+        return 667;
+    }
+}
+
+```
+
+* **Cancel the adaptation of the Fragment:**
+```java
+public class CancelAdaptFragment extends Fragment implements CancelAdapt {
 
 }
 
