@@ -30,13 +30,13 @@
             android:background="#fff"
             />
 
-        <TextView
+        <Button
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="#0f3"
-            android:gravity="center"
-            android:text="H-100dp"
-            android:textColor="#fff"
+            android:onClick="goCustomAdaptFragment"
+            android:text="CustomAdapt(Fragment)"
+            android:textColor="#00f"
             android:textSize="20sp"
             />
 
