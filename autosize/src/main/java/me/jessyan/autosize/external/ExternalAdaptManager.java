@@ -16,6 +16,7 @@
 package me.jessyan.autosize.external;
 
 import android.app.Activity;
+import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,17 +49,17 @@ public class ExternalAdaptManager {
      * 支持链式调用, 如:
      * {@link ExternalAdaptManager#addCancelAdaptOfActivity(Class)#addCancelAdaptOfActivity(Class)}
      *
-     * @param activityClass {@link Activity} class
+     * @param targetClass {@link Activity} class, {@link Fragment} class
      */
-    public synchronized ExternalAdaptManager addCancelAdaptOfActivity(Class<?> activityClass) {
-        Preconditions.checkNotNull(activityClass, "activityClass == null");
+    public synchronized ExternalAdaptManager addCancelAdaptOfActivity(Class<?> targetClass) {
+        Preconditions.checkNotNull(targetClass, "targetClass == null");
         if (!isRun) {
             isRun = true;
         }
         if (mCancelAdaptList == null) {
             mCancelAdaptList = new ArrayList<>();
         }
-        mCancelAdaptList.add(activityClass.getCanonicalName());
+        mCancelAdaptList.add(targetClass.getCanonicalName());
         return this;
     }
 
@@ -77,47 +78,47 @@ public class ExternalAdaptManager {
      * 支持链式调用, 如:
      * {@link ExternalAdaptManager#addExternalAdaptInfoOfActivity(Class, ExternalAdaptInfo)#addExternalAdaptInfoOfActivity(Class, ExternalAdaptInfo)}
      *
-     * @param activityClass {@link Activity} class
-     * @param info          {@link ExternalAdaptInfo} 适配参数
+     * @param targetClass {@link Activity} class, {@link Fragment} class
+     * @param info        {@link ExternalAdaptInfo} 适配参数
      */
-    public synchronized ExternalAdaptManager addExternalAdaptInfoOfActivity(Class<?> activityClass, ExternalAdaptInfo info) {
-        Preconditions.checkNotNull(activityClass, "activityClass == null");
+    public synchronized ExternalAdaptManager addExternalAdaptInfoOfActivity(Class<?> targetClass, ExternalAdaptInfo info) {
+        Preconditions.checkNotNull(targetClass, "targetClass == null");
         if (!isRun) {
             isRun = true;
         }
         if (mExternalAdaptInfos == null) {
             mExternalAdaptInfos = new HashMap<>(16);
         }
-        mExternalAdaptInfos.put(activityClass.getCanonicalName(), info);
+        mExternalAdaptInfos.put(targetClass.getCanonicalName(), info);
         return this;
     }
 
     /**
      * 这个 {@link Activity} 是否存在在取消适配的列表中, 如果在, 则该 {@link Activity} 适配失效
      *
-     * @param activityClass {@link Activity} class
+     * @param targetClass {@link Activity} class, {@link Fragment} class
      * @return {@code true} 为存在, {@code false} 为不存在
      */
-    public synchronized boolean isCancelAdapt(Class<?> activityClass) {
-        Preconditions.checkNotNull(activityClass, "activityClass == null");
+    public synchronized boolean isCancelAdapt(Class<?> targetClass) {
+        Preconditions.checkNotNull(targetClass, "targetClass == null");
         if (mCancelAdaptList == null) {
             return false;
         }
-        return mCancelAdaptList.contains(activityClass.getCanonicalName());
+        return mCancelAdaptList.contains(targetClass.getCanonicalName());
     }
 
     /**
      * 这个 {@link Activity} 是否提供有自定义的适配参数, 如果有则使用此适配参数进行适配
      *
-     * @param activityClass {@link Activity} class
+     * @param targetClass {@link Activity} class, {@link Fragment} class
      * @return 如果返回 {@code null} 则说明该 {@link Activity} 没有提供自定义的适配参数
      */
-    public synchronized ExternalAdaptInfo getExternalAdaptInfoOfActivity(Class<?> activityClass) {
-        Preconditions.checkNotNull(activityClass, "activityClass == null");
+    public synchronized ExternalAdaptInfo getExternalAdaptInfoOfActivity(Class<?> targetClass) {
+        Preconditions.checkNotNull(targetClass, "targetClass == null");
         if (mExternalAdaptInfos == null) {
             return null;
         }
-        return mExternalAdaptInfos.get(activityClass.getCanonicalName());
+        return mExternalAdaptInfos.get(targetClass.getCanonicalName());
     }
 
     /**
