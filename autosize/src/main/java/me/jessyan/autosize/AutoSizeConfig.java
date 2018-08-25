@@ -23,6 +23,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 
 import me.jessyan.autosize.external.ExternalAdaptManager;
@@ -102,6 +103,10 @@ public final class AutoSizeConfig {
      * @see #restart()
      */
     private boolean isStop;
+    /**
+     * 是否让框架支持自定义 {@link Fragment} 的适配参数, 由于这个需求是比较少见的, 所以须要使用者手动开启
+     */
+    private boolean isCustomFragment;
 
     public static AutoSizeConfig getInstance() {
         if (sInstance == null) {
@@ -264,6 +269,34 @@ public final class AutoSizeConfig {
     public AutoSizeConfig setLog(boolean log) {
         LogUtils.setDebug(log);
         return this;
+    }
+
+    /**
+     * 是否让框架支持自定义 {@link Fragment} 的适配参数, 由于这个需求是比较少见的, 所以须要使用者手动开启
+     *
+     * @param customFragment {@code true} 为支持
+     */
+    public AutoSizeConfig setCustomFragment(boolean customFragment) {
+        isCustomFragment = customFragment;
+        return this;
+    }
+
+    /**
+     * 框架是否已经开启支持自定义 {@link Fragment} 的适配参数
+     *
+     * @return {@code true} 为支持
+     */
+    public boolean isCustomFragment() {
+        return isCustomFragment;
+    }
+
+    /**
+     * 框架是否已经停止运行
+     *
+     * @return {@code false} 框架正在运行, {@code true} 框架已经停止运行
+     */
+    public boolean isStop() {
+        return isStop;
     }
 
     /**
