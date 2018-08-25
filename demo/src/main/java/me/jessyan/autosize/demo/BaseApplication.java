@@ -45,7 +45,11 @@ public class BaseApplication extends Application {
          * 以下是 AndroidAutoSize 可以自定义的参数, {@link AutoSizeConfig} 的每个方法的注释都写的很详细
          * 使用前请一定记得跳进源码，查看方法的注释, 下面的注释只是简单描述!!!
          */
-//        AutoSizeConfig.getInstance()
+        AutoSizeConfig.getInstance()
+
+                //是否让框架支持自定义 Fragment 的适配参数, 由于这个需求是比较少见的, 所以须要使用者手动开启
+                //如果没有这个需求建议不开启
+                .setCustomFragment(true)
 
                 //是否打印 AutoSize 的内部日志, 默认为 true, 如果您不想 AutoSize 打印日志, 则请设置为 false
 //                .setLog(false)
@@ -60,7 +64,7 @@ public class BaseApplication extends Application {
 
                  //设置屏幕适配逻辑策略类, 一般不用设置, 使用框架默认的就好
 //                .setAutoAdaptStrategy(new AutoAdaptStrategy())
-//        ;
+        ;
         customAdaptForExternal();
     }
 
