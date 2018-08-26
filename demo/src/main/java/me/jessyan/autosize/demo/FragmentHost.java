@@ -28,14 +28,20 @@ import me.jessyan.autosize.internal.CustomAdapt;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public class FragmentHost extends AppCompatActivity implements CustomAdapt{
+public class FragmentHost extends AppCompatActivity implements CustomAdapt {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
-        getSupportFragmentManager().beginTransaction().add(R.id.container1, new CustomFragment1()).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.container2, new CustomFragment2()).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.container3, new CustomFragment3()).commit();
+        if (getSupportFragmentManager().findFragmentById(R.id.container1) == null) {
+            getSupportFragmentManager().beginTransaction().add(R.id.container1, new CustomFragment1()).commit();
+        }
+        if (getSupportFragmentManager().findFragmentById(R.id.container2) == null) {
+            getSupportFragmentManager().beginTransaction().add(R.id.container2, new CustomFragment2()).commit();
+        }
+        if (getSupportFragmentManager().findFragmentById(R.id.container3) == null) {
+            getSupportFragmentManager().beginTransaction().add(R.id.container3, new CustomFragment3()).commit();
+        }
     }
 
     @Override
