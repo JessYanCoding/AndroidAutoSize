@@ -29,9 +29,9 @@ import android.util.DisplayMetrics;
  * ================================================
  */
 public class DisplayMetricsInfo implements Parcelable {
-    public float density;
-    public int densityDpi;
-    public float scaledDensity;
+    private float density;
+    private int densityDpi;
+    private float scaledDensity;
 
     public DisplayMetricsInfo(float density, int densityDpi, float scaledDensity) {
         this.density = density;
