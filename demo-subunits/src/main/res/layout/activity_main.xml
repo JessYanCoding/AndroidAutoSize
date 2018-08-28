@@ -41,13 +41,13 @@
         android:textColor="#fff"
         android:textSize="25sp"/>
 
-    <Button
+    <TextView
         android:layout_width="360dp"
         android:layout_height="100dp"
         android:background="#d00"
-        android:onClick="goThirdLibraryActivity"
-        android:text="CustomAdapt(external)"
-        android:textColor="#fff"
+        android:gravity="center"
+        android:text="W-360dp"
+        android:textColor="#0d0"
         android:textSize="25sp"/>
 
 
