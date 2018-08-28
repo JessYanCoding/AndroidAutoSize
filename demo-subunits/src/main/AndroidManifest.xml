@@ -18,13 +18,13 @@
         </activity>
         <activity android:name=".CustomAdaptActivity"/>
 
-        <!-- 如果您项目中的所有页面都只需要以高或宽中的一个作为基准进行适配的话, 那就只需要填写高或宽中的一个设计图尺寸即可 -->
+        <!-- 这个 Demo 主要展示副单位的用法, 如果只使用副单位 (pt、in、mm) 就可以直接以像素作为单位填写设计图的尺寸, 不需再把像素转化为 dp-->
         <meta-data
             android:name="design_width_in_dp"
-            android:value="360"/>
+            android:value="1080"/>
         <meta-data
             android:name="design_height_in_dp"
-            android:value="640"/>
+            android:value="1920"/>
 
     </application>
 
