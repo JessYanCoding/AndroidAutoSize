@@ -27,6 +27,7 @@ import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 
 import me.jessyan.autosize.external.ExternalAdaptManager;
+import me.jessyan.autosize.unit.UnitsManager;
 import me.jessyan.autosize.utils.LogUtils;
 import me.jessyan.autosize.utils.Preconditions;
 import me.jessyan.autosize.utils.ScreenUtils;
@@ -49,6 +50,10 @@ public final class AutoSizeConfig {
      * 用来管理外部三方库 {@link Activity} 的适配
      */
     private ExternalAdaptManager mExternalAdaptManager = new ExternalAdaptManager();
+    /**
+     * 用来管理 AndroidAutoSize 支持的所有单位, AndroidAutoSize 支持五种单位 (dp、sp、pt、in、mm)
+     */
+    private UnitsManager mUnitsManager = new UnitsManager();
     /**
      * 最初的 {@link DisplayMetrics#density}
      */
@@ -311,6 +316,15 @@ public final class AutoSizeConfig {
      */
     public ExternalAdaptManager getExternalAdaptManager() {
         return mExternalAdaptManager;
+    }
+
+    /**
+     * {@link UnitsManager} 用来管理 AndroidAutoSize 支持的所有单位, AndroidAutoSize 支持五种单位 (dp、sp、pt、in、mm)
+     *
+     * @return {@link UnitsManager}
+     */
+    public UnitsManager getUnitsManager() {
+        return mUnitsManager;
     }
 
     /**
