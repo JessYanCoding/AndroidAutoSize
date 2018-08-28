@@ -14,48 +14,45 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="248dp"
+            android:layout_height="496mm"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:text="H-248dp\n(Height Total:667dp)"
+            android:text="H-496mm\n(Height Total:1334mm)"
             android:textColor="#fff"
-            android:textSize="20sp"/>
-
-        <!--把高度设置为 2 dp 的原因是想展示 AndroidAutoSize 可以把适配精度精确到 1 dp (写 2 dp 是为了更显眼, 写 1 dp 也是可以的)
-        如果您看得到屏幕中间高度为 2 dp 的白色间隙, 说明本适配方案, 能精确适配, 您可以放心填写 dp 值-->
+            android:textSize="50sp"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="2mm"
             android:background="#fff"
             />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="200mm"
             android:background="#0f3"
             android:gravity="center"
-            android:text="H-100dp"
+            android:text="H-200mm"
             android:textColor="#fff"
-            android:textSize="20sp"
+            android:textSize="50sp"
             />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_height="250mm"
             android:background="#d0f"
             android:gravity="center"
-            android:text="H-125dp"
+            android:text="H-250mm"
             android:textColor="#fff"
-            android:textSize="20sp"/>
+            android:textSize="50sp"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="192dp"
+            android:layout_height="386mm"
             android:background="#d21"
             android:gravity="center"
-            android:text="H-192dp"
+            android:text="H-386mm"
             android:textColor="#fff"
-            android:textSize="20sp"/>
+            android:textSize="50sp"/>
     </LinearLayout>
 </LinearLayout>
