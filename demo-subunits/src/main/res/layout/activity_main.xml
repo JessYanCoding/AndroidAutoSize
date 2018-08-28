@@ -13,42 +13,42 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="180dp"
-            android:layout_height="100dp"
+            android:layout_width="540mm"
+            android:layout_height="300mm"
             android:background="@color/colorAccent"
             android:gravity="center"
-            android:text="W-180dp"
+            android:text="W-540mm"
             android:textColor="#fff"
-            android:textSize="20sp"/>
+            android:textSize="70sp"/>
 
         <TextView
-            android:layout_width="180dp"
-            android:layout_height="100dp"
+            android:layout_width="540mm"
+            android:layout_height="300mm"
             android:background="#0d0"
             android:gravity="center"
-            android:text="W-180dp"
+            android:text="W-540mm"
             android:textColor="#fff"
-            android:textSize="20sp"/>
+            android:textSize="70sp"/>
 
     </LinearLayout>
 
     <Button
-        android:layout_width="360dp"
-        android:layout_height="100dp"
+        android:layout_width="1080mm"
+        android:layout_height="300mm"
         android:background="#fd0"
         android:onClick="goCustomAdaptActivity"
-        android:text="CustomAdapt(internal)"
+        android:text="CustomAdapt"
         android:textColor="#0d0"
-        android:textSize="25sp"/>
+        android:textSize="70sp"/>
 
     <TextView
-        android:layout_width="360dp"
-        android:layout_height="100dp"
+        android:layout_width="1080mm"
+        android:layout_height="300mm"
         android:background="#d00"
         android:gravity="center"
-        android:text="W-360dp"
+        android:text="W-1080mm(total:1080mm)"
         android:textColor="#fff"
-        android:textSize="20sp"/>
+        android:textSize="70sp"/>
 
 
     <LinearLayout
@@ -57,27 +57,27 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="250dp"
-            android:layout_height="100dp"
+            android:layout_width="750mm"
+            android:layout_height="300mm"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:text="W-250dp(total:360dp)"
+            android:text="W-750mm"
             android:textColor="#fff"
-            android:textSize="20sp"/>
+            android:textSize="50sp"/>
 
         <TextView
-            android:layout_width="1dp"
+            android:layout_width="2mm"
             android:layout_height="100dp"
             />
 
         <TextView
-            android:layout_width="109dp"
-            android:layout_height="100dp"
+            android:layout_width="328mm"
+            android:layout_height="300mm"
             android:background="#d0a"
             android:gravity="center"
-            android:text="W-109dp"
+            android:text="W-328mm"
             android:textColor="#fff"
-            android:textSize="20sp"/>
+            android:textSize="50sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -86,31 +86,31 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="120dp"
+            android:layout_width="360mm"
             android:layout_height="match_parent"
             android:background="#aef"
             android:gravity="center"
-            android:text="W-120dp"
+            android:text="W-360mm"
             android:textColor="#fff"
-            android:textSize="20sp"/>
+            android:textSize="50sp"/>
 
         <TextView
-            android:layout_width="90dp"
+            android:layout_width="270mm"
             android:layout_height="match_parent"
             android:background="#acf"
             android:gravity="center"
-            android:text="W-90dp"
+            android:text="W-270mm"
             android:textColor="#fff"
-            android:textSize="20sp"/>
+            android:textSize="50sp"/>
 
         <TextView
-            android:layout_width="150dp"
+            android:layout_width="450mm"
             android:layout_height="match_parent"
             android:background="#fcf"
             android:gravity="center"
-            android:text="W-150dp"
+            android:text="W-450mm"
             android:textColor="#fff"
-            android:textSize="20sp"/>
+            android:textSize="50sp"/>
     </LinearLayout>
 
 </LinearLayout>
