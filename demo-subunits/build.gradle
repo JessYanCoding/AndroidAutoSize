@@ -24,6 +24,5 @@ dependencies {
 //    implementation 'me.jessyan:autosize:0.9.0'
     implementation project(':autosize')
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'cat.ereza:customactivityoncrash:2.2.0'
     testImplementation 'junit:junit:4.12'
 }
