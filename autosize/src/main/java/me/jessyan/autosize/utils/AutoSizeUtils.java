@@ -13,31 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package me.jessyan.autosize;
+package me.jessyan.autosize.utils;
 
-import android.app.Activity;
-import android.app.Application;
-import android.support.v4.app.Fragment;
-import android.util.DisplayMetrics;
+import android.content.Context;
+import android.util.TypedValue;
 
 /**
  * ================================================
- * 屏幕适配逻辑策略类, 可通过 {@link AutoSizeConfig#init(Application, boolean, AutoAdaptStrategy)}
- * 和 {@link AutoSizeConfig#setAutoAdaptStrategy(AutoAdaptStrategy)} 切换策略
- *
- * @see DefaultAutoAdaptStrategy
- * Created by JessYan on 2018/8/9 15:13
+ * AndroidAutoSize 常用工具类
+ * <p>
+ * Created by JessYan on 2018/8/25 15:24
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public interface AutoAdaptStrategy {
+public class AutoSizeUtils {
 
-    /**
-     * 开始执行屏幕适配逻辑
-     *
-     * @param target   需要屏幕适配的对象 (可能是 {@link Activity} 或者 {@link Fragment})
-     * @param activity 需要拿到当前的 {@link Activity} 才能修改 {@link DisplayMetrics#density}
-     */
-    void applyAdapt(Object target, Activity activity);
+    private AutoSizeUtils() {
+        throw new IllegalStateException("you can't instantiate me!");
+    }
+
+    public static int dp2px(Context context, float value) {
+        return (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value, context.getResources().getDisplayMetrics()) + 0.5f);
+    }
+
+    public static int sp2px(Context context, float value) {
+        return (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, value, context.getResources().getDisplayMetrics()) + 0.5f);
+    }
 }

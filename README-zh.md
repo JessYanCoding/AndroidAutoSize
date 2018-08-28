@@ -21,13 +21,9 @@
   </a>
 </p>
 
-<p align="center">
-  <a href="README-zh.md">
-    <b>中文说明</b>
-  </a>
-</p>
 
-## A low-cost Android screen adaptation solution (今日头条屏幕适配方案终极版，一个极低成本的 Android 屏幕适配方案).
+## 今日头条屏幕适配方案终极版，一个极低成本的 Android 屏幕适配方案.
+
 
 ## Overview
 ### Pixel 2 XL | 1440 x 2880 | 560dpi:
@@ -66,18 +62,20 @@
 </p>
 
 ## Notice
-[Devices Info](https://material.io/tools/devices/)
+* [主流机型设备信息，可以作为参考](https://material.io/tools/devices/)
 
-[Analysis](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
+* [原理分析](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
+
+* 对于老项目的使用，**AndroidAutoSize** 可以和 [**AndroidAutoLayout**](https://github.com/hongyangAndroid/AndroidAutoLayout) 一起使用，因为 **AndroidAutoLayout** 使用的是 **px**，所以 **AndroidAutoSize** 对它不会产生任何影响，如果老项目的某些页面之前使用了 **dp** 进行布局，并且 **AndroidAutoSize** 对这些页面已经产生了不良影响，可以让之前使用了 **dp** 的旧 **Activity** 实现 **CancelAdapt** 取消适配 
 
 ## Download
 ``` gradle
  implementation 'me.jessyan:autosize:0.8.0'
 ```
 
-## Usage (just one steps)
-### Step 1 
-* **Initialize in AndroidManifest:**
+## Usage
+### Step 1 (真的不吹牛逼，只需要以下这一步，框架就可以对项目中的所有页面进行适配)
+* **请在 AndroidManifest 中填写全局设计图尺寸 (单位 dp)**
 ```xml
 <manifest>
     <application>            
@@ -91,10 +89,10 @@
 </manifest>
 ```
 
-## Advance (see demo)
+## Advanced (以下用法看不懂？答应我，认真看 Demo 好不好？)
 
 ### Activity
-* **Customize the adaptation parameters of the Activity:**
+* **当某个 Activity 的设计图尺寸与在 AndroidManifest 中填写的全局设计图尺寸不同时，可以实现 CustomAdapt 接口扩展适配参数**
 ```java
 public class CustomAdaptActivity extends AppCompatActivity implements CustomAdapt {
 
@@ -111,7 +109,7 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
 
 ```
 
-* **Cancel the adaptation of the Activity:**
+* **当某个 Activity 想放弃适配，请实现 CancelAdapt 接口**
 ```java
 public class CancelAdaptActivity extends AppCompatActivity implements CancelAdapt {
 
@@ -120,12 +118,12 @@ public class CancelAdaptActivity extends AppCompatActivity implements CancelAdap
 ```
 
 ### Fragment
-* **First enable the ability to support Fragment custom parameters**
+* **首先开启支持 Fragment 自定义参数的功能**
 ```java
 AutoSizeConfig.getInstance().setCustomFragment(true);
 ```
 
-* **Customize the adaptation parameters of the Fragment:**
+* **当某个 Fragment 的设计图尺寸与在 AndroidManifest 中填写的全局设计图尺寸不同时，可以实现 CustomAdapt 接口扩展适配参数**
 ```java
 public class CustomAdaptFragment extends Fragment implements CustomAdapt {
 
@@ -142,7 +140,7 @@ public class CustomAdaptFragment extends Fragment implements CustomAdapt {
 
 ```
 
-* **Cancel the adaptation of the Fragment:**
+* **当某个 Fragment 想放弃适配，请实现 CancelAdapt 接口**
 ```java
 public class CancelAdaptFragment extends Fragment implements CancelAdapt {
 

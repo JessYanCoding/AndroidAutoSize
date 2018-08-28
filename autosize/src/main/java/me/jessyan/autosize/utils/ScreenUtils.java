@@ -19,6 +19,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build;
+import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
@@ -31,6 +32,10 @@ import android.view.WindowManager;
  * ================================================
  */
 public class ScreenUtils {
+
+    private ScreenUtils() {
+        throw new IllegalStateException("you can't instantiate me!");
+    }
 
     public static int getStatusBarHeight() {
         int result = 0;
@@ -78,6 +83,13 @@ public class ScreenUtils {
     }
 
     public static int getHeightOfNavigationBar(Context context) {
+        //如果小米手机开启了全面屏手势隐藏了导航栏则返回 0
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            if (Settings.Global.getInt(context.getContentResolver(), "force_fsg_nav_bar", 0) != 0) {
+                return 0;
+            }
+        }
+
         Display d = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 
         int realHeight = getScreenSize(context)[1];

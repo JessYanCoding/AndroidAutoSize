@@ -16,8 +16,11 @@
 package me.jessyan.autosize.demo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import me.jessyan.autosize.internal.CustomAdapt;
 
@@ -43,6 +46,14 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
         setContentView(R.layout.activity_custom_adapt);
     }
 
+    /**
+     * 跳转到 {@link FragmentHost}, 展示项目内部的 {@link Fragment} 自定义适配参数的用法
+     *
+     * @param view {@link View}
+     */
+    public void goCustomAdaptFragment(View view) {
+        startActivity(new Intent(getApplicationContext(), FragmentHost.class));
+    }
     /**
      * 是否按照宽度进行等比例适配 (为了保证在高宽比不同的屏幕上也能正常适配, 所以只能在宽度和高度之中选一个作为基准进行适配)
      *

@@ -4,7 +4,7 @@
     <application>
         <provider
             android:name=".InitProvider"
-            android:authorities="${applicationId}.init-Provider"
+            android:authorities="${applicationId}.autosize-init-provider"
             android:exported="false"/>
     </application>
 </manifest>
