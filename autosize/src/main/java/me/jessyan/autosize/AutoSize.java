@@ -242,10 +242,28 @@ public final class AutoSize {
      * @param xdpi           {@link DisplayMetrics#xdpi}
      */
     private static void setDensity(DisplayMetrics displayMetrics, float density, int densityDpi, float scaledDensity, float xdpi) {
-        displayMetrics.density = density;
-        displayMetrics.densityDpi = densityDpi;
-        displayMetrics.scaledDensity = scaledDensity;
-        displayMetrics.xdpi = xdpi;
+        if (AutoSizeConfig.getInstance().getUnitsManager().isSupportDP()) {
+            displayMetrics.density = density;
+            displayMetrics.densityDpi = densityDpi;
+        }
+        if (AutoSizeConfig.getInstance().getUnitsManager().isSupportSP()) {
+            displayMetrics.scaledDensity = scaledDensity;
+        }
+        switch (AutoSizeConfig.getInstance().getUnitsManager().getSupportSubunits()) {
+            case NONE:
+                break;
+            case PT:
+                displayMetrics.xdpi = xdpi * 72f;
+                break;
+            case IN:
+                displayMetrics.xdpi = xdpi;
+                break;
+            case MM:
+                displayMetrics.xdpi = xdpi * 25.4f;
+                break;
+            default:
+                break;
+        }
     }
 
     /**
