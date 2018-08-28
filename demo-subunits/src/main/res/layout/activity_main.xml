@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="100dp"
+            android:background="@color/colorAccent"
+            android:onClick="stop"
+            android:text="stop"
+            android:textColor="#fff"
+            android:textSize="30sp"/>
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="100dp"
+            android:background="#0d0"
+            android:onClick="restart"
+            android:text="restart"
+            android:textColor="#fff"
+            android:textSize="30sp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="360dp"
+        android:layout_height="100dp"
+        android:background="#fd0"
+        android:onClick="goCustomAdaptActivity"
+        android:text="CustomAdapt(internal)"
+        android:textColor="#fff"
+        android:textSize="25sp"/>
+
+    <Button
+        android:layout_width="360dp"
+        android:layout_height="100dp"
+        android:background="#d00"
+        android:onClick="goThirdLibraryActivity"
+        android:text="CustomAdapt(external)"
+        android:textColor="#fff"
+        android:textSize="25sp"/>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="W-250dp(total:360dp)"
+            android:textColor="#0d0"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="100dp"
+            />
+
+        <TextView
+            android:layout_width="109dp"
+            android:layout_height="100dp"
+            android:background="#d0a"
+            android:gravity="center"
+            android:text="W-109dp"
+            android:textColor="#0d0"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:background="#aef"
+            android:gravity="center"
+            android:text="W-120dp"
+            android:textColor="#0d0"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:background="#acf"
+            android:gravity="center"
+            android:text="W-90dp"
+            android:textColor="#0d0"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:background="#fcf"
+            android:gravity="center"
+            android:text="W-150dp"
+            android:textColor="#0d0"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+</LinearLayout>

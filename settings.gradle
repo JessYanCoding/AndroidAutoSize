@@ -1,1 +1,1 @@
-include ':demo', ':autosize'
+include ':demo', ':demo-subunits', ':autosize'
