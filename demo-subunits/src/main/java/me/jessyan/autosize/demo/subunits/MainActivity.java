@@ -22,7 +22,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.autosize.internal.CustomAdapt;
@@ -51,28 +50,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    /**
-     * 需要注意的是暂停 AndroidAutoSize 后, AndroidAutoSize 只是停止了对后续还没有启动的 {@link Activity} 进行适配的工作
-     * 但对已经启动且已经适配的 {@link Activity} 不会有任何影响
-     *
-     * @param view {@link View}
-     */
-    public void stop(View view) {
-        Toast.makeText(getApplicationContext(), "AndroidAutoSize stops working!", Toast.LENGTH_SHORT).show();
-        AutoSizeConfig.getInstance().stop(this);
-    }
-
-    /**
-     * 需要注意的是重新启动 AndroidAutoSize 后, AndroidAutoSize 只是重新开始了对后续还没有启动的 {@link Activity} 进行适配的工作
-     * 但对已经启动且在 stop 期间未适配的 {@link Activity} 不会有任何影响
-     *
-     * @param view {@link View}
-     */
-    public void restart(View view) {
-        Toast.makeText(getApplicationContext(), "AndroidAutoSize continues to work", Toast.LENGTH_SHORT).show();
-        AutoSizeConfig.getInstance().restart();
     }
 
     /**

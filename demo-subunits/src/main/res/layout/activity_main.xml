@@ -12,23 +12,23 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <TextView
             android:layout_width="180dp"
             android:layout_height="100dp"
             android:background="@color/colorAccent"
-            android:onClick="stop"
-            android:text="stop"
+            android:gravity="center"
+            android:text="W-180dp"
             android:textColor="#fff"
-            android:textSize="30sp"/>
+            android:textSize="20sp"/>
 
-        <Button
+        <TextView
             android:layout_width="180dp"
             android:layout_height="100dp"
             android:background="#0d0"
-            android:onClick="restart"
-            android:text="restart"
+            android:gravity="center"
+            android:text="W-180dp"
             android:textColor="#fff"
-            android:textSize="30sp"/>
+            android:textSize="20sp"/>
 
     </LinearLayout>
 
@@ -38,7 +38,7 @@
         android:background="#fd0"
         android:onClick="goCustomAdaptActivity"
         android:text="CustomAdapt(internal)"
-        android:textColor="#fff"
+        android:textColor="#0d0"
         android:textSize="25sp"/>
 
     <TextView
@@ -47,8 +47,8 @@
         android:background="#d00"
         android:gravity="center"
         android:text="W-360dp"
-        android:textColor="#0d0"
-        android:textSize="25sp"/>
+        android:textColor="#fff"
+        android:textSize="20sp"/>
 
 
     <LinearLayout
@@ -62,7 +62,7 @@
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:text="W-250dp(total:360dp)"
-            android:textColor="#0d0"
+            android:textColor="#fff"
             android:textSize="20sp"/>
 
         <TextView
@@ -76,7 +76,7 @@
             android:background="#d0a"
             android:gravity="center"
             android:text="W-109dp"
-            android:textColor="#0d0"
+            android:textColor="#fff"
             android:textSize="20sp"/>
     </LinearLayout>
 
@@ -91,7 +91,7 @@
             android:background="#aef"
             android:gravity="center"
             android:text="W-120dp"
-            android:textColor="#0d0"
+            android:textColor="#fff"
             android:textSize="20sp"/>
 
         <TextView
@@ -100,7 +100,7 @@
             android:background="#acf"
             android:gravity="center"
             android:text="W-90dp"
-            android:textColor="#0d0"
+            android:textColor="#fff"
             android:textSize="20sp"/>
 
         <TextView
@@ -109,7 +109,7 @@
             android:background="#fcf"
             android:gravity="center"
             android:text="W-150dp"
-            android:textColor="#0d0"
+            android:textColor="#fff"
             android:textSize="20sp"/>
     </LinearLayout>
 
