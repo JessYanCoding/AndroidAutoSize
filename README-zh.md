@@ -131,7 +131,6 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
         return 667;
     }
 }
-
 ```
 
 * **当某个 Activity 想放弃适配，请实现 CancelAdapt 接口**
@@ -139,7 +138,6 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
 public class CancelAdaptActivity extends AppCompatActivity implements CancelAdapt {
 
 }
-
 ```
 
 ### Fragment
@@ -162,7 +160,6 @@ public class CustomAdaptFragment extends Fragment implements CustomAdapt {
         return 667;
     }
 }
-
 ```
 
 * **当某个 Fragment 想放弃适配，请实现 CancelAdapt 接口**
@@ -170,7 +167,6 @@ public class CustomAdaptFragment extends Fragment implements CustomAdapt {
 public class CancelAdaptFragment extends Fragment implements CancelAdapt {
 
 }
-
 ```
 
 ### Subunits (请认真看 demo-subunits，里面有详细介绍)
