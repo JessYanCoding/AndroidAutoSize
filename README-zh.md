@@ -170,7 +170,7 @@ public class CancelAdaptFragment extends Fragment implements CancelAdapt {
 ```
 
 ### Subunits (请认真看 demo-subunits，里面有详细介绍)
-* 可以在 **pt、in、mm** 这三个冷门单位中，选择一个作为副单位，副单位是用于规避修改 **DisplayMetrics#density** 所带来的对于其他使用 **dp** 布局的系统控件或三方库控件的不良影响，使用副单位后可直接填写设计图上的像素尺寸，不需要在转化为 **dp**
+* 可以在 **pt、in、mm** 这三个冷门单位中，选择一个作为副单位，副单位是用于规避修改 **DisplayMetrics#density** 所造成的对于其他使用 **dp** 布局的系统控件或三方库控件的不良影响，使用副单位后可直接填写设计图上的像素尺寸，不需要在转化为 **dp**
 
 
 ```java
