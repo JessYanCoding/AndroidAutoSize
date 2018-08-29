@@ -75,8 +75,8 @@
  implementation 'me.jessyan:autosize:0.9.1'
 ```
 
-## Usage (just one steps)
-### Step 1 
+## Usage
+### Step 1 (just one steps) 
 * **Initialize in AndroidManifest:**
 ```xml
 <manifest>
@@ -108,7 +108,6 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
         return 667;
     }
 }
-
 ```
 
 * **Cancel the adaptation of the Activity:**
@@ -116,7 +115,6 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
 public class CancelAdaptActivity extends AppCompatActivity implements CancelAdapt {
 
 }
-
 ```
 
 ### Fragment
@@ -139,7 +137,6 @@ public class CustomAdaptFragment extends Fragment implements CustomAdapt {
         return 667;
     }
 }
-
 ```
 
 * **Cancel the adaptation of the Fragment:**
@@ -147,7 +144,17 @@ public class CustomAdaptFragment extends Fragment implements CustomAdapt {
 public class CancelAdaptFragment extends Fragment implements CancelAdapt {
 
 }
+```
 
+### Subunits (see demo-subunits)
+* You can choose one of the three unpopular units of **pt, in, mm** as the subunits, the subunits is used to avoid the adverse effects caused by modifying **DisplayMetrics#density**, after using the subunits, you can write the pixel size on the design, you don't need to convert it to **dp**
+
+
+```java
+AutoSizeConfig.getInstance().getUnitsManager()
+        .setSupportDP(false)
+        .setSupportSP(false)
+        .setSupportSubunits(Subunits.MM);
 ```
 
 ## ProGuard

@@ -114,7 +114,7 @@
 * 如果您在 **layout** 文件中使用 **mm** 作为单位进行布局 (需要通过 **AutoSizeConfig.getInstance().getUnitsManager().setSupportSubunits(Subunits.MM);** 打开对单位 **mm** 的支持)，则可以根据公式 **(sqrt(纵向分辨率^2+横向分辨率^2))/25.4** 求出屏幕尺寸，然后创建模拟设备 (**只用填写屏幕尺寸和分辨率**)
 ![mm](art/unit_mm.png)
 
-## Advanced (以下用法看不懂？答应我，认真看 Demo 好不好？)
+## Advanced (以下用法看不懂？答应我，认真看 demo 好不好？)
 
 ### Activity
 * **当某个 Activity 的设计图尺寸与在 AndroidManifest 中填写的全局设计图尺寸不同时，可以实现 CustomAdapt 接口扩展适配参数**
