@@ -77,7 +77,7 @@
 
 ## Usage
 ### Step 1 (just one steps) 
-* **Initialize in AndroidManifest, if you use a subunits, you can write the pixel size, no need to convert the pixel to dp, please see [demo-subunits] (https://github.com/JessYanCoding/AndroidAutoSize/tree/master/demo-subunits)**
+* **Initialize in AndroidManifest, if you use a subunits, you can write the pixel size, no need to convert the pixel to dp, please see [demo-subunits](https://github.com/JessYanCoding/AndroidAutoSize/tree/master/demo-subunits)**
 ```xml
 <manifest>
     <application>            
