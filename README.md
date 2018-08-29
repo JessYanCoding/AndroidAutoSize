@@ -90,6 +90,8 @@
      </application>           
 </manifest>
 ```
+
+<a name="preview"></a>
 ## Preview
 * Real-time preview during layout is an important part of the development phase, in many cases, the default preview device provided by **Android Studio** does not fully display our design, so we need to create the virtual device ourselves, under the **dp, pt, in, mm** four units of virtual device creation method
 
