@@ -102,6 +102,14 @@
 * 如果您在 **layout** 文件中使用 **dp** 作为单位进行布局 (**AndroidAutoSize** 默认支持 **dp、sp** 进行布局)，则可以根据公式 **(sqrt(纵向分辨率^2+横向分辨率^2))/dpi** 求出屏幕尺寸，然后创建模拟设备 (只用填写屏幕尺寸和分辨率)
 ![dp](art/unit_dp.png)
 
+### PT
+* 如果您在 **layout** 文件中使用 **pt** 作为单位进行布局 (需要通过 **AutoSizeConfig.getInstance().getUnitsManager().setSupportSubunits(Subunits.PT);** 打开对单位 **pt** 的支持)，则可以根据公式 **(sqrt(纵向分辨率^2+横向分辨率^2))/72** 求出屏幕尺寸，然后创建模拟设备 (只用填写屏幕尺寸和分辨率)
+![pt](art/unit_pt.png)
+
+### IN
+* 如果您在 **layout** 文件中使用 **in** 作为单位进行布局 (需要通过 **AutoSizeConfig.getInstance().getUnitsManager().setSupportSubunits(Subunits.IN);** 打开对单位 **in** 的支持)，则可以根据公式 **sqrt(纵向分辨率^2+横向分辨率^2)** 求出屏幕尺寸，然后创建模拟设备 (只用填写屏幕尺寸和分辨率)
+![in](art/unit_in.png)
+
 ## Advanced (以下用法看不懂？答应我，认真看 Demo 好不好？)
 
 ### Activity
