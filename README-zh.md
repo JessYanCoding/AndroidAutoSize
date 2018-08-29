@@ -89,6 +89,19 @@
 </manifest>
 ```
 
+## Preview
+* 布局时的实时预览在开发阶段是一个很重要的环节，很多情况下 **Android Studio** 提供的默认预览设备并不能完全展示我们的设计图，所以我们就需要自己创建模拟设备，下面就介绍下 dp、pt、in、mm 四种单位的模拟设备创建方法
+
+* 如果您在预览时不希望在 **Preview** 中出现状态栏和导航栏, 则可以根据下图选择 **panel** 主题，使用该主题后纵向分辨率刚好填充整个屏幕，显示效果完全和设计图一致
+![theme](art/theme_panel.png)
+
+* 为了方便广大新手，所以还是将创建模拟设备的步骤贴出来，为大家操碎了心，如果觉得 **AndroidAutoSize** 不错，请一定记得 star，并将 **AndroidAutoSize** 推荐给您的伙伴们
+![create step](art/create_step.png)
+
+### DP
+* 如果您在 **layout** 文件中使用 **dp** 作为单位进行布局 (AndroidAutoSize 默认支持 dp、sp 进行布局)，则可以根据公式 **(sqrt(纵向分辨率^2+横向分辨率^2))/dpi** 求出屏幕尺寸，然后创建模拟设备 (只用填写分辨率和屏幕尺寸)
+![dp](art/unit_dp.png)
+
 ## Advanced (以下用法看不懂？答应我，认真看 Demo 好不好？)
 
 ### Activity
@@ -146,6 +159,17 @@ public class CancelAdaptFragment extends Fragment implements CancelAdapt {
 
 }
 
+```
+
+### Subunits (请认真看 demo-subunits，里面有详细介绍)
+* 可以在 **pt、in、mm** 这三个冷门单位中，选择一个作为副单位，副单位是用于规避修改 **DisplayMetrics#density** 所带来的对于其他使用 **dp** 布局的系统控件或三方库控件的不良影响，使用副单位后可直接填写设计图上的像素尺寸，不需要在转化为 **dp**
+
+
+```java
+AutoSizeConfig.getInstance().getUnitsManager()
+        .setSupportDP(false)
+        .setSupportSP(false)
+        .setSupportSubunits(Subunits.MM);
 ```
 
 ## ProGuard
