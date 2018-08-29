@@ -90,6 +90,30 @@
      </application>           
 </manifest>
 ```
+## Preview
+* Real-time preview during layout is an important part of the development phase, in many cases, the default preview device provided by **Android Studio** does not fully display our design, so we need to create the virtual device ourselves, under the **dp, pt, in, mm** four units of virtual device creation method
+
+* If you don't want the status bar and navigation bar to appear in **Preview** during preview, you can select the **panel** theme according to the following image, after using this theme, the vertical resolution just fills the entire preview page
+![theme](art/theme_panel.png)
+
+* Virtual device creation method
+![create step](art/create_step.png)
+
+### DP
+* If you use **dp** as a unit in the **layout** file for layout (**AndroidAutoSize** supports **dp, sp** for layout by default), you can find the screen size according to the formula **(sqrt(vertical resolution^2 + horizontal resolution^2))/dpi** and create an virtual device (**write screen size and resolution only**)
+![dp](art/unit_dp.png)
+
+### PT
+* If you use **pt** as a unit in the **layout** file for layout (requires **AutoSizeConfig.getInstance().getUnitsManager().setSupportSubunits(Subunits.PT);** to open **pt** support), you can find the screen size according to the formula **(sqrt(vertical resolution^2 + horizontal resolution^2))/72** and create an virtual device (**write screen size and resolution only**)
+![pt](art/unit_pt.png)
+
+### IN
+* If you use **in** as a unit in the **layout** file for layout (requires **AutoSizeConfig.getInstance().getUnitsManager().setSupportSubunits(Subunits.IN);** to open **in** support), you can find the screen size according to the formula **sqrt(vertical resolution^2 + horizontal resolution^2)** and create an virtual device (**write screen size and resolution only**)
+![in](art/unit_in.png)
+
+### MM
+* If you use **mm** as a unit in the **layout** file for layout (requires **AutoSizeConfig.getInstance().getUnitsManager().setSupportSubunits(Subunits.MM);** to open **mm** support), you can find the screen size according to the formula **(sqrt(vertical resolution^2 + horizontal resolution^2))/25.4** and create an virtual device (**write screen size and resolution only**)
+![mm](art/unit_mm.png)
 
 ## Advance (see demo)
 
