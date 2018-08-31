@@ -1,4 +1,4 @@
-<!-- 提问前有看 常见 issues 和 历史 issues 吗？也许里面就有答案，节约你我时间！https://github.com/JessYanCoding/AndroidAutoSize/issues/13 -->
+<!-- 提问前有看 常见 issues (https://github.com/JessYanCoding/AndroidAutoSize/issues/13) 和 历史 issues (https://github.com/JessYanCoding/AndroidAutoSize/issues?q=is%3Aissue+is%3Aclosed) 吗？也许里面就有答案，节约你我时间！-->
 <!-- 请将以下信息尽量提供完整，可以帮助框架维护者更快的定位错误，节约大家的时间，如果提问只有标题，没有提供其他有价值的信息，那你的 issues 有很大几率被直接 close!-->
 ### Environment
 - [x] Autosize Version: <!-- like: v0.7.0 -->
