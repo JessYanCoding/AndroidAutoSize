@@ -17,6 +17,7 @@ package me.jessyan.autosize.demo;
 
 import android.app.Activity;
 import android.app.Application;
+import android.util.DisplayMetrics;
 
 import cat.ereza.customactivityoncrash.activity.DefaultErrorActivity;
 import me.jessyan.autosize.AutoSizeConfig;
@@ -26,6 +27,11 @@ import me.jessyan.autosize.internal.CustomAdapt;
 
 /**
  * ================================================
+ * v0.9.1 发布后新增了副单位，可以在 pt、in、mm 三个冷门单位中选择一个作为副单位，然后在 layout 文件中使用副单位进行布局
+ * 副单位可以规避修改 {@link DisplayMetrics#density} 所造成的对于其他使用 dp 布局的系统控件或三方库控件的不良影响
+ * 使用副单位后可直接在 AndroidManifest 中填写设计图上的像素尺寸，不需要再将像素转化为 dp
+ * <a href="https://github.com/JessYanCoding/AndroidAutoSize/blob/master/README-zh.md#preview">点击查看在布局中的实时预览方式</a>
+ * <p>
  * 本框架核心原理来自于 <a href="https://mp.weixin.qq.com/s/d9QCoBP6kV9VSWvVldVVwA">今日头条官方适配方案</a>
  * <p>
  * 本框架源码的注释都很详细, 欢迎阅读学习
