@@ -5,6 +5,7 @@
         <provider
             android:name=".InitProvider"
             android:authorities="${applicationId}.autosize-init-provider"
-            android:exported="false"/>
+            android:exported="false"
+            android:multiprocess="true"/>
     </application>
 </manifest>
