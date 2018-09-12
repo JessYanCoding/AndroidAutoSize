@@ -66,9 +66,11 @@
 </p>
 
 ## Notice
-[Devices Info](https://material.io/tools/devices/)
+* [Devices Info](https://material.io/tools/devices/)
 
-[Analysis](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
+* [Analysis](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
+
+* [Android advanced framework](https://github.com/JessYanCoding/MVPArms)
 
 ## Download
 ``` gradle
