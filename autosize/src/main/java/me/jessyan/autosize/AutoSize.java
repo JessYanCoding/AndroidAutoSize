@@ -16,9 +16,12 @@
 package me.jessyan.autosize;
 
 import android.app.Activity;
+import android.app.Application;
 import android.app.Dialog;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.util.DisplayMetrics;
 import android.view.View;
 
@@ -200,6 +203,16 @@ public final class AutoSize {
                 , AutoSizeConfig.getInstance().getInitDensityDpi()
                 , AutoSizeConfig.getInstance().getInitScaledDensity()
                 , AutoSizeConfig.getInstance().getInitXdpi());
+    }
+
+    /**
+     * 当 App 中出现多进程，并且您需要适配所有的进程，就需要在 App 初始化时调用 {@link #initCompatMultiProcess}
+     * 建议实现自定义 {@link Application} 并在 {@link Application#onCreate()} 中调用 {@link #initCompatMultiProcess}
+     *
+     * @param context
+     */
+    public static void initCompatMultiProcess(Context context) {
+        context.getContentResolver().query(Uri.parse("content://" + context.getPackageName() + ".autosize-init-provider"), null, null, null, null);
     }
 
     /**
