@@ -20,6 +20,7 @@ import android.app.Application;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.util.DisplayMetrics;
@@ -36,6 +37,7 @@ import me.jessyan.autosize.internal.CancelAdapt;
 import me.jessyan.autosize.internal.CustomAdapt;
 import me.jessyan.autosize.utils.LogUtils;
 import me.jessyan.autosize.utils.Preconditions;
+import me.jessyan.autosize.utils.ScreenUtils;
 
 /**
  * ================================================
@@ -147,6 +149,15 @@ public final class AutoSize {
      */
     public static void autoConvertDensity(Activity activity, float sizeInDp, boolean isBaseOnWidth) {
         Preconditions.checkNotNull(activity, "activity == null");
+
+        boolean isVertical = activity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+
+        if (isVertical != AutoSizeConfig.getInstance().isVertical()) {
+            AutoSizeConfig.getInstance().setVertical(isVertical);
+            int[] screenSize = ScreenUtils.getScreenSize(activity.getApplicationContext());
+            AutoSizeConfig.getInstance().setScreenWidth(screenSize[0]);
+            AutoSizeConfig.getInstance().setScreenHeight(screenSize[1]);
+        }
 
         int screenSize = isBaseOnWidth ? AutoSizeConfig.getInstance().getScreenWidth()
                 : AutoSizeConfig.getInstance().getScreenHeight();
