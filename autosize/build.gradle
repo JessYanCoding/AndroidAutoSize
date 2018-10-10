@@ -9,6 +9,7 @@ android {
         targetSdkVersion rootProject.targetSdkVersion
         versionCode rootProject.versionCode
         versionName rootProject.versionName
+        consumerProguardFiles 'proguard-rules.pro'
     }
 
     buildTypes {

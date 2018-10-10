@@ -183,12 +183,6 @@ AutoSizeConfig.getInstance().getUnitsManager()
         .setSupportSubunits(Subunits.MM);
 ```
 
-## ProGuard
-```
- -keep class me.jessyan.autosize.** { *; }
- -keep interface me.jessyan.autosize.** { *; }
-```
-
 
 ## Donate
 ![alipay](https://raw.githubusercontent.com/JessYanCoding/MVPArms/master/image/pay_alipay.jpg) ![](https://raw.githubusercontent.com/JessYanCoding/MVPArms/master/image/pay_wxpay.jpg)
