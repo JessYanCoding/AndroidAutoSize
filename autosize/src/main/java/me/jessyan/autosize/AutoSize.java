@@ -210,10 +210,20 @@ public final class AutoSize {
      * @param activity {@link Activity}
      */
     public static void cancelAdapt(Activity activity) {
+        float initXdpi = AutoSizeConfig.getInstance().getInitXdpi();
+        switch (AutoSizeConfig.getInstance().getUnitsManager().getSupportSubunits()) {
+            case PT:
+                initXdpi = initXdpi / 72f;
+                break;
+            case MM:
+                initXdpi = initXdpi / 25.4f;
+                break;
+            default:
+        }
         setDensity(activity, AutoSizeConfig.getInstance().getInitDensity()
                 , AutoSizeConfig.getInstance().getInitDensityDpi()
                 , AutoSizeConfig.getInstance().getInitScaledDensity()
-                , AutoSizeConfig.getInstance().getInitXdpi());
+                , initXdpi);
     }
 
     /**
@@ -286,7 +296,6 @@ public final class AutoSize {
                 displayMetrics.xdpi = xdpi * 25.4f;
                 break;
             default:
-                break;
         }
     }
 
