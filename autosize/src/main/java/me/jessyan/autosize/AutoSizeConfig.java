@@ -117,7 +117,7 @@ public final class AutoSizeConfig {
      */
     private boolean isCustomFragment;
     /**
-     * 屏幕方向, {@link true} 为纵向, {@link false} 为横向
+     * 屏幕方向, {@code true} 为纵向, {@code false} 为横向
      */
     private boolean isVertical;
 
@@ -428,7 +428,7 @@ public final class AutoSizeConfig {
     /**
      * 获取屏幕方向
      *
-     * @return {@link true} 为纵向, {@link false} 为横向
+     * @return {@code true} 为纵向, {@code false} 为横向
      */
     public boolean isVertical() {
         return isVertical;
@@ -437,7 +437,7 @@ public final class AutoSizeConfig {
     /**
      * 设置屏幕方向
      *
-     * @param vertical {@link true} 为纵向, {@link false} 为横向
+     * @param vertical {@code true} 为纵向, {@code false} 为横向
      */
     public void setVertical(boolean vertical) {
         isVertical = vertical;
