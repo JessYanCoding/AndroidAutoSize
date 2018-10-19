@@ -38,9 +38,9 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
     }
 
     /**
-     * 是否按照宽度进行等比例适配 (为了保证在高宽比不同的屏幕上也能正常适配, 所以只能在宽度和高度之中选一个作为基准进行适配)
+     * 是否按照宽度进行等比例适配 (为了保证在高宽比不同的屏幕上也能正常适配, 所以只能在宽度和高度之中选择一个作为基准进行适配)
      *
-     * @return {@code true} 为按照宽度适配, {@code false} 为按照高度适配
+     * @return {@code true} 为按照宽度进行适配, {@code false} 为按照高度进行适配
      */
     @Override
     public boolean isBaseOnWidth() {
@@ -48,7 +48,7 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
     }
 
     /**
-     * 这里使用 IPhone 的设计图, IPhone 的设计图尺寸为 750px * 1334px, 因为这个页面使用副单位进行布局
+     * 这里使用 iPhone 的设计图, iPhone 的设计图尺寸为 750px * 1334px, 因为这个页面使用副单位进行布局
      * 所以可以直接以像素作为单位返回设计图的尺寸
      * <p>
      * 返回设计图上的设计尺寸
