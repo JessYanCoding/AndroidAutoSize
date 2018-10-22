@@ -449,6 +449,7 @@ public final class AutoSizeConfig {
      * @param screenWidth 屏幕宽度
      */
     public void setScreenWidth(int screenWidth) {
+        Preconditions.checkArgument(screenWidth > 0, "screenWidth must be > 0");
         mScreenWidth = screenWidth;
     }
 
@@ -458,7 +459,28 @@ public final class AutoSizeConfig {
      * @param screenHeight 屏幕高度 (包含状态栏和导航栏)
      */
     public void setScreenHeight(int screenHeight) {
+        Preconditions.checkArgument(screenHeight > 0, "screenHeight must be > 0");
         mScreenHeight = screenHeight;
+    }
+
+    /**
+     * 设置全局设计图宽度
+     *
+     * @param designWidthInDp 设计图宽度
+     */
+    public void setDesignWidthInDp(int designWidthInDp) {
+        Preconditions.checkArgument(designWidthInDp > 0, "designWidthInDp must be > 0");
+        mDesignWidthInDp = designWidthInDp;
+    }
+
+    /**
+     * 设置全局设计图高度
+     *
+     * @param designHeightInDp 设计图高度
+     */
+    public void setDesignHeightInDp(int designHeightInDp) {
+        Preconditions.checkArgument(designHeightInDp > 0, "designHeightInDp must be > 0");
+        mDesignHeightInDp = designHeightInDp;
     }
 
     /**
