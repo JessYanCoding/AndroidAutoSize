@@ -64,6 +64,8 @@
 ## Notice
 * [主流机型设备信息，可以作为参考](https://material.io/tools/devices/)
 
+* [功能介绍](https://juejin.im/post/5bce688e6fb9a05cf715d1c2)
+
 * [原理分析](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
 
 * 对于老项目的使用，**AndroidAutoSize** 可以和 [**AndroidAutoLayout**](https://github.com/hongyangAndroid/AndroidAutoLayout) 一起使用，因为 **AndroidAutoLayout** 使用的是 **px**，所以 **AndroidAutoSize** 对它不会产生任何影响，如果老项目的某些页面之前使用了 **dp** 进行布局，并且 **AndroidAutoSize** 对这些页面已经产生了不良影响，可以让之前使用了 **dp** 的旧 **Activity** 实现 **CancelAdapt** 取消适配，**建议使用副单位，使用副单位则不会影响之前使用了 dp 的页面 (也不会影响三方库和系统控件)，详情请查看 [demo-subunits](https://github.com/JessYanCoding/AndroidAutoSize/tree/master/demo-subunits)** 
