@@ -68,7 +68,9 @@
 ## Notice
 * [Devices Info](https://material.io/tools/devices/)
 
-* [Analysis](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
+* [Introduction of function](https://juejin.im/post/5bce688e6fb9a05cf715d1c2)
+
+* [Framework analysis](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
 
 * [Android advanced framework](https://github.com/JessYanCoding/MVPArms)
 
