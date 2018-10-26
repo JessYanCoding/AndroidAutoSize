@@ -30,7 +30,7 @@ import me.jessyan.autosize.internal.CustomAdapt;
  * <p>
  * {@link CustomAdaptActivity} 展示项目内部的 {@link Activity} 自定义适配参数的用法, 需要实现 {@link CustomAdapt}
  * 现在 AndroidAutoSize 是全局以屏幕宽度为基准进行适配的, 并且全局的设计图尺寸为 360 * 640
- * 这里就展示怎么让 {@link CustomAdaptActivity} 单个页面, 有别于全局设置, 以屏幕高度为基准进行适配, 并且更改设计图尺寸为 IPhone 的设计图尺寸
+ * 这里就展示怎么让 {@link CustomAdaptActivity} 单个页面, 有别于全局设置, 以屏幕高度为基准进行适配, 并且更改设计图尺寸为 iPhone 的设计图尺寸
  * 如果这个页面的设计图尺寸有别于其他页面, AndroidAutoSize 允许您改变单个页面的设计图尺寸, {@link #getSizeInDp()}
  * <p>
  * Created by JessYan on 2018/8/11 11:31
@@ -55,9 +55,9 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
         startActivity(new Intent(getApplicationContext(), FragmentHost.class));
     }
     /**
-     * 是否按照宽度进行等比例适配 (为了保证在高宽比不同的屏幕上也能正常适配, 所以只能在宽度和高度之中选一个作为基准进行适配)
+     * 是否按照宽度进行等比例适配 (为了保证在高宽比不同的屏幕上也能正常适配, 所以只能在宽度和高度之中选择一个作为基准进行适配)
      *
-     * @return {@code true} 为按照宽度适配, {@code false} 为按照高度适配
+     * @return {@code true} 为按照宽度进行适配, {@code false} 为按照高度进行适配
      */
     @Override
     public boolean isBaseOnWidth() {
@@ -65,7 +65,7 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
     }
 
     /**
-     * 这里使用 IPhone 的设计图, IPhone 的设计图尺寸为 750px * 1334px, 高换算成 dp 为 667 (1334px / 2 = 667dp)
+     * 这里使用 iPhone 的设计图, iPhone 的设计图尺寸为 750px * 1334px, 高换算成 dp 为 667 (1334px / 2 = 667dp)
      * <p>
      * 返回设计图上的设计尺寸, 单位 dp
      * {@link #getSizeInDp} 须配合 {@link #isBaseOnWidth()} 使用, 规则如下:

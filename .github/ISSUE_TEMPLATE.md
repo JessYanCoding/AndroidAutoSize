@@ -1,5 +1,6 @@
 <!-- 提问前有看 常见 issues (https://github.com/JessYanCoding/AndroidAutoSize/issues/13) 和 历史 issues (https://github.com/JessYanCoding/AndroidAutoSize/issues?q=is%3Aissue+is%3Aclosed) 吗？也许里面就有答案，节约你我时间！-->
 <!-- 请将以下信息尽量提供完整，可以帮助框架维护者更快的定位错误，节约大家的时间，如果提问只有标题，没有提供其他有价值的信息，那你的 issues 有很大几率被直接 close!-->
+<!-- Issues 有效周期是一个星期，如果在一个星期内提问者不回复作者以及维护者的消息，或者不积极配合作者以及维护者提供有效信息帮助解决 issues，那作者和维护者有权利将此 issues 当作无效 issues 进行 close 处理，开源社区一定是大家一起维护才能繁荣昌盛，一定不要把自己当作一个消费者去使用开源项目，这样将没有人再愿意为你开源任何项目!-->
 ### Environment
 - [x] Autosize Version: <!-- like: v0.7.0 -->
 - [x] Target Android Version: <!-- like: Android 8.0 -->

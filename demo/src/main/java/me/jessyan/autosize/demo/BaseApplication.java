@@ -20,6 +20,7 @@ import android.app.Application;
 import android.util.DisplayMetrics;
 
 import cat.ereza.customactivityoncrash.activity.DefaultErrorActivity;
+import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.autosize.external.ExternalAdaptInfo;
 import me.jessyan.autosize.external.ExternalAdaptManager;
@@ -71,6 +72,9 @@ public class BaseApplication extends Application {
                  //设置屏幕适配逻辑策略类, 一般不用设置, 使用框架默认的就好
 //                .setAutoAdaptStrategy(new AutoAdaptStrategy())
         ;
+        //当 App 中出现多进程, 并且您需要适配所有的进程, 就需要在 App 初始化时调用 initCompatMultiProcess()
+        //在 Demo 中跳转的三方库中的 DefaultErrorActivity 就是在另外一个进程中, 所以要想适配这个 Activity 就需要调用 initCompatMultiProcess()
+        AutoSize.initCompatMultiProcess(this);
         customAdaptForExternal();
     }
 

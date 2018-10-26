@@ -116,6 +116,10 @@ public final class AutoSizeConfig {
      * 是否让框架支持自定义 {@link Fragment} 的适配参数, 由于这个需求是比较少见的, 所以须要使用者手动开启
      */
     private boolean isCustomFragment;
+    /**
+     * 屏幕方向, {@code true} 为纵向, {@code false} 为横向
+     */
+    private boolean isVertical;
 
     public static AutoSizeConfig getInstance() {
         if (sInstance == null) {
@@ -173,6 +177,7 @@ public final class AutoSizeConfig {
         final DisplayMetrics displayMetrics = Resources.getSystem().getDisplayMetrics();
 
         getMetaData(application);
+        isVertical = application.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
         int[] screenSize = ScreenUtils.getScreenSize(application);
         mScreenWidth = screenSize[0];
         mScreenHeight = screenSize[1];
@@ -191,6 +196,7 @@ public final class AutoSizeConfig {
                                 Resources.getSystem().getDisplayMetrics().scaledDensity;
                         LogUtils.d("initScaledDensity = " + mInitScaledDensity + " on ConfigurationChanged");
                     }
+                    isVertical = application.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
                     int[] screenSize = ScreenUtils.getScreenSize(application);
                     mScreenWidth = screenSize[0];
                     mScreenHeight = screenSize[1];
@@ -417,6 +423,64 @@ public final class AutoSizeConfig {
      */
     public float getInitXdpi() {
         return mInitXdpi;
+    }
+
+    /**
+     * 获取屏幕方向
+     *
+     * @return {@code true} 为纵向, {@code false} 为横向
+     */
+    public boolean isVertical() {
+        return isVertical;
+    }
+
+    /**
+     * 设置屏幕方向
+     *
+     * @param vertical {@code true} 为纵向, {@code false} 为横向
+     */
+    public void setVertical(boolean vertical) {
+        isVertical = vertical;
+    }
+
+    /**
+     * 设置屏幕宽度
+     *
+     * @param screenWidth 屏幕宽度
+     */
+    public void setScreenWidth(int screenWidth) {
+        Preconditions.checkArgument(screenWidth > 0, "screenWidth must be > 0");
+        mScreenWidth = screenWidth;
+    }
+
+    /**
+     * 设置屏幕高度
+     *
+     * @param screenHeight 屏幕高度 (包含状态栏和导航栏)
+     */
+    public void setScreenHeight(int screenHeight) {
+        Preconditions.checkArgument(screenHeight > 0, "screenHeight must be > 0");
+        mScreenHeight = screenHeight;
+    }
+
+    /**
+     * 设置全局设计图宽度
+     *
+     * @param designWidthInDp 设计图宽度
+     */
+    public void setDesignWidthInDp(int designWidthInDp) {
+        Preconditions.checkArgument(designWidthInDp > 0, "designWidthInDp must be > 0");
+        mDesignWidthInDp = designWidthInDp;
+    }
+
+    /**
+     * 设置全局设计图高度
+     *
+     * @param designHeightInDp 设计图高度
+     */
+    public void setDesignHeightInDp(int designHeightInDp) {
+        Preconditions.checkArgument(designHeightInDp > 0, "designHeightInDp must be > 0");
+        mDesignHeightInDp = designHeightInDp;
     }
 
     /**

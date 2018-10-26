@@ -9,6 +9,7 @@ android {
         targetSdkVersion rootProject.targetSdkVersion
         versionCode rootProject.versionCode
         versionName rootProject.versionName
+        consumerProguardFiles 'proguard-rules.pro'
     }
 
     buildTypes {
@@ -25,7 +26,7 @@ android {
 }
 
 dependencies {
-    compileOnly 'com.android.support:support-v4:27.1.1'
+    compileOnly rootProject.appcompat_v7
 }
 
 apply from: 'bintray.gradle'

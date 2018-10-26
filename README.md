@@ -2,7 +2,7 @@
 
 <p align="center">
    <a href="https://bintray.com/jessyancoding/maven/autosize/_latestVersion">
-    <img src="https://img.shields.io/badge/Jcenter-v0.9.1-brightgreen.svg?style=flat-square" alt="Latest Stable Version" />
+    <img src="https://img.shields.io/badge/Jcenter-v1.0.1-brightgreen.svg?style=flat-square" alt="Latest Stable Version" />
   </a>
   <a href="https://travis-ci.org/JessYanCoding/AndroidAutoSize">
     <img src="https://travis-ci.org/JessYanCoding/AndroidAutoSize.svg?branch=master" alt="Build Status" />
@@ -66,13 +66,17 @@
 </p>
 
 ## Notice
-[Devices Info](https://material.io/tools/devices/)
+* [Devices Info](https://material.io/tools/devices/)
 
-[Analysis](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
+* [Introduction of function](https://juejin.im/post/5bce688e6fb9a05cf715d1c2)
+
+* [Framework analysis](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
+
+* [Android advanced framework](https://github.com/JessYanCoding/MVPArms)
 
 ## Download
 ``` gradle
- implementation 'me.jessyan:autosize:0.9.1'
+ implementation 'me.jessyan:autosize:1.0.1'
 ```
 
 ## Usage
@@ -181,12 +185,6 @@ AutoSizeConfig.getInstance().getUnitsManager()
         .setSupportDP(false)
         .setSupportSP(false)
         .setSupportSubunits(Subunits.MM);
-```
-
-## ProGuard
-```
- -keep class me.jessyan.autosize.** { *; }
- -keep interface me.jessyan.autosize.** { *; }
 ```
 
 

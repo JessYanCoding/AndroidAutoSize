@@ -16,9 +16,13 @@
 package me.jessyan.autosize;
 
 import android.app.Activity;
+import android.app.Application;
 import android.app.Dialog;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.util.DisplayMetrics;
 import android.view.View;
 
@@ -33,6 +37,7 @@ import me.jessyan.autosize.internal.CancelAdapt;
 import me.jessyan.autosize.internal.CustomAdapt;
 import me.jessyan.autosize.utils.LogUtils;
 import me.jessyan.autosize.utils.Preconditions;
+import me.jessyan.autosize.utils.ScreenUtils;
 
 /**
  * ================================================
@@ -145,6 +150,15 @@ public final class AutoSize {
     public static void autoConvertDensity(Activity activity, float sizeInDp, boolean isBaseOnWidth) {
         Preconditions.checkNotNull(activity, "activity == null");
 
+        boolean isVertical = activity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+
+        if (isVertical != AutoSizeConfig.getInstance().isVertical()) {
+            AutoSizeConfig.getInstance().setVertical(isVertical);
+            int[] screenSize = ScreenUtils.getScreenSize(activity.getApplicationContext());
+            AutoSizeConfig.getInstance().setScreenWidth(screenSize[0]);
+            AutoSizeConfig.getInstance().setScreenHeight(screenSize[1]);
+        }
+
         int screenSize = isBaseOnWidth ? AutoSizeConfig.getInstance().getScreenWidth()
                 : AutoSizeConfig.getInstance().getScreenHeight();
         String key = sizeInDp + "|" + isBaseOnWidth + "|"
@@ -196,10 +210,30 @@ public final class AutoSize {
      * @param activity {@link Activity}
      */
     public static void cancelAdapt(Activity activity) {
+        float initXdpi = AutoSizeConfig.getInstance().getInitXdpi();
+        switch (AutoSizeConfig.getInstance().getUnitsManager().getSupportSubunits()) {
+            case PT:
+                initXdpi = initXdpi / 72f;
+                break;
+            case MM:
+                initXdpi = initXdpi / 25.4f;
+                break;
+            default:
+        }
         setDensity(activity, AutoSizeConfig.getInstance().getInitDensity()
                 , AutoSizeConfig.getInstance().getInitDensityDpi()
                 , AutoSizeConfig.getInstance().getInitScaledDensity()
-                , AutoSizeConfig.getInstance().getInitXdpi());
+                , initXdpi);
+    }
+
+    /**
+     * 当 App 中出现多进程，并且您需要适配所有的进程，就需要在 App 初始化时调用 {@link #initCompatMultiProcess}
+     * 建议实现自定义 {@link Application} 并在 {@link Application#onCreate()} 中调用 {@link #initCompatMultiProcess}
+     *
+     * @param context {@link Context}
+     */
+    public static void initCompatMultiProcess(Context context) {
+        context.getContentResolver().query(Uri.parse("content://" + context.getPackageName() + ".autosize-init-provider"), null, null, null, null);
     }
 
     /**
@@ -262,7 +296,6 @@ public final class AutoSize {
                 displayMetrics.xdpi = xdpi * 25.4f;
                 break;
             default:
-                break;
         }
     }
 
