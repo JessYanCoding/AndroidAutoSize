@@ -17,7 +17,7 @@
     <img src="https://img.shields.io/badge/Author-JessYan-orange.svg?style=flat-square" alt="Author" />
   </a>
   <a href="https://shang.qq.com/wpa/qunwpa?idkey=1a5dc5e9b2e40a780522f46877ba243eeb64405d42398643d544d3eec6624917">
-    <img src="https://img.shields.io/badge/QQ群-301733278-orange.svg?style=flat-square" alt="QQ Group" />
+    <img src="https://img.shields.io/badge/QQ%E7%BE%A4-455850365%20%7C%20301733278-orange.svg?style=flat-square" alt="QQ Group" />
   </a>
 </p>
 
@@ -194,8 +194,8 @@ AutoSizeConfig.getInstance().getUnitsManager()
 ## About Me
 * **Email**: <jess.yan.effort@gmail.com>
 * **Home**: <http://jessyan.me>
-* **掘金**: <https://gold.xitu.io/user/57a9dbd9165abd0061714613>
-* **简书**: <http://www.jianshu.com/u/1d0c0bc634db>
+* **掘金**: <https://juejin.im/user/57a9dbd9165abd0061714613>
+* **简书**: <https://www.jianshu.com/u/1d0c0bc634db>
 
 ## License
 ```
