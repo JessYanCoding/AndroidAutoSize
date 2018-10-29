@@ -72,6 +72,8 @@
 
 * [Framework analysis](https://juejin.im/post/5b7a29736fb9a019d53e7ee2)
 
+* [Common Issues](https://github.com/JessYanCoding/AndroidAutoSize/issues/13)
+
 * [Android advanced framework](https://github.com/JessYanCoding/MVPArms)
 
 ## Download
