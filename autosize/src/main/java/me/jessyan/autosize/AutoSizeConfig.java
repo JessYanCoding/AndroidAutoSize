@@ -120,6 +120,10 @@ public final class AutoSizeConfig {
      * 屏幕方向, {@code true} 为纵向, {@code false} 为横向
      */
     private boolean isVertical;
+    /**
+     * 屏幕适配监听器，用于监听屏幕适配时的一些事件
+     */
+    private onAdaptListener mOnAdaptListener;
 
     public static AutoSizeConfig getInstance() {
         if (sInstance == null) {
@@ -256,6 +260,16 @@ public final class AutoSizeConfig {
     }
 
     /**
+     * 设置屏幕适配监听器
+     *
+     * @param onAdaptListener {@link onAdaptListener}
+     */
+    public void setOnAdaptListener(onAdaptListener onAdaptListener) {
+        Preconditions.checkNotNull(onAdaptListener, "onAdaptListener == null");
+        mOnAdaptListener = onAdaptListener;
+    }
+
+    /**
      * 是否全局按照宽度进行等比例适配
      *
      * @param baseOnWidth {@code true} 为按照宽度, {@code false} 为按照高度
@@ -318,7 +332,7 @@ public final class AutoSizeConfig {
     /**
      * {@link ExternalAdaptManager} 用来管理外部三方库 {@link Activity} 的适配
      *
-     * @return {@link ExternalAdaptManager}
+     * @return {@link #mExternalAdaptManager}
      */
     public ExternalAdaptManager getExternalAdaptManager() {
         return mExternalAdaptManager;
@@ -327,10 +341,19 @@ public final class AutoSizeConfig {
     /**
      * {@link UnitsManager} 用来管理 AndroidAutoSize 支持的所有单位, AndroidAutoSize 支持五种单位 (dp、sp、pt、in、mm)
      *
-     * @return {@link UnitsManager}
+     * @return {@link #mUnitsManager}
      */
     public UnitsManager getUnitsManager() {
         return mUnitsManager;
+    }
+
+    /**
+     * 返回 {@link #mOnAdaptListener}
+     *
+     * @return {@link #mOnAdaptListener}
+     */
+    public onAdaptListener getOnAdaptListener() {
+        return mOnAdaptListener;
     }
 
     /**
