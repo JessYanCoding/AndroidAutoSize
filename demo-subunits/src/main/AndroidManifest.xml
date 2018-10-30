@@ -3,20 +3,20 @@
           package="me.jessyan.autosize.demo.subunits">
 
     <application
-        android:name=".BaseApplication"
+        android:name="me.jessyan.autosize.demo.subunits.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/autosize_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="me.jessyan.autosize.demo.subunits.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".CustomAdaptActivity"/>
+        <activity android:name="me.jessyan.autosize.demo.subunits.CustomAdaptActivity"/>
 
         <!-- 这个 Demo 主要展示副单位的用法, 如果只使用副单位 (pt、in、mm) 就可以直接以像素作为单位填写设计图的尺寸, 不需再把像素转化为 dp-->
         <meta-data

@@ -3,21 +3,21 @@
           package="me.jessyan.autosize.demo">
 
     <application
-        android:name=".BaseApplication"
+        android:name="me.jessyan.autosize.demo.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/autosize_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="me.jessyan.autosize.demo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".CustomAdaptActivity"/>
-        <activity android:name=".FragmentHost"/>
+        <activity android:name="me.jessyan.autosize.demo.CustomAdaptActivity"/>
+        <activity android:name="me.jessyan.autosize.demo.FragmentHost"/>
 
         <!-- 如果您项目中的所有页面都只需要以高或宽中的一个作为基准进行适配的话, 那就只需要填写高或宽中的一个设计图尺寸即可 -->
         <meta-data

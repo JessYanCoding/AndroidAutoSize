@@ -19,12 +19,16 @@ import android.app.Activity;
 import android.app.Application;
 import android.util.DisplayMetrics;
 
+import java.util.Locale;
+
 import cat.ereza.customactivityoncrash.activity.DefaultErrorActivity;
 import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.autosize.external.ExternalAdaptInfo;
 import me.jessyan.autosize.external.ExternalAdaptManager;
 import me.jessyan.autosize.internal.CustomAdapt;
+import me.jessyan.autosize.onAdaptListener;
+import me.jessyan.autosize.utils.LogUtils;
 
 /**
  * ================================================
@@ -57,6 +61,19 @@ public class BaseApplication extends Application {
                 //是否让框架支持自定义 Fragment 的适配参数, 由于这个需求是比较少见的, 所以须要使用者手动开启
                 //如果没有这个需求建议不开启
                 .setCustomFragment(true)
+
+                //屏幕适配监听器
+                .setOnAdaptListener(new onAdaptListener() {
+                    @Override
+                    public void onAdaptBefore(Object target, Activity activity) {
+                        LogUtils.d(String.format(Locale.ENGLISH, "%s onAdaptBefore!", target.getClass().getName()));
+                    }
+
+                    @Override
+                    public void onAdaptAfter(Object target, Activity activity) {
+                        LogUtils.d(String.format(Locale.ENGLISH, "%s onAdaptAfter!", target.getClass().getName()));
+                    }
+                })
 
                 //是否打印 AutoSize 的内部日志, 默认为 true, 如果您不想 AutoSize 打印日志, 则请设置为 false
 //                .setLog(false)

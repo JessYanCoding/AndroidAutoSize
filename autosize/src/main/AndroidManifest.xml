@@ -3,7 +3,7 @@
 
     <application>
         <provider
-            android:name=".InitProvider"
+            android:name="me.jessyan.autosize.InitProvider"
             android:authorities="${applicationId}.autosize-init-provider"
             android:exported="false"
             android:multiprocess="true"/>
