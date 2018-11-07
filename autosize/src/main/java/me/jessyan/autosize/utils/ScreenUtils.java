@@ -50,7 +50,32 @@ public class ScreenUtils {
         return result;
     }
 
+    /**
+     * 获取当前的屏幕尺寸
+     *
+     * @param context {@link Context}
+     * @return 屏幕尺寸
+     */
     public static int[] getScreenSize(Context context) {
+        int[] size = new int[2];
+
+        WindowManager w = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display d = w.getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        d.getMetrics(metrics);
+
+        size[0] = metrics.widthPixels;
+        size[1] = metrics.heightPixels;
+        return size;
+    }
+
+    /**
+     * 获取原始的屏幕尺寸
+     *
+     * @param context {@link Context}
+     * @return 屏幕尺寸
+     */
+    public static int[] getRawScreenSize(Context context) {
         int[] size = new int[2];
 
         WindowManager w = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -90,15 +115,8 @@ public class ScreenUtils {
             }
         }
 
-        Display d = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-
-        int realHeight = getScreenSize(context)[1];
-
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        d.getMetrics(displayMetrics);
-
-        int displayHeight = displayMetrics.heightPixels;
-
+        int realHeight = getRawScreenSize(context)[1];
+        int displayHeight = getScreenSize(context)[1];
         return realHeight - displayHeight;
     }
 }
