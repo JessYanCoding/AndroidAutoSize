@@ -51,11 +51,17 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="192dp"
+            android:layout_height="191dp"
             android:background="#d21"
             android:gravity="center"
-            android:text="H-192dp"
+            android:text="H-191dp"
             android:textColor="#fff"
             android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#fff"
+            />
     </LinearLayout>
 </LinearLayout>
