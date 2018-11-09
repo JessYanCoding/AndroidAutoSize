@@ -199,7 +199,7 @@ public final class AutoSizeConfig {
                                 Resources.getSystem().getDisplayMetrics().scaledDensity;
                         LogUtils.d("initScaledDensity = " + mInitScaledDensity + " on ConfigurationChanged");
                     }
-                    isVertical = application.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+                    isVertical = newConfig.orientation == Configuration.ORIENTATION_PORTRAIT;
                     int[] screenSize = ScreenUtils.getScreenSize(application);
                     mScreenWidth = screenSize[0];
                     mScreenHeight = screenSize[1];
