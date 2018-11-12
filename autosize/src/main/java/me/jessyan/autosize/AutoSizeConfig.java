@@ -263,9 +263,10 @@ public final class AutoSizeConfig {
      *
      * @param onAdaptListener {@link onAdaptListener}
      */
-    public void setOnAdaptListener(onAdaptListener onAdaptListener) {
+    public AutoSizeConfig setOnAdaptListener(onAdaptListener onAdaptListener) {
         Preconditions.checkNotNull(onAdaptListener, "onAdaptListener == null");
         mOnAdaptListener = onAdaptListener;
+        return this;
     }
 
     /**
@@ -461,8 +462,9 @@ public final class AutoSizeConfig {
      *
      * @param vertical {@code true} 为纵向, {@code false} 为横向
      */
-    public void setVertical(boolean vertical) {
+    public AutoSizeConfig setVertical(boolean vertical) {
         isVertical = vertical;
+        return this;
     }
 
     /**
@@ -470,9 +472,10 @@ public final class AutoSizeConfig {
      *
      * @param screenWidth 屏幕宽度
      */
-    public void setScreenWidth(int screenWidth) {
+    public AutoSizeConfig setScreenWidth(int screenWidth) {
         Preconditions.checkArgument(screenWidth > 0, "screenWidth must be > 0");
         mScreenWidth = screenWidth;
+        return this;
     }
 
     /**
@@ -480,9 +483,10 @@ public final class AutoSizeConfig {
      *
      * @param screenHeight 屏幕高度 (需要包含状态栏)
      */
-    public void setScreenHeight(int screenHeight) {
+    public AutoSizeConfig setScreenHeight(int screenHeight) {
         Preconditions.checkArgument(screenHeight > 0, "screenHeight must be > 0");
         mScreenHeight = screenHeight;
+        return this;
     }
 
     /**
@@ -490,9 +494,10 @@ public final class AutoSizeConfig {
      *
      * @param designWidthInDp 设计图宽度
      */
-    public void setDesignWidthInDp(int designWidthInDp) {
+    public AutoSizeConfig setDesignWidthInDp(int designWidthInDp) {
         Preconditions.checkArgument(designWidthInDp > 0, "designWidthInDp must be > 0");
         mDesignWidthInDp = designWidthInDp;
+        return this;
     }
 
     /**
@@ -500,9 +505,10 @@ public final class AutoSizeConfig {
      *
      * @param designHeightInDp 设计图高度
      */
-    public void setDesignHeightInDp(int designHeightInDp) {
+    public AutoSizeConfig setDesignHeightInDp(int designHeightInDp) {
         Preconditions.checkArgument(designHeightInDp > 0, "designHeightInDp must be > 0");
         mDesignHeightInDp = designHeightInDp;
+        return this;
     }
 
     /**
