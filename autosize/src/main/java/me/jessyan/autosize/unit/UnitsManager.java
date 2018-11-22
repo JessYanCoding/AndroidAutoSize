@@ -41,6 +41,22 @@ import me.jessyan.autosize.utils.Preconditions;
  */
 public class UnitsManager {
     /**
+     * 设计图上的总宽度, 建议单位为 px, 当使用者想将旧项目从主单位过渡到副单位, 或从副单位过渡到主单位时使用
+     * 因为在使用主单位时, 建议在 AndroidManifest 中填写设计图的 dp 尺寸, 比如 360 * 640
+     * 而副单位有一个特性是可以直接在 AndroidManifest 中填写设计图的 px 尺寸, 比如 1080 * 1920
+     * 但在 AndroidManifest 中却只能填写一套设计图尺寸, 所以当在旧项目中想让主单位和副单位共存
+     * 又想使用副单位的特性, 就需要一个地方保存副单位的设计图尺寸
+     */
+    private float mDesignWidth;
+    /**
+     * 设计图上的总高度, 建议单位为 px, 当使用者想将旧项目从主单位过渡到副单位, 或从副单位过渡到主单位时使用
+     * 因为在使用主单位时, 建议在 AndroidManifest 中填写设计图的 dp 尺寸, 比如 360 * 640
+     * 而副单位有一个特性是可以直接在 AndroidManifest 中填写设计图的 px 尺寸, 比如 1080 * 1920
+     * 但在 AndroidManifest 中却只能填写一套设计图尺寸, 所以当在旧项目中想让主单位和副单位共存
+     * 又想使用副单位的特性, 就需要一个地方保存副单位的设计图尺寸
+     */
+    private float mDesignHeight;
+    /**
      * 是否支持 dp 单位, 默认支持
      */
     private boolean isSupportDP = true;
@@ -52,6 +68,65 @@ public class UnitsManager {
      * 是否支持副单位, 以什么为副单位? 默认不支持
      */
     private Subunits mSupportSubunits = Subunits.NONE;
+
+    /**
+     * 设置设计图尺寸
+     *
+     * @param designWidth  设计图上的总宽度, 建议单位为 px
+     * @param designHeight 设计图上的总高度, 建议单位为 px
+     * @return {@link UnitsManager}
+     * @see #mDesignWidth 详情请查看这个字段的注释
+     * @see #mDesignHeight 详情请查看这个字段的注释
+     */
+    public UnitsManager setDesignSize(float designWidth, float designHeight) {
+        setDesignWidth(designWidth);
+        setDesignHeight(designHeight);
+        return this;
+    }
+
+    /**
+     * 返回 {@link #mDesignWidth}
+     *
+     * @return {@link #mDesignWidth}
+     */
+    public float getDesignWidth() {
+        return mDesignWidth;
+    }
+
+    /**
+     * 设置设计图上的总宽度, 建议单位为 px
+     *
+     * @param designWidth 设计图上的总宽度, 建议单位为 px
+     * @return {@link UnitsManager}
+     * @see #mDesignWidth 详情请查看这个字段的注释
+     */
+    public UnitsManager setDesignWidth(float designWidth) {
+        Preconditions.checkArgument(designWidth > 0, "designWidth must be > 0");
+        mDesignWidth = designWidth;
+        return this;
+    }
+
+    /**
+     * 返回 {@link #mDesignHeight}
+     *
+     * @return {@link #mDesignHeight}
+     */
+    public float getDesignHeight() {
+        return mDesignHeight;
+    }
+
+    /**
+     * 设置设计图上的总高度, 建议单位为 px
+     *
+     * @param designHeight 设计图上的总高度, 建议单位为 px
+     * @return {@link UnitsManager}
+     * @see #mDesignHeight 详情请查看这个字段的注释
+     */
+    public UnitsManager setDesignHeight(float designHeight) {
+        Preconditions.checkArgument(designHeight > 0, "designHeight must be > 0");
+        mDesignHeight = designHeight;
+        return this;
+    }
 
     /**
      * 是否支持 dp 单位, 默认支持, 详情请看类文件的注释 {@link UnitsManager}
