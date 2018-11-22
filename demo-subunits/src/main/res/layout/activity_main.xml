@@ -67,7 +67,8 @@
 
         <TextView
             android:layout_width="2mm"
-            android:layout_height="100dp"
+            android:layout_height="300mm"
+            android:gravity="center"
             />
 
         <TextView
