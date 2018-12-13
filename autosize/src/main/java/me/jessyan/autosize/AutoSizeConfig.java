@@ -120,6 +120,11 @@ public final class AutoSizeConfig {
      */
     private boolean isVertical;
     /**
+     * 是否屏蔽系统字体大小对 AndroidAutoSize 的影响, 如果为 {@code true}, App 内的字体的大小将不会跟随系统设置中字体大小的改变
+     * 如果为 {@code false}, 则会跟随系统设置中字体大小的改变, 默认为 {@code false}
+     */
+    private boolean isExcludeFontScale;
+    /**
      * 屏幕适配监听器，用于监听屏幕适配时的一些事件
      */
     private onAdaptListener mOnAdaptListener;
@@ -464,6 +469,27 @@ public final class AutoSizeConfig {
      */
     public AutoSizeConfig setVertical(boolean vertical) {
         isVertical = vertical;
+        return this;
+    }
+
+    /**
+     * 是否屏蔽系统字体大小对 AndroidAutoSize 的影响, 如果为 {@code true}, App 内的字体的大小将不会跟随系统设置中字体大小的改变
+     * 如果为 {@code false}, 则会跟随系统设置中字体大小的改变, 默认为 {@code false}
+     *
+     * @return {@link #isExcludeFontScale}
+     */
+    public boolean isExcludeFontScale() {
+        return isExcludeFontScale;
+    }
+
+    /**
+     * 是否屏蔽系统字体大小对 AndroidAutoSize 的影响, 如果为 {@code true}, App 内的字体的大小将不会跟随系统设置中字体大小的改变
+     * 如果为 {@code false}, 则会跟随系统设置中字体大小的改变, 默认为 {@code false}
+     *
+     * @param excludeFontScale 是否屏蔽
+     */
+    public AutoSizeConfig setExcludeFontScale(boolean excludeFontScale) {
+        isExcludeFontScale = excludeFontScale;
         return this;
     }
 
