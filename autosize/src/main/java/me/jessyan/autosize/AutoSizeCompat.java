@@ -19,14 +19,12 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
-import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import me.jessyan.autosize.external.ExternalAdaptInfo;
 import me.jessyan.autosize.external.ExternalAdaptManager;
 import me.jessyan.autosize.internal.CustomAdapt;
-import me.jessyan.autosize.utils.LogUtils;
 import me.jessyan.autosize.utils.Preconditions;
 
 /**
@@ -180,11 +178,6 @@ public final class AutoSizeCompat {
         }
 
         setDensity(resources, targetDensity, targetDensityDpi, targetScaledDensity, targetXdpi);
-
-        LogUtils.d(String.format(Locale.ENGLISH, "AutoSizeCompat is running! \nAdapt Info: isBaseOnWidth = %s, %s = %f, %s = %f, targetDensity = %f, targetScaledDensity = %f, targetDensityDpi = %d, targetXdpi = %f"
-                , isBaseOnWidth, isBaseOnWidth ? "designWidthInDp"
-                        : "designHeightInDp", sizeInDp, isBaseOnWidth ? "designWidthInSubunits" : "designHeightInSubunits", subunitsDesignSize
-                , targetDensity, targetScaledDensity, targetDensityDpi, targetXdpi));
     }
 
     /**
