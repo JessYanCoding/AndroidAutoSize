@@ -136,7 +136,7 @@ public final class AutoSize {
     /**
      * 这里是今日头条适配方案的核心代码, 核心在于根据当前设备的实际情况做自动计算并转换 {@link DisplayMetrics#density}、
      * {@link DisplayMetrics#scaledDensity}、{@link DisplayMetrics#densityDpi} 这三个值, 额外增加 {@link DisplayMetrics#xdpi}
-     * 以支持单位 {@code in}
+     * 以支持单位 {@code pt}、{@code in}、{@code mm}
      *
      * @param activity      {@link Activity}
      * @param sizeInDp      设计图上的设计尺寸, 单位 dp, 如果 {@param isBaseOnWidth} 设置为 {@code true},
