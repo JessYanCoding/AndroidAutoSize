@@ -21,7 +21,7 @@ android {
 }
 
 dependencies {
-//    implementation 'me.jessyan:autosize:1.1.1'
+//    implementation 'me.jessyan:autosize:1.1.2'
     implementation project(':autosize')
     implementation rootProject.appcompat_v7
     testImplementation 'junit:junit:4.12'

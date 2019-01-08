@@ -2,7 +2,7 @@
 
 <p align="center">
    <a href="https://bintray.com/jessyancoding/maven/autosize/_latestVersion">
-    <img src="https://img.shields.io/badge/Jcenter-v1.1.1-brightgreen.svg?style=flat-square" alt="Latest Stable Version" />
+    <img src="https://img.shields.io/badge/Jcenter-v1.1.2-brightgreen.svg?style=flat-square" alt="Latest Stable Version" />
   </a>
   <a href="https://travis-ci.org/JessYanCoding/AndroidAutoSize">
     <img src="https://travis-ci.org/JessYanCoding/AndroidAutoSize.svg?branch=master" alt="Build Status" />
@@ -80,7 +80,7 @@
 
 ## Download
 ``` gradle
- implementation 'me.jessyan:autosize:1.1.1'
+ implementation 'me.jessyan:autosize:1.1.2'
 ```
 
 ## Usage

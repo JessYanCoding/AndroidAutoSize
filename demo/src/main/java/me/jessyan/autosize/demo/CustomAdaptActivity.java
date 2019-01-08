@@ -54,6 +54,7 @@ public class CustomAdaptActivity extends AppCompatActivity implements CustomAdap
     public void goCustomAdaptFragment(View view) {
         startActivity(new Intent(getApplicationContext(), FragmentHost.class));
     }
+
     /**
      * 是否按照宽度进行等比例适配 (为了保证在高宽比不同的屏幕上也能正常适配, 所以只能在宽度和高度之中选择一个作为基准进行适配)
      *
