@@ -18,7 +18,6 @@ package me.jessyan.autosize;
 import android.app.Activity;
 import android.app.Application;
 import android.app.Dialog;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.res.Resources;
 import android.net.Uri;
@@ -40,7 +39,7 @@ import me.jessyan.autosize.utils.Preconditions;
 /**
  * ================================================
  * AndroidAutoSize 用于屏幕适配的核心方法都在这里, 核心原理来自于 <a href="https://mp.weixin.qq.com/s/d9QCoBP6kV9VSWvVldVVwA">今日头条官方适配方案</a>
- * 此方案只要应用到 {@link Activity} 上, 这个 {@link Activity} 下的所有 {@link Fragment}、{@link Dialog}、
+ * 此方案只要应用到 {@link Activity} 上, 这个 {@link Activity} 下的所有 {@link android.support.v4.app.Fragment}、{@link Dialog}、
  * 自定义 {@link View} 都会达到适配的效果, 如果某个页面不想使用适配请让该 {@link Activity} 实现 {@link CancelAdapt}
  * <p>
  * 任何方案都不可能完美, 在成本和收益中做出取舍, 选择出最适合自己的方案即可, 在没有更好的方案出来之前, 只有继续忍耐它的不完美, 或者自己作出改变
