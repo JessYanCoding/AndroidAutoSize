@@ -241,23 +241,22 @@ public final class AutoSize {
      * @param xdpi          {@link DisplayMetrics#xdpi}
      */
     private static void setDensity(Activity activity, float density, int densityDpi, float scaledDensity, float xdpi) {
-        final DisplayMetrics activityDisplayMetrics = activity.getResources().getDisplayMetrics();
-        final DisplayMetrics appDisplayMetrics = AutoSizeConfig.getInstance().getApplication().getResources().getDisplayMetrics();
-
-        setDensity(activityDisplayMetrics, density, densityDpi, scaledDensity, xdpi);
-
-        setDensity(appDisplayMetrics, density, densityDpi, scaledDensity, xdpi);
-
         //兼容 MIUI
         DisplayMetrics activityDisplayMetricsOnMIUI = getMetricsOnMiui(activity.getResources());
         DisplayMetrics appDisplayMetricsOnMIUI = getMetricsOnMiui(AutoSizeConfig.getInstance().getApplication().getResources());
 
         if (activityDisplayMetricsOnMIUI != null) {
             setDensity(activityDisplayMetricsOnMIUI, density, densityDpi, scaledDensity, xdpi);
+        } else {
+            DisplayMetrics activityDisplayMetrics = activity.getResources().getDisplayMetrics();
+            setDensity(activityDisplayMetrics, density, densityDpi, scaledDensity, xdpi);
         }
 
         if (appDisplayMetricsOnMIUI != null) {
             setDensity(appDisplayMetricsOnMIUI, density, densityDpi, scaledDensity, xdpi);
+        } else {
+            DisplayMetrics appDisplayMetrics = AutoSizeConfig.getInstance().getApplication().getResources().getDisplayMetrics();
+            setDensity(appDisplayMetrics, density, densityDpi, scaledDensity, xdpi);
         }
     }
 
