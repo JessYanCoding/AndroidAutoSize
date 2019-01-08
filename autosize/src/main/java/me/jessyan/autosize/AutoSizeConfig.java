@@ -26,6 +26,8 @@ import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 
+import java.lang.reflect.Field;
+
 import me.jessyan.autosize.external.ExternalAdaptManager;
 import me.jessyan.autosize.unit.UnitsManager;
 import me.jessyan.autosize.utils.LogUtils;
@@ -125,6 +127,14 @@ public final class AutoSizeConfig {
      */
     private boolean isExcludeFontScale;
     /**
+     * 是否是 Miui 系统
+     */
+    private boolean isMiui;
+    /**
+     * Miui系统中的 mTmpMetrics 字段
+     */
+    private Field mTmpMetricsField;
+    /**
      * 屏幕适配监听器，用于监听屏幕适配时的一些事件
      */
     private onAdaptListener mOnAdaptListener;
@@ -219,6 +229,15 @@ public final class AutoSizeConfig {
         LogUtils.d("initDensity = " + mInitDensity + ", initScaledDensity = " + mInitScaledDensity);
         mActivityLifecycleCallbacks = new ActivityLifecycleCallbacksImpl(strategy == null ? new WrapperAutoAdaptStrategy(new DefaultAutoAdaptStrategy()) : strategy);
         application.registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks);
+        if ("MiuiResources".equals(application.getResources().getClass().getSimpleName()) || "XResources".equals(application.getResources().getClass().getSimpleName())) {
+            isMiui = true;
+            try {
+                mTmpMetricsField = Resources.class.getDeclaredField("mTmpMetrics");
+                mTmpMetricsField.setAccessible(true);
+            } catch (Exception e) {
+                mTmpMetricsField = null;
+            }
+        }
         return this;
     }
 
@@ -460,6 +479,24 @@ public final class AutoSizeConfig {
      */
     public boolean isVertical() {
         return isVertical;
+    }
+
+    /**
+     * 返回 {@link #isMiui}
+     *
+     * @return {@link #isMiui}
+     */
+    public boolean isMiui() {
+        return isMiui;
+    }
+
+    /**
+     * 返回 {@link #mTmpMetricsField}
+     *
+     * @return {@link #mTmpMetricsField}
+     */
+    public Field getTmpMetricsField() {
+        return mTmpMetricsField;
     }
 
     /**
