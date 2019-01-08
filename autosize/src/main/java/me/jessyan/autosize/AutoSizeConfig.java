@@ -89,6 +89,12 @@ public final class AutoSizeConfig {
      */
     private int mScreenHeight;
     /**
+     * 状态栏高度, 当 {@link #isUseDeviceSize} 为 {@code false} 时, AndroidAutoSize 会将 {@link #mScreenHeight} 减去状态栏高度
+     * AndroidAutoSize 默认使用 {@link ScreenUtils#getStatusBarHeight()} 方法获取状态栏高度
+     * AndroidAutoSize 使用者可使用 {@link #setStatusBarHeight(int)} 自行设置状态栏高度
+     */
+    private int mStatusBarHeight;
+    /**
      * 为了保证在不同高宽比的屏幕上显示效果也能完全一致, 所以本方案适配时是以设计图宽度与设备实际宽度的比例或设计图高度与设备实际高度的比例应用到
      * 每个 View 上 (只能在宽度和高度之中选一个作为基准), 从而使每个 View 的高和宽用同样的比例缩放, 避免在与设计图高宽比不一致的设备上出现适配的 View 高或宽变形的问题
      * {@link #isBaseOnWidth} 为 {@code true} 时代表以宽度等比例缩放, {@code false} 代表以高度等比例缩放
@@ -131,7 +137,7 @@ public final class AutoSizeConfig {
      */
     private boolean isMiui;
     /**
-     * Miui系统中的 mTmpMetrics 字段
+     * Miui 系统中的 mTmpMetrics 字段
      */
     private Field mTmpMetricsField;
     /**
@@ -199,6 +205,7 @@ public final class AutoSizeConfig {
         int[] screenSize = ScreenUtils.getScreenSize(application);
         mScreenWidth = screenSize[0];
         mScreenHeight = screenSize[1];
+        mStatusBarHeight = ScreenUtils.getStatusBarHeight();
         LogUtils.d("designWidthInDp = " + mDesignWidthInDp + ", designHeightInDp = " + mDesignHeightInDp + ", screenWidth = " + mScreenWidth + ", screenHeight = " + mScreenHeight);
 
         mInitDensity = displayMetrics.density;
@@ -413,7 +420,7 @@ public final class AutoSizeConfig {
      * @return {@link #mScreenHeight}
      */
     public int getScreenHeight() {
-        return isUseDeviceSize() ? mScreenHeight : mScreenHeight - ScreenUtils.getStatusBarHeight();
+        return isUseDeviceSize() ? mScreenHeight : mScreenHeight - mStatusBarHeight;
     }
 
     /**
@@ -571,6 +578,17 @@ public final class AutoSizeConfig {
     public AutoSizeConfig setDesignHeightInDp(int designHeightInDp) {
         Preconditions.checkArgument(designHeightInDp > 0, "designHeightInDp must be > 0");
         mDesignHeightInDp = designHeightInDp;
+        return this;
+    }
+
+    /**
+     * 设置状态栏高度
+     *
+     * @param statusBarHeight 状态栏高度
+     */
+    public AutoSizeConfig setStatusBarHeight(int statusBarHeight) {
+        Preconditions.checkArgument(statusBarHeight > 0, "statusBarHeight must be > 0");
+        mStatusBarHeight = statusBarHeight;
         return this;
     }
 
