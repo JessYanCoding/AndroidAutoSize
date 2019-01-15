@@ -52,6 +52,9 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        //当 App 中出现多进程, 并且您需要适配所有的进程, 就需要在 App 初始化时调用 initCompatMultiProcess()
+        //在 Demo 中跳转的三方库中的 DefaultErrorActivity 就是在另外一个进程中, 所以要想适配这个 Activity 就需要调用 initCompatMultiProcess()
+        AutoSize.initCompatMultiProcess(this);
         /**
          * 以下是 AndroidAutoSize 可以自定义的参数, {@link AutoSizeConfig} 的每个方法的注释都写的很详细
          * 使用前请一定记得跳进源码，查看方法的注释, 下面的注释只是简单描述!!!
@@ -97,9 +100,6 @@ public class BaseApplication extends Application {
                  //设置屏幕适配逻辑策略类, 一般不用设置, 使用框架默认的就好
 //                .setAutoAdaptStrategy(new AutoAdaptStrategy())
         ;
-        //当 App 中出现多进程, 并且您需要适配所有的进程, 就需要在 App 初始化时调用 initCompatMultiProcess()
-        //在 Demo 中跳转的三方库中的 DefaultErrorActivity 就是在另外一个进程中, 所以要想适配这个 Activity 就需要调用 initCompatMultiProcess()
-        AutoSize.initCompatMultiProcess(this);
         customAdaptForExternal();
     }
 
