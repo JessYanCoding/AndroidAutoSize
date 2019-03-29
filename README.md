@@ -1,4 +1,5 @@
 ![Logo](art/autosize_banner.jpg)
+![Official](https://raw.githubusercontent.com/JessYanCoding/MVPArms/master/image/official.jpeg)
 
 <p align="center">
    <a href="https://bintray.com/jessyancoding/maven/autosize/_latestVersion">
