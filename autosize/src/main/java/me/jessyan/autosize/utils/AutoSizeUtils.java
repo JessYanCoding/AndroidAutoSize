@@ -53,7 +53,7 @@ public class AutoSizeUtils {
         return (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_MM, value, context.getResources().getDisplayMetrics()) + 0.5f);
     }
     
-    private static Application getApplicationByReflect() {
+    public static Application getApplicationByReflect() {
         try {
             @SuppressLint("PrivateApi")
             Class<?> activityThread = Class.forName("android.app.ActivityThread");
