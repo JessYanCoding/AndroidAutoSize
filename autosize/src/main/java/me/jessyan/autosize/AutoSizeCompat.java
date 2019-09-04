@@ -16,6 +16,7 @@
 package me.jessyan.autosize;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
@@ -151,6 +152,8 @@ public final class AutoSizeCompat {
         int targetDensityDpi = 0;
         float targetScaledDensity = 0;
         float targetXdpi = 0;
+        int targetScreenWidthDp;
+        int targetScreenHeightDp;
 
         if (displayMetricsInfo == null) {
             if (isBaseOnWidth) {
@@ -163,21 +166,27 @@ public final class AutoSizeCompat {
             targetScaledDensity = targetDensity * scale;
             targetDensityDpi = (int) (targetDensity * 160);
 
+            targetScreenWidthDp = (int) (AutoSizeConfig.getInstance().getScreenWidth() / targetDensity);
+            targetScreenHeightDp = (int) (AutoSizeConfig.getInstance().getScreenHeight() / targetDensity);
+
             if (isBaseOnWidth) {
                 targetXdpi = AutoSizeConfig.getInstance().getScreenWidth() * 1.0f / subunitsDesignSize;
             } else {
                 targetXdpi = AutoSizeConfig.getInstance().getScreenHeight() * 1.0f / subunitsDesignSize;
             }
 
-            mCache.put(key, new DisplayMetricsInfo(targetDensity, targetDensityDpi, targetScaledDensity, targetXdpi));
+            mCache.put(key, new DisplayMetricsInfo(targetDensity, targetDensityDpi, targetScaledDensity, targetXdpi, targetScreenWidthDp, targetScreenHeightDp));
         } else {
             targetDensity = displayMetricsInfo.getDensity();
             targetDensityDpi = displayMetricsInfo.getDensityDpi();
             targetScaledDensity = displayMetricsInfo.getScaledDensity();
             targetXdpi = displayMetricsInfo.getXdpi();
+            targetScreenWidthDp = displayMetricsInfo.getScreenWidthDp();
+            targetScreenHeightDp = displayMetricsInfo.getScreenHeightDp();
         }
 
         setDensity(resources, targetDensity, targetDensityDpi, targetScaledDensity, targetXdpi);
+        setScreenSizeDp(resources, targetScreenWidthDp, targetScreenHeightDp);
     }
 
     /**
@@ -200,6 +209,9 @@ public final class AutoSizeCompat {
                 , AutoSizeConfig.getInstance().getInitDensityDpi()
                 , AutoSizeConfig.getInstance().getInitScaledDensity()
                 , initXdpi);
+        setScreenSizeDp(resources
+                , AutoSizeConfig.getInstance().getInitScreenWidthDp()
+                , AutoSizeConfig.getInstance().getInitScreenHeightDp());
     }
 
     /**
@@ -262,6 +274,35 @@ public final class AutoSizeCompat {
                 break;
             default:
         }
+    }
+
+    /**
+     * 给 {@link Configuration} 赋值
+     *
+     * @param resources      {@link Resources}
+     * @param screenWidthDp  {@link Configuration#screenWidthDp}
+     * @param screenHeightDp {@link Configuration#screenHeightDp}
+     */
+    private static void setScreenSizeDp(Resources resources, int screenWidthDp, int screenHeightDp) {
+        if (AutoSizeConfig.getInstance().getUnitsManager().isSupportDP() && AutoSizeConfig.getInstance().getUnitsManager().isSupportScreenSizeDP()) {
+            Configuration activityConfiguration = resources.getConfiguration();
+            setScreenSizeDp(activityConfiguration, screenWidthDp, screenHeightDp);
+
+            Configuration appConfiguration = AutoSizeConfig.getInstance().getApplication().getResources().getConfiguration();
+            setScreenSizeDp(appConfiguration, screenWidthDp, screenHeightDp);
+        }
+    }
+
+    /**
+     * Configuration赋值
+     *
+     * @param configuration  {@link Configuration}
+     * @param screenWidthDp  {@link Configuration#screenWidthDp}
+     * @param screenHeightDp {@link Configuration#screenHeightDp}
+     */
+    private static void setScreenSizeDp(Configuration configuration, int screenWidthDp, int screenHeightDp) {
+        configuration.screenWidthDp = screenWidthDp;
+        configuration.screenHeightDp = screenHeightDp;
     }
 
     /**

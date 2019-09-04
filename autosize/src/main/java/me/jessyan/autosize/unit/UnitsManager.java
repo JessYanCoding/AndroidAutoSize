@@ -68,6 +68,10 @@ public class UnitsManager {
      * 是否支持副单位, 以什么为副单位? 默认不支持
      */
     private Subunits mSupportSubunits = Subunits.NONE;
+    /**
+     * 是否支持 ScreenSizeDp 修改, 默认不支持
+     */
+    private boolean isSupportScreenSizeDP = false;
 
     /**
      * 设置设计图尺寸
@@ -173,6 +177,25 @@ public class UnitsManager {
      */
     public Subunits getSupportSubunits() {
         return mSupportSubunits;
+    }
+
+    /**
+     * 是否支持 ScreenSizeDp 修改, 默认不支持, 详情请看类文件的注释 {@link UnitsManager}
+     *
+     * @return {@code true} 为支持, {@code false} 为不支持
+     */
+    public boolean isSupportScreenSizeDP() {
+        return isSupportScreenSizeDP;
+    }
+
+    /**
+     * 是否让 AndroidAutoSize 支持 ScreenSizeDp 修改, 默认不支持, 详情请看类文件的注释 {@link UnitsManager}
+     *
+     * @param supportScreenSizeDP {@code true} 为支持, {@code false} 为不支持
+     */
+    public UnitsManager setSupportScreenSizeDP(boolean supportScreenSizeDP) {
+        isSupportScreenSizeDP = supportScreenSizeDP;
+        return this;
     }
 
     /**
