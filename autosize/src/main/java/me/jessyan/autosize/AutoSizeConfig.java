@@ -73,6 +73,14 @@ public final class AutoSizeConfig {
      */
     private float mInitXdpi;
     /**
+     * 最初的 {@link Configuration#screenWidthDp}
+     */
+    private int mInitScreenWidthDp;
+    /**
+     * 最初的 {@link Configuration#screenHeightDp}
+     */
+    private int mInitScreenHeightDp;
+    /**
      * 设计图上的总宽度, 单位 dp
      */
     private int mDesignWidthInDp;
@@ -199,6 +207,7 @@ public final class AutoSizeConfig {
         this.mApplication = application;
         this.isBaseOnWidth = isBaseOnWidth;
         final DisplayMetrics displayMetrics = Resources.getSystem().getDisplayMetrics();
+        final Configuration configuration = Resources.getSystem().getConfiguration();
 
         getMetaData(application);
         isVertical = application.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
@@ -212,6 +221,8 @@ public final class AutoSizeConfig {
         mInitDensityDpi = displayMetrics.densityDpi;
         mInitScaledDensity = displayMetrics.scaledDensity;
         mInitXdpi = displayMetrics.xdpi;
+        mInitScreenWidthDp = configuration.screenWidthDp;
+        mInitScreenHeightDp = configuration.screenHeightDp;
         application.registerComponentCallbacks(new ComponentCallbacks() {
             @Override
             public void onConfigurationChanged(Configuration newConfig) {
@@ -477,6 +488,24 @@ public final class AutoSizeConfig {
      */
     public float getInitXdpi() {
         return mInitXdpi;
+    }
+
+    /**
+     * 获取 {@link #mInitScreenWidthDp}
+     *
+     * @return {@link #mInitScreenWidthDp}
+     */
+    public int getInitScreenWidthDp() {
+        return mInitScreenWidthDp;
+    }
+
+    /**
+     * 获取 {@link #mInitScreenHeightDp}
+     *
+     * @return {@link #mInitScreenHeightDp}
+     */
+    public int getInitScreenHeightDp() {
+        return mInitScreenHeightDp;
     }
 
     /**
