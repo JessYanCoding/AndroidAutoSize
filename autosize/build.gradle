@@ -26,7 +26,7 @@ android {
 }
 
 dependencies {
-    compileOnly rootProject.appcompat_v7
+    implementation "androidx.appcompat:appcompat:1.1.0"
 }
 
 apply from: 'bintray.gradle'

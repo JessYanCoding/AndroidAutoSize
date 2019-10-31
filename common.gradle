@@ -1,0 +1,71 @@
+//公共的配置文件，统一引用，提高编译以及以后架构的效率
+def supportVersion = "29.+"
+def retrofit2 = "2.6.2"
+def kotlin_version = '1.3.50'
+ext {
+    minSdkVersion = 19
+    targetSdkVersion = 29
+    compileSdkVersion = 29
+    buildToolsVersion = "29.0.2"
+    sourceCompatibilityVersion = JavaVersion.VERSION_1_7
+    targetCompatibilityVersion = JavaVersion.VERSION_1_7
+    deps = [
+            "constraintlayout"       : 'androidx.constraintlayout:constraintlayout:1.1.3',
+            //"appcompat_v7"           : 'androidx.appcompat:appcompat:1.0.0',
+            "xappcompat"             : "androidx.appcompat:appcompat:1.1.0",
+            "core_ktx"               : "androidx.core:core-ktx:1.1.0",
+            "kotlin_stdlib_jdk7"     : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            "support_v4"             : 'androidx.legacy:legacy-support-v4:1.0.0',
+            "design"                 : "com.android.support:design:${supportVersion}",
+            "material"               : "com.google.android.material:material:1.0.0",
+            "cardview_v7"            : "com.android.support:cardview-v7:${supportVersion}",
+            "recyclerview"           : 'androidx.recyclerview:recyclerview:1.0.0',
+            //retrofit相关↓
+            "retrofit"               : "com.squareup.retrofit2:retrofit:${retrofit2}",
+            "converter_gson"         : "com.squareup.retrofit2:converter-gson:${retrofit2}",
+            "converter_scalars"      : "com.squareup.retrofit2:converter-scalars:${retrofit2}",
+            "adapter_rxjava"         : "com.squareup.retrofit2:adapter-rxjava:${retrofit2}",
+            "adapter_rxjava2"        : "com.squareup.retrofit2:adapter-rxjava2:${retrofit2}",
+            "rxAndroid2"             : 'io.reactivex.rxjava2:rxandroid:2.1.1',
+            "rxjava2"                : 'io.reactivex.rxjava2:rxjava:2.2.10',
+            "rxkotlin"               : 'io.reactivex.rxjava2:rxkotlin:2.4.0',
+            "okhttp"                 : 'com.squareup.okhttp3:okhttp:4.2.0',
+            "okhttputils"            : 'com.zhy:okhttputils:2.6.2',
+            "butterknife"            : 'com.jakewharton:butterknife:8.8.1',
+            "butterknife_compiler"   : "com.jakewharton:butterknife-compiler:8.8.1",
+            "rxbinding"              : 'com.jakewharton.rxbinding3:rxbinding:3.0.0',
+            "rxbinding_core"         : 'com.jakewharton.rxbinding3:rxbinding-core:3.0.0',
+            "rxbinding_appcompat"    : 'com.jakewharton.rxbinding3:rxbinding-appcompat:3.0.0',
+            "rxbinding_drawerlayout" : 'com.jakewharton.rxbinding3:rxbinding-drawerlayout:3.0.0',
+            "rxbinding_leanback"     : 'com.jakewharton.rxbinding3:rxbinding-leanback:3.0.0',
+            "rxbinding_recyclerview" : 'com.jakewharton.rxbinding3:rxbinding-recyclerview:3.0.0',
+            "rxbinding_slidingpanelayout": 'com.jakewharton.rxbinding3:rxbinding-slidingpanelayout:3.0.0',
+            "rxbinding_swiperefreshlayout": 'com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:3.0.0',
+            "rxbinding_viewpager"    : 'com.jakewharton.rxbinding3:rxbinding-viewpager:3.0.0',
+            "Java_WebSocket"         : 'org.java-websocket:Java-WebSocket:1.3.0',
+            "picasso"                : 'com.squareup.picasso:picasso:2.5.2',
+            "greendao"               : 'org.greenrobot:greendao:3.2.0',
+            "appUpdate"              : 'com.readboy.lee.AppUpdate:appUpdate:3.0.6',
+            "gson"                   : "com.google.code.gson:gson:2.8.0",
+            "fastjson"               : "com.alibaba:fastjson:1.2.16",
+            "keyboardvisibilityevent": "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.0.0",
+            "tagsoup"                : "org.ccil.cowan.tagsoup:tagsoup:1.2.1",
+            "logger"                 : "com.orhanobut:logger:2.2.0",
+            "matisse"                : "com.zhihu.android:matisse:0.5.1",
+            "flowlayout"             : "com.hyman:flowlayout-lib:1.1.2",
+            "glide"                  : "com.github.bumptech.glide:glide:4.7.1",
+            "tablayout"              : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
+            //test
+            "test_junit"             : "junit:junit:4.12",
+            "roundedimageview"       : "com.makeramen:roundedimageview:2.2.1",
+            "jsoup"                  : "org.jsoup:jsoup:1.11.3",
+            //公司自己的
+            "sainttree"              : "com.tpddns.flannery.sainttree:sainttree:0.0.1", //目录树
+            //"UseTime"                : "com.istarshine.usetimestatistic:UseTime:0.0.1"
+            "systembartint"          : "com.readystatesoftware.systembartint:systembartint:1.0.3", //顶部statusbar
+            "rippleeffect"           : "com.github.traex.rippleeffect:library:1.3", //水波纹效果
+//            "tokenautocomplete"      : "com.splitwise:tokenautocomplete:3.0.1@aar"
+
+            "androidautosize"        : "me.jessyan:autosize:1.1.2"  //屏幕适配
+    ]
+}

@@ -16,7 +16,8 @@
 package me.jessyan.autosize.demo.subunits;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import me.jessyan.autosize.internal.CustomAdapt;
 

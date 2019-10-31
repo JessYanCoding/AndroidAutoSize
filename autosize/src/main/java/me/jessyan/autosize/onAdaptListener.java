@@ -16,7 +16,8 @@
 package me.jessyan.autosize;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * ================================================
