@@ -31,7 +31,7 @@ import java.lang.reflect.Field;
 import me.jessyan.autosize.external.ExternalAdaptManager;
 import me.jessyan.autosize.unit.Subunits;
 import me.jessyan.autosize.unit.UnitsManager;
-import me.jessyan.autosize.utils.LogUtils;
+import me.jessyan.autosize.utils.AutoSizeLog;
 import me.jessyan.autosize.utils.Preconditions;
 import me.jessyan.autosize.utils.ScreenUtils;
 
@@ -226,7 +226,7 @@ public final class AutoSizeConfig {
         mScreenWidth = screenSize[0];
         mScreenHeight = screenSize[1];
         mStatusBarHeight = ScreenUtils.getStatusBarHeight();
-        LogUtils.d("designWidthInDp = " + mDesignWidthInDp + ", designHeightInDp = " + mDesignHeightInDp + ", screenWidth = " + mScreenWidth + ", screenHeight = " + mScreenHeight);
+        AutoSizeLog.d("designWidthInDp = " + mDesignWidthInDp + ", designHeightInDp = " + mDesignHeightInDp + ", screenWidth = " + mScreenWidth + ", screenHeight = " + mScreenHeight);
 
         mInitDensity = displayMetrics.density;
         mInitDensityDpi = displayMetrics.densityDpi;
@@ -241,7 +241,7 @@ public final class AutoSizeConfig {
                     if (newConfig.fontScale > 0) {
                         mInitScaledDensity =
                                 Resources.getSystem().getDisplayMetrics().scaledDensity;
-                        LogUtils.d("initScaledDensity = " + mInitScaledDensity + " on ConfigurationChanged");
+                        AutoSizeLog.d("initScaledDensity = " + mInitScaledDensity + " on ConfigurationChanged");
                     }
                     isVertical = newConfig.orientation == Configuration.ORIENTATION_PORTRAIT;
                     int[] screenSize = ScreenUtils.getScreenSize(application);
@@ -255,7 +255,7 @@ public final class AutoSizeConfig {
 
             }
         });
-        LogUtils.d("initDensity = " + mInitDensity + ", initScaledDensity = " + mInitScaledDensity);
+        AutoSizeLog.d("initDensity = " + mInitDensity + ", initScaledDensity = " + mInitScaledDensity);
         mActivityLifecycleCallbacks = new ActivityLifecycleCallbacksImpl(new WrapperAutoAdaptStrategy(strategy == null ? new DefaultAutoAdaptStrategy() : strategy));
         application.registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks);
         if ("MiuiResources".equals(application.getResources().getClass().getSimpleName()) || "XResources".equals(application.getResources().getClass().getSimpleName())) {
@@ -350,7 +350,7 @@ public final class AutoSizeConfig {
      * @param log {@code true} 为打印
      */
     public AutoSizeConfig setLog(boolean log) {
-        LogUtils.setDebug(log);
+        AutoSizeLog.setDebug(log);
         return this;
     }
 

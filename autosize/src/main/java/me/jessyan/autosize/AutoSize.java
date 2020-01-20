@@ -33,7 +33,7 @@ import me.jessyan.autosize.external.ExternalAdaptInfo;
 import me.jessyan.autosize.external.ExternalAdaptManager;
 import me.jessyan.autosize.internal.CancelAdapt;
 import me.jessyan.autosize.internal.CustomAdapt;
-import me.jessyan.autosize.utils.LogUtils;
+import me.jessyan.autosize.utils.AutoSizeLog;
 import me.jessyan.autosize.utils.Preconditions;
 
 /**
@@ -226,7 +226,7 @@ public final class AutoSize {
         setDensity(activity, targetDensity, targetDensityDpi, targetScaledDensity, targetXdpi);
         setScreenSizeDp(activity, targetScreenWidthDp, targetScreenHeightDp);
 
-        LogUtils.d(String.format(Locale.ENGLISH, "The %s has been adapted! \n%s Info: isBaseOnWidth = %s, %s = %f, %s = %f, targetDensity = %f, targetScaledDensity = %f, targetDensityDpi = %d, targetXdpi = %f, targetScreenWidthDp = %d, targetScreenHeightDp = %d"
+        AutoSizeLog.d(String.format(Locale.ENGLISH, "The %s has been adapted! \n%s Info: isBaseOnWidth = %s, %s = %f, %s = %f, targetDensity = %f, targetScaledDensity = %f, targetDensityDpi = %d, targetXdpi = %f, targetScreenWidthDp = %d, targetScreenHeightDp = %d"
                 , activity.getClass().getName(), activity.getClass().getSimpleName(), isBaseOnWidth, isBaseOnWidth ? "designWidthInDp"
                         : "designHeightInDp", sizeInDp, isBaseOnWidth ? "designWidthInSubunits" : "designHeightInSubunits", subunitsDesignSize
                 , targetDensity, targetScaledDensity, targetDensityDpi, targetXdpi, targetScreenWidthDp, targetScreenHeightDp));

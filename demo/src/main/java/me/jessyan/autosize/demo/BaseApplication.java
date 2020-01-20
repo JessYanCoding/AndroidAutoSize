@@ -28,7 +28,7 @@ import me.jessyan.autosize.external.ExternalAdaptInfo;
 import me.jessyan.autosize.external.ExternalAdaptManager;
 import me.jessyan.autosize.internal.CustomAdapt;
 import me.jessyan.autosize.onAdaptListener;
-import me.jessyan.autosize.utils.LogUtils;
+import me.jessyan.autosize.utils.AutoSizeLog;
 
 /**
  * ================================================
@@ -78,12 +78,12 @@ public class BaseApplication extends Application {
                         //系统会重绘当前的页面, 经测试在某些机型, 某些情况下系统不会重绘当前页面, ScreenUtils.getScreenSize(activity) 的参数一定要不要传 Application!!!
 //                        AutoSizeConfig.getInstance().setScreenWidth(ScreenUtils.getScreenSize(activity)[0]);
 //                        AutoSizeConfig.getInstance().setScreenHeight(ScreenUtils.getScreenSize(activity)[1]);
-                        LogUtils.d(String.format(Locale.ENGLISH, "%s onAdaptBefore!", target.getClass().getName()));
+                        AutoSizeLog.d(String.format(Locale.ENGLISH, "%s onAdaptBefore!", target.getClass().getName()));
                     }
 
                     @Override
                     public void onAdaptAfter(Object target, Activity activity) {
-                        LogUtils.d(String.format(Locale.ENGLISH, "%s onAdaptAfter!", target.getClass().getName()));
+                        AutoSizeLog.d(String.format(Locale.ENGLISH, "%s onAdaptAfter!", target.getClass().getName()));
                     }
                 })
 
