@@ -29,6 +29,7 @@ import android.util.DisplayMetrics;
 import java.lang.reflect.Field;
 
 import me.jessyan.autosize.external.ExternalAdaptManager;
+import me.jessyan.autosize.unit.Subunits;
 import me.jessyan.autosize.unit.UnitsManager;
 import me.jessyan.autosize.utils.LogUtils;
 import me.jessyan.autosize.utils.Preconditions;
@@ -208,6 +209,16 @@ public final class AutoSizeConfig {
         this.isBaseOnWidth = isBaseOnWidth;
         final DisplayMetrics displayMetrics = Resources.getSystem().getDisplayMetrics();
         final Configuration configuration = Resources.getSystem().getConfiguration();
+
+        //设置一个默认值, 避免在低配设备上因为获取 MetaData 过慢, 导致适配时未能正常获取到设计图尺寸
+        //建议使用者在低配设备上主动在 Application#onCreate 中调用 setDesignWidthInDp 替代以使用 AndroidManifest 配置设计图尺寸的方式
+        if (AutoSizeConfig.getInstance().getUnitsManager().getSupportSubunits() == Subunits.NONE) {
+            mDesignWidthInDp = 360;
+            mDesignHeightInDp = 640;
+        } else {
+            mDesignWidthInDp = 1080;
+            mDesignHeightInDp = 1920;
+        }
 
         getMetaData(application);
         isVertical = application.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
