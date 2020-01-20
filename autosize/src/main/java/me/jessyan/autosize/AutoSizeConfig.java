@@ -142,6 +142,11 @@ public final class AutoSizeConfig {
      */
     private boolean isExcludeFontScale;
     /**
+     * 区别于系统字体大小的放大比例, AndroidAutoSize 允许 APP 内部可以独立于系统字体大小之外，独自拥有全局调节 APP 字体大小的能力
+     * 当然, 在 APP 内您必须使用 sp 来作为字体的单位, 否则此功能无效, 将此值设为 0 则取消此功能
+     */
+    private float privateFontScale;
+    /**
      * 是否是 Miui 系统
      */
     private boolean isMiui;
@@ -575,6 +580,27 @@ public final class AutoSizeConfig {
     public AutoSizeConfig setExcludeFontScale(boolean excludeFontScale) {
         isExcludeFontScale = excludeFontScale;
         return this;
+    }
+
+    /**
+     * 区别于系统字体大小的放大比例, AndroidAutoSize 允许 APP 内部可以独立于系统字体大小之外，独自拥有全局调节 APP 字体大小的能力
+     * 当然, 在 APP 内您必须使用 sp 来作为字体的单位, 否则此功能无效
+     *
+     * @param fontScale 字体大小放大的比例, 设为 0 则取消此功能
+     */
+    public AutoSizeConfig setPrivateFontScale(float fontScale) {
+        privateFontScale = fontScale;
+        return this;
+    }
+
+    /**
+     * 区别于系统字体大小的放大比例, AndroidAutoSize 允许 APP 内部可以独立于系统字体大小之外，独自拥有全局调节 APP 字体大小的能力
+     * 当然, 在 APP 内您必须使用 sp 来作为字体的单位, 否则此功能无效
+     *
+     * @return 私有的字体大小放大比例
+     */
+    public float getPrivateFontScale() {
+        return privateFontScale;
     }
 
     /**

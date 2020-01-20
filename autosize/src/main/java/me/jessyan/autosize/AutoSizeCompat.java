@@ -161,9 +161,13 @@ public final class AutoSizeCompat {
             } else {
                 targetDensity = AutoSizeConfig.getInstance().getScreenHeight() * 1.0f / sizeInDp;
             }
-            float scale = AutoSizeConfig.getInstance().isExcludeFontScale() ? 1 : AutoSizeConfig.getInstance().
-                    getInitScaledDensity() * 1.0f / AutoSizeConfig.getInstance().getInitDensity();
-            targetScaledDensity = targetDensity * scale;
+            if (AutoSizeConfig.getInstance().getPrivateFontScale() > 0) {
+                targetScaledDensity = targetDensity * AutoSizeConfig.getInstance().getPrivateFontScale();
+            } else {
+                float systemFontScale = AutoSizeConfig.getInstance().isExcludeFontScale() ? 1 : AutoSizeConfig.getInstance().
+                        getInitScaledDensity() * 1.0f / AutoSizeConfig.getInstance().getInitDensity();
+                targetScaledDensity = targetDensity * systemFontScale;
+            }
             targetDensityDpi = (int) (targetDensity * 160);
 
             targetScreenWidthDp = (int) (AutoSizeConfig.getInstance().getScreenWidth() / targetDensity);
