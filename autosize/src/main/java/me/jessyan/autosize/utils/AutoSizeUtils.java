@@ -15,8 +15,12 @@
  */
 package me.jessyan.autosize.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.TypedValue;
+import android.app.Application;
+
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * ================================================
@@ -51,5 +55,27 @@ public class AutoSizeUtils {
 
     public static int mm2px(Context context, float value) {
         return (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_MM, value, context.getResources().getDisplayMetrics()) + 0.5f);
+    }
+    
+    public static Application getApplicationByReflect() {
+        try {
+            @SuppressLint("PrivateApi")
+            Class<?> activityThread = Class.forName("android.app.ActivityThread");
+            Object thread = activityThread.getMethod("currentActivityThread").invoke(null);
+            Object app = activityThread.getMethod("getApplication").invoke(thread);
+            if (app == null) {
+                throw new NullPointerException("you should init first");
+            }
+            return (Application) app;
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        throw new NullPointerException("you should init first");
     }
 }

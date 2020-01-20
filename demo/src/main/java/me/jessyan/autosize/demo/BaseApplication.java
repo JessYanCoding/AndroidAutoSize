@@ -73,6 +73,7 @@ public class BaseApplication extends Application {
                 .setOnAdaptListener(new onAdaptListener() {
                     @Override
                     public void onAdaptBefore(Object target, Activity activity) {
+                        //使用以下代码, 可以解决横竖屏切换时的屏幕适配问题
                         //使用以下代码, 可支持 Android 的分屏或缩放模式, 但前提是在分屏或缩放模式下当用户改变您 App 的窗口大小时
                         //系统会重绘当前的页面, 经测试在某些机型, 某些情况下系统不会重绘当前页面, ScreenUtils.getScreenSize(activity) 的参数一定要不要传 Application!!!
 //                        AutoSizeConfig.getInstance().setScreenWidth(ScreenUtils.getScreenSize(activity)[0]);
