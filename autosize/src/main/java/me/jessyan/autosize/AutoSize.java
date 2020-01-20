@@ -58,6 +58,32 @@ public final class AutoSize {
     }
 
     /**
+     * 检查 AndroidAutoSize 是否已经初始化
+     *
+     * @return {@code false} 表示 AndroidAutoSize 还未初始化, {@code true} 表示 AndroidAutoSize 已经初始化
+     */
+    public static boolean checkInit() {
+        return AutoSizeConfig.getInstance().getInitDensity() != -1;
+    }
+
+    /**
+     * 由于 AndroidAutoSize 会通过 {@link InitProvider} 的实例化而自动完成初始化, 并且 {@link AutoSizeConfig#init(Application)}
+     * 只允许被调用一次, 否则会报错, 所以 {@link AutoSizeConfig#init(Application)} 的调用权限并没有设为 public, 不允许外部使用者调用
+     * 但由于某些 issues 反应, 可能会在某些特殊情况下出现 {@link InitProvider} 未能正常实例化的情况, 导致 AndroidAutoSize 未能完成初始化
+     * 所以提供此静态方法用于让外部使用者在异常情况下也可以初始化 AndroidAutoSize, 在 {@link Application#onCreate()} 中调用即可
+     *
+     * @param application {@link Application}
+     */
+    public static void checkAndInit(Application application) {
+        if (!checkInit()) {
+            AutoSizeConfig.getInstance()
+                    .setLog(true)
+                    .init(application)
+                    .setUseDeviceSize(false);
+        }
+    }
+
+    /**
      * 使用 AndroidAutoSize 初始化时设置的默认适配参数进行适配 (AndroidManifest 的 Meta 属性)
      *
      * @param activity {@link Activity}
