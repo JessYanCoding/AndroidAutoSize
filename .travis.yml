@@ -1,12 +1,12 @@
 language: android
 jdk: oraclejdk8
 before_install:
-- yes | sdkmanager "platforms;android-28"
+- yes | sdkmanager "platforms;android-29"
 
 env:
   global:
-    - ANDROID_API_LEVEL=28
-    - ANDROID_BUILD_TOOLS_VERSION=28.0.3
+    - ANDROID_API_LEVEL=29
+    - ANDROID_BUILD_TOOLS_VERSION=29.0.2
     - TRAVIS_SECURE_ENV_VARS=true
 
 android:
