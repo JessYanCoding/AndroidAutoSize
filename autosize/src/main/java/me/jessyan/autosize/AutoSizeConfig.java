@@ -23,7 +23,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 
 import java.lang.reflect.Field;
@@ -48,6 +47,8 @@ public final class AutoSizeConfig {
     private static volatile AutoSizeConfig sInstance;
     private static final String KEY_DESIGN_WIDTH_IN_DP = "design_width_in_dp";
     private static final String KEY_DESIGN_HEIGHT_IN_DP = "design_height_in_dp";
+    public static final boolean DEPENDENCY_ANDROIDX;
+    public static final boolean DEPENDENCY_SUPPORT;
     private Application mApplication;
     /**
      * 用来管理外部三方库 {@link Activity} 的适配
@@ -129,7 +130,7 @@ public final class AutoSizeConfig {
      */
     private boolean isStop;
     /**
-     * 是否让框架支持自定义 {@link Fragment} 的适配参数, 由于这个需求是比较少见的, 所以须要使用者手动开启
+     * 是否让框架支持自定义 Fragment 的适配参数, 由于这个需求是比较少见的, 所以须要使用者手动开启
      */
     private boolean isCustomFragment;
     /**
@@ -158,6 +159,22 @@ public final class AutoSizeConfig {
      * 屏幕适配监听器，用于监听屏幕适配时的一些事件
      */
     private onAdaptListener mOnAdaptListener;
+
+    static {
+        DEPENDENCY_ANDROIDX = findClassByClassName("androidx.fragment.app.FragmentActivity");
+        DEPENDENCY_SUPPORT = findClassByClassName("android.support.v4.app.FragmentActivity");
+    }
+
+    private static boolean findClassByClassName(String className) {
+        boolean hasDependency;
+        try {
+            Class.forName(className);
+            hasDependency = true;
+        } catch (ClassNotFoundException e) {
+            hasDependency = false;
+        }
+        return hasDependency;
+    }
 
     public static AutoSizeConfig getInstance() {
         if (sInstance == null) {
@@ -360,7 +377,7 @@ public final class AutoSizeConfig {
     }
 
     /**
-     * 是否让框架支持自定义 {@link Fragment} 的适配参数, 由于这个需求是比较少见的, 所以须要使用者手动开启
+     * 是否让框架支持自定义 Fragment 的适配参数, 由于这个需求是比较少见的, 所以须要使用者手动开启
      *
      * @param customFragment {@code true} 为支持
      */
@@ -370,7 +387,7 @@ public final class AutoSizeConfig {
     }
 
     /**
-     * 框架是否已经开启支持自定义 {@link Fragment} 的适配参数
+     * 框架是否已经开启支持自定义 Fragment 的适配参数
      *
      * @return {@code true} 为支持
      */

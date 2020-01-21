@@ -17,7 +17,6 @@ package me.jessyan.autosize;
 
 import android.app.Activity;
 import android.app.Application;
-import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 
 /**
@@ -36,7 +35,7 @@ public interface AutoAdaptStrategy {
     /**
      * 开始执行屏幕适配逻辑
      *
-     * @param target   需要屏幕适配的对象 (可能是 {@link Activity} 或者 {@link Fragment})
+     * @param target   需要屏幕适配的对象 (可能是 {@link Activity} 或者 Fragment)
      * @param activity 需要拿到当前的 {@link Activity} 才能修改 {@link DisplayMetrics#density}
      */
     void applyAdapt(Object target, Activity activity);

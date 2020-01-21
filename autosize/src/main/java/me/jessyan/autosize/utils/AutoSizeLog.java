@@ -15,7 +15,6 @@
  */
 package me.jessyan.autosize.utils;
 
-import android.support.annotation.RestrictTo;
 import android.util.Log;
 
 /**
@@ -25,7 +24,6 @@ import android.util.Log;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-@RestrictTo(RestrictTo.Scope.LIBRARY)
 public class AutoSizeLog {
     private static final String TAG = "AndroidAutoSize";
     private static boolean debug;

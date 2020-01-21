@@ -16,7 +16,6 @@
 package me.jessyan.autosize.external;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,7 +48,7 @@ public class ExternalAdaptManager {
      * 支持链式调用, 如:
      * {@link ExternalAdaptManager#addCancelAdaptOfActivity(Class)#addCancelAdaptOfActivity(Class)}
      *
-     * @param targetClass {@link Activity} class, {@link Fragment} class
+     * @param targetClass {@link Activity} class, Fragment class
      */
     public synchronized ExternalAdaptManager addCancelAdaptOfActivity(Class<?> targetClass) {
         Preconditions.checkNotNull(targetClass, "targetClass == null");
@@ -78,7 +77,7 @@ public class ExternalAdaptManager {
      * 支持链式调用, 如:
      * {@link ExternalAdaptManager#addExternalAdaptInfoOfActivity(Class, ExternalAdaptInfo)#addExternalAdaptInfoOfActivity(Class, ExternalAdaptInfo)}
      *
-     * @param targetClass {@link Activity} class, {@link Fragment} class
+     * @param targetClass {@link Activity} class, Fragment class
      * @param info        {@link ExternalAdaptInfo} 适配参数
      */
     public synchronized ExternalAdaptManager addExternalAdaptInfoOfActivity(Class<?> targetClass, ExternalAdaptInfo info) {
@@ -96,7 +95,7 @@ public class ExternalAdaptManager {
     /**
      * 这个 {@link Activity} 是否存在在取消适配的列表中, 如果在, 则该 {@link Activity} 适配失效
      *
-     * @param targetClass {@link Activity} class, {@link Fragment} class
+     * @param targetClass {@link Activity} class, Fragment class
      * @return {@code true} 为存在, {@code false} 为不存在
      */
     public synchronized boolean isCancelAdapt(Class<?> targetClass) {
@@ -110,7 +109,7 @@ public class ExternalAdaptManager {
     /**
      * 这个 {@link Activity} 是否提供有自定义的适配参数, 如果有则使用此适配参数进行适配
      *
-     * @param targetClass {@link Activity} class, {@link Fragment} class
+     * @param targetClass {@link Activity} class, Fragment class
      * @return 如果返回 {@code null} 则说明该 {@link Activity} 没有提供自定义的适配参数
      */
     public synchronized ExternalAdaptInfo getExternalAdaptInfoOfActivity(Class<?> targetClass) {

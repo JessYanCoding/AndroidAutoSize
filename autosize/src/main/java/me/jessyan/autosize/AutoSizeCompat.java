@@ -59,10 +59,10 @@ public final class AutoSizeCompat {
     }
 
     /**
-     * 使用 {@link Activity} 或 {@link android.support.v4.app.Fragment} 的自定义参数进行适配
+     * 使用 {@link Activity} 或 Fragment 的自定义参数进行适配
      *
      * @param resources   {@link Resources}
-     * @param customAdapt {@link Activity} 或 {@link android.support.v4.app.Fragment} 需实现 {@link CustomAdapt}
+     * @param customAdapt {@link Activity} 或 Fragment 需实现 {@link CustomAdapt}
      */
     public static void autoConvertDensityOfCustomAdapt(Resources resources, CustomAdapt customAdapt) {
         Preconditions.checkNotNull(customAdapt, "customAdapt == null");
@@ -80,10 +80,10 @@ public final class AutoSizeCompat {
     }
 
     /**
-     * 使用外部三方库的 {@link Activity} 或 {@link android.support.v4.app.Fragment} 的自定义适配参数进行适配
+     * 使用外部三方库的 {@link Activity} 或 Fragment 的自定义适配参数进行适配
      *
      * @param resources         {@link Resources}
-     * @param externalAdaptInfo 三方库的 {@link Activity} 或 {@link android.support.v4.app.Fragment} 提供的适配参数, 需要配合 {@link ExternalAdaptManager#addExternalAdaptInfoOfActivity(Class, ExternalAdaptInfo)}
+     * @param externalAdaptInfo 三方库的 {@link Activity} 或 Fragment 提供的适配参数, 需要配合 {@link ExternalAdaptManager#addExternalAdaptInfoOfActivity(Class, ExternalAdaptInfo)}
      */
     public static void autoConvertDensityOfExternalAdaptInfo(Resources resources, ExternalAdaptInfo externalAdaptInfo) {
         Preconditions.checkNotNull(externalAdaptInfo, "externalAdaptInfo == null");
