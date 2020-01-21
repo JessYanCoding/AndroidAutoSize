@@ -1,1 +1,1 @@
-include ':demo', ':demo-subunits', ':autosize'
+include ':demo', ':demo-subunits', ':demo-androidx',':autosize'
