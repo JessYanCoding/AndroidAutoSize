@@ -97,6 +97,7 @@ public class BaseApplication extends Application {
                 //是否使用设备的实际尺寸做适配, 默认为 false, 如果设置为 false, 在以屏幕高度为基准进行适配时
                 //AutoSize 会将屏幕总高度减去状态栏高度来做适配
                 //设置为 true 则使用设备的实际屏幕高度, 不会减去状态栏高度
+                //在全面屏或刘海屏幕设备中, 获取到的屏幕高度可能不包含状态栏高度, 所以在全面屏设备中不需要减去状态栏高度，所以可以 setUseDeviceSize(true)
 //                .setUseDeviceSize(true)
 
                 //是否全局按照宽度进行等比例适配, 默认为 true, 如果设置为 false, AutoSize 会全局按照高度进行适配
