@@ -145,7 +145,7 @@ public final class AutoSizeCompat {
         int screenSize = isBaseOnWidth ? AutoSizeConfig.getInstance().getScreenWidth()
                 : AutoSizeConfig.getInstance().getScreenHeight();
 
-        int key = Math.round(sizeInDp + subunitsDesignSize + AutoSizeConfig.getInstance().getInitScaledDensity() + screenSize) & ~MODE_MASK;
+        int key = Math.round((sizeInDp + subunitsDesignSize + screenSize) * AutoSizeConfig.getInstance().getInitScaledDensity()) & ~MODE_MASK;
         key = isBaseOnWidth ? (key | MODE_ON_WIDTH) : (key & ~MODE_ON_WIDTH);
         key = AutoSizeConfig.getInstance().isUseDeviceSize() ? (key | MODE_DEVICE_SIZE) : (key & ~MODE_DEVICE_SIZE);
 
