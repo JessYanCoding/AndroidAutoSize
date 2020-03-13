@@ -19,9 +19,7 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import android.util.SparseArray;
 
 import me.jessyan.autosize.external.ExternalAdaptInfo;
 import me.jessyan.autosize.external.ExternalAdaptManager;
@@ -39,7 +37,11 @@ import me.jessyan.autosize.utils.Preconditions;
  * ================================================
  */
 public final class AutoSizeCompat {
-    private static Map<String, DisplayMetricsInfo> mCache = new ConcurrentHashMap<>();
+    private static SparseArray<DisplayMetricsInfo> mCache = new SparseArray<>();
+    private static final int MODE_SHIFT = 30;
+    private static final int MODE_MASK  = 0x3 << MODE_SHIFT;
+    private static final int MODE_ON_WIDTH  = 1 << MODE_SHIFT;
+    private static final int MODE_DEVICE_SIZE  = 2 << MODE_SHIFT;
 
     private AutoSizeCompat() {
         throw new IllegalStateException("you can't instantiate me!");
@@ -134,6 +136,7 @@ public final class AutoSizeCompat {
      */
     public static void autoConvertDensity(Resources resources, float sizeInDp, boolean isBaseOnWidth) {
         Preconditions.checkNotNull(resources, "resources == null");
+        Preconditions.checkMainThread();
 
         float subunitsDesignSize = isBaseOnWidth ? AutoSizeConfig.getInstance().getUnitsManager().getDesignWidth()
                 : AutoSizeConfig.getInstance().getUnitsManager().getDesignHeight();
@@ -141,10 +144,10 @@ public final class AutoSizeCompat {
 
         int screenSize = isBaseOnWidth ? AutoSizeConfig.getInstance().getScreenWidth()
                 : AutoSizeConfig.getInstance().getScreenHeight();
-        String key = sizeInDp + "|" + subunitsDesignSize + "|" + isBaseOnWidth + "|"
-                + AutoSizeConfig.getInstance().isUseDeviceSize() + "|"
-                + AutoSizeConfig.getInstance().getInitScaledDensity() + "|"
-                + screenSize;
+
+        int key = Math.round(sizeInDp + subunitsDesignSize + AutoSizeConfig.getInstance().getInitScaledDensity() + screenSize) & ~MODE_MASK;
+        key = isBaseOnWidth ? (key | MODE_ON_WIDTH) : (key & ~MODE_ON_WIDTH);
+        key = AutoSizeConfig.getInstance().isUseDeviceSize() ? (key | MODE_DEVICE_SIZE) : (key & ~MODE_DEVICE_SIZE);
 
         DisplayMetricsInfo displayMetricsInfo = mCache.get(key);
 
@@ -199,6 +202,7 @@ public final class AutoSizeCompat {
      * @param resources {@link Resources}
      */
     public static void cancelAdapt(Resources resources) {
+        Preconditions.checkMainThread();
         float initXdpi = AutoSizeConfig.getInstance().getInitXdpi();
         switch (AutoSizeConfig.getInstance().getUnitsManager().getSupportSubunits()) {
             case PT:
