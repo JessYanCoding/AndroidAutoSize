@@ -80,8 +80,29 @@
 * [Android Advanced Framework](https://github.com/JessYanCoding/MVPArms)
 
 ## Download
+### Jcenter ([ ⚠️ DEPRECATION WARNING: the JCenter repository will keep serving packages until February 1st, 2022](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter)):
 ``` gradle
  implementation 'me.jessyan:autosize:1.2.1'
+```
+
+### JitPack:
+Step 1. Add the JitPack repository in your root [build.gradle](https://github.com/JessYanCoding/AndroidAutoSize/blob/master/build.gradle#L20) at the end of repositories:
+
+```gradle
+allprojects {
+    repositories {
+        ...
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+
+Step 2. Add the dependency
+
+```gradle
+dependencies {
+    implementation 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
+}
 ```
 
 ## Usage
