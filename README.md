@@ -1,5 +1,6 @@
 ![Logo](art/autosize_banner.jpg)
 ![Official](https://raw.githubusercontent.com/JessYanCoding/MVPArms/master/image/official.jpeg)
+[![Maintainability](https://cloud.quality-gate.com/dashboard/api/badge?projectName=JessYanCoding_AndroidAutoSize&branchName=master)](https://cloud.quality-gate.com/dashboard/branches/59008#overview)
 
 <p align="center">
    <a href="https://bintray.com/jessyancoding/maven/autosize/_latestVersion">
