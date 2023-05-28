@@ -25,7 +25,9 @@ import android.util.Log;
  * ================================================
  */
 public class AutoSizeLog {
+
     private static final String TAG = "AndroidAutoSize";
+
     private static boolean debug;
 
     private AutoSizeLog() {

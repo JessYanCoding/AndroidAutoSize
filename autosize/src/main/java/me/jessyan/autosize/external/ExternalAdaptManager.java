@@ -16,12 +16,10 @@
 package me.jessyan.autosize.external;
 
 import android.app.Activity;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.autosize.utils.Preconditions;
 
@@ -38,8 +36,11 @@ import me.jessyan.autosize.utils.Preconditions;
  * ================================================
  */
 public class ExternalAdaptManager {
+
     private List<String> mCancelAdaptList;
+
     private Map<String, ExternalAdaptInfo> mExternalAdaptInfos;
+
     private boolean isRun;
 
     /**

@@ -29,11 +29,17 @@ import android.util.DisplayMetrics;
  * ================================================
  */
 public class DisplayMetricsInfo implements Parcelable {
+
     private float density;
+
     private int densityDpi;
+
     private float scaledDensity;
+
     private float xdpi;
+
     private int screenWidthDp;
+
     private int screenHeightDp;
 
     public DisplayMetricsInfo(float density, int densityDpi, float scaledDensity, float xdpi) {
@@ -125,6 +131,7 @@ public class DisplayMetricsInfo implements Parcelable {
     }
 
     public static final Creator<DisplayMetricsInfo> CREATOR = new Creator<DisplayMetricsInfo>() {
+
         @Override
         public DisplayMetricsInfo createFromParcel(Parcel source) {
             return new DisplayMetricsInfo(source);
@@ -138,13 +145,6 @@ public class DisplayMetricsInfo implements Parcelable {
 
     @Override
     public String toString() {
-        return "DisplayMetricsInfo{" +
-                "density=" + density +
-                ", densityDpi=" + densityDpi +
-                ", scaledDensity=" + scaledDensity +
-                ", xdpi=" + xdpi +
-                ", screenWidthDp=" + screenWidthDp +
-                ", screenHeightDp=" + screenHeightDp +
-                '}';
+        return "DisplayMetricsInfo{" + "density=" + density + ", densityDpi=" + densityDpi + ", scaledDensity=" + scaledDensity + ", xdpi=" + xdpi + ", screenWidthDp=" + screenWidthDp + ", screenHeightDp=" + screenHeightDp + '}';
     }
 }

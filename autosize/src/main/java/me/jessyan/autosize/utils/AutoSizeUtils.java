@@ -19,7 +19,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.TypedValue;
 import android.app.Application;
-
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -56,7 +55,7 @@ public class AutoSizeUtils {
     public static int mm2px(Context context, float value) {
         return (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_MM, value, context.getResources().getDisplayMetrics()) + 0.5f);
     }
-    
+
     public static Application getApplicationByReflect() {
         try {
             @SuppressLint("PrivateApi")

@@ -16,7 +16,6 @@
 package me.jessyan.autosize.demo.androidx;
 
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import me.jessyan.autosize.internal.CustomAdapt;
@@ -29,6 +28,7 @@ import me.jessyan.autosize.internal.CustomAdapt;
  * ================================================
  */
 public class FragmentHost extends AppCompatActivity implements CustomAdapt {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

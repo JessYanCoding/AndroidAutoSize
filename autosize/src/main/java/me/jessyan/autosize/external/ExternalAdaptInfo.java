@@ -31,11 +31,13 @@ import android.os.Parcelable;
  * ================================================
  */
 public class ExternalAdaptInfo implements Parcelable {
+
     /**
      * 是否按照宽度进行等比例适配 (为了保证在高宽比不同的屏幕上也能正常适配, 所以只能在宽度和高度之中选一个作为基准进行适配)
      * {@code true} 为按照宽度适配, {@code false} 为按照高度适配
      */
     private boolean isBaseOnWidth;
+
     /**
      * 设计图上的设计尺寸, 单位 dp (三方库页面的设计图尺寸可能无法获知, 所以如果想让三方库的适配效果达到最好, 只有靠不断的尝试)
      * {@link #sizeInDp} 须配合 {@link #isBaseOnWidth} 使用, 规则如下:
@@ -87,6 +89,7 @@ public class ExternalAdaptInfo implements Parcelable {
     }
 
     public static final Creator<ExternalAdaptInfo> CREATOR = new Creator<ExternalAdaptInfo>() {
+
         @Override
         public ExternalAdaptInfo createFromParcel(Parcel source) {
             return new ExternalAdaptInfo(source);
@@ -100,9 +103,6 @@ public class ExternalAdaptInfo implements Parcelable {
 
     @Override
     public String toString() {
-        return "ExternalAdaptInfo{" +
-                "isBaseOnWidth=" + isBaseOnWidth +
-                ", sizeInDp=" + sizeInDp +
-                '}';
+        return "ExternalAdaptInfo{" + "isBaseOnWidth=" + isBaseOnWidth + ", sizeInDp=" + sizeInDp + '}';
     }
 }

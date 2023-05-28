@@ -58,12 +58,10 @@ public class ScreenUtils {
      */
     public static int[] getScreenSize(Context context) {
         int[] size = new int[2];
-
         WindowManager w = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display d = w.getDefaultDisplay();
         DisplayMetrics metrics = new DisplayMetrics();
         d.getMetrics(metrics);
-
         size[0] = metrics.widthPixels;
         size[1] = metrics.heightPixels;
         return size;
@@ -77,7 +75,6 @@ public class ScreenUtils {
      */
     public static int[] getRawScreenSize(Context context) {
         int[] size = new int[2];
-
         WindowManager w = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display d = w.getDefaultDisplay();
         DisplayMetrics metrics = new DisplayMetrics();
@@ -85,7 +82,6 @@ public class ScreenUtils {
         // since SDK_INT = 1;
         int widthPixels = metrics.widthPixels;
         int heightPixels = metrics.heightPixels;
-
         // includes window decorations (statusbar bar/menu bar)
         if (Build.VERSION.SDK_INT >= 14 && Build.VERSION.SDK_INT < 17)
             try {
@@ -109,12 +105,9 @@ public class ScreenUtils {
 
     public static int getHeightOfNavigationBar(Context context) {
         //如果小米手机开启了全面屏手势隐藏了导航栏则返回 0
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            if (Settings.Global.getInt(context.getContentResolver(), "force_fsg_nav_bar", 0) != 0) {
-                return 0;
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && Settings.Global.getInt(context.getContentResolver(), "force_fsg_nav_bar", 0) != 0) {
+            return 0;
         }
-
         int realHeight = getRawScreenSize(context)[1];
         int displayHeight = getScreenSize(context)[1];
         return realHeight - displayHeight;
