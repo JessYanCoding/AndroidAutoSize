@@ -22,7 +22,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.internal.CustomAdapt;
 
@@ -33,7 +32,7 @@ import me.jessyan.autosize.internal.CustomAdapt;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public class CustomFragment2 extends Fragment implements CustomAdapt{
+public class CustomFragment2 extends Fragment implements CustomAdapt {
 
     @Nullable
     @Override

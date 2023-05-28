@@ -30,6 +30,7 @@ import androidx.fragment.app.FragmentManager;
  * ================================================
  */
 public class FragmentLifecycleCallbacksImplToAndroidx extends FragmentManager.FragmentLifecycleCallbacks {
+
     /**
      * 屏幕适配逻辑策略类
      */

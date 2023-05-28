@@ -24,9 +24,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-
 import java.lang.reflect.Field;
-
 import me.jessyan.autosize.external.ExternalAdaptManager;
 import me.jessyan.autosize.unit.Subunits;
 import me.jessyan.autosize.unit.UnitsManager;
@@ -44,66 +42,86 @@ import me.jessyan.autosize.utils.ScreenUtils;
  * ================================================
  */
 public final class AutoSizeConfig {
+
     private static volatile AutoSizeConfig sInstance;
+
     private static final String KEY_DESIGN_WIDTH_IN_DP = "design_width_in_dp";
+
     private static final String KEY_DESIGN_HEIGHT_IN_DP = "design_height_in_dp";
+
     public static final boolean DEPENDENCY_ANDROIDX;
+
     public static final boolean DEPENDENCY_SUPPORT;
+
     private Application mApplication;
+
     /**
      * 用来管理外部三方库 {@link Activity} 的适配
      */
     private ExternalAdaptManager mExternalAdaptManager = new ExternalAdaptManager();
+
     /**
      * 用来管理 AndroidAutoSize 支持的所有单位, AndroidAutoSize 支持五种单位 (dp、sp、pt、in、mm)
      */
     private UnitsManager mUnitsManager = new UnitsManager();
+
     /**
      * 最初的 {@link DisplayMetrics#density}
      */
     private float mInitDensity = -1;
+
     /**
      * 最初的 {@link DisplayMetrics#densityDpi}
      */
     private int mInitDensityDpi;
+
     /**
      * 最初的 {@link DisplayMetrics#scaledDensity}
      */
     private float mInitScaledDensity;
+
     /**
      * 最初的 {@link DisplayMetrics#xdpi}
      */
     private float mInitXdpi;
+
     /**
      * 最初的 {@link Configuration#screenWidthDp}
      */
     private int mInitScreenWidthDp;
+
     /**
      * 最初的 {@link Configuration#screenHeightDp}
      */
     private int mInitScreenHeightDp;
+
     /**
      * 设计图上的总宽度, 单位 dp
      */
     private int mDesignWidthInDp;
+
     /**
      * 设计图上的总高度, 单位 dp
      */
     private int mDesignHeightInDp;
+
     /**
      * 设备的屏幕总宽度, 单位 px
      */
     private int mScreenWidth;
+
     /**
      * 设备的屏幕总高度, 单位 px, 如果 {@link #isUseDeviceSize} 为 {@code false}, 屏幕总高度会减去状态栏的高度
      */
     private int mScreenHeight;
+
     /**
      * 状态栏高度, 当 {@link #isUseDeviceSize} 为 {@code false} 时, AndroidAutoSize 会将 {@link #mScreenHeight} 减去状态栏高度
      * AndroidAutoSize 默认使用 {@link ScreenUtils#getStatusBarHeight()} 方法获取状态栏高度
      * AndroidAutoSize 使用者可使用 {@link #setStatusBarHeight(int)} 自行设置状态栏高度
      */
     private int mStatusBarHeight;
+
     /**
      * 为了保证在不同高宽比的屏幕上显示效果也能完全一致, 所以本方案适配时是以设计图宽度与设备实际宽度的比例或设计图高度与设备实际高度的比例应用到
      * 每个 View 上 (只能在宽度和高度之中选一个作为基准), 从而使每个 View 的高和宽用同样的比例缩放, 避免在与设计图高宽比不一致的设备上出现适配的 View 高或宽变形的问题
@@ -111,17 +129,20 @@ public final class AutoSizeConfig {
      * {@link #isBaseOnWidth} 为全局配置, 默认为 {@code true}, 每个 {@link Activity} 也可以单独选择使用高或者宽做等比例缩放
      */
     private boolean isBaseOnWidth = true;
+
     /**
      * 此字段表示是否使用设备的实际尺寸做适配
      * {@link #isUseDeviceSize} 为 {@code true} 表示屏幕高度 {@link #mScreenHeight} 包含状态栏的高度
      * {@link #isUseDeviceSize} 为 {@code false} 表示 {@link #mScreenHeight} 会减去状态栏的高度, 默认为 {@code true}
      */
     private boolean isUseDeviceSize = true;
+
     /**
      * {@link #mActivityLifecycleCallbacks} 可用来代替在 BaseActivity 中加入适配代码的传统方式
      * {@link #mActivityLifecycleCallbacks} 这种方案类似于 AOP, 面向接口, 侵入性低, 方便统一管理, 扩展性强, 并且也支持适配三方库的 {@link Activity}
      */
     private ActivityLifecycleCallbacksImpl mActivityLifecycleCallbacks;
+
     /**
      * 框架具有 热插拔 特性, 支持在项目运行中动态停止和重新启动适配功能
      *
@@ -129,32 +150,39 @@ public final class AutoSizeConfig {
      * @see #restart()
      */
     private boolean isStop;
+
     /**
      * 是否让框架支持自定义 Fragment 的适配参数, 由于这个需求是比较少见的, 所以须要使用者手动开启
      */
     private boolean isCustomFragment;
+
     /**
      * 屏幕方向, {@code true} 为纵向, {@code false} 为横向
      */
     private boolean isVertical;
+
     /**
      * 是否屏蔽系统字体大小对 AndroidAutoSize 的影响, 如果为 {@code true}, App 内的字体的大小将不会跟随系统设置中字体大小的改变
      * 如果为 {@code false}, 则会跟随系统设置中字体大小的改变, 默认为 {@code false}
      */
     private boolean isExcludeFontScale;
+
     /**
      * 区别于系统字体大小的放大比例, AndroidAutoSize 允许 APP 内部可以独立于系统字体大小之外，独自拥有全局调节 APP 字体大小的能力
      * 当然, 在 APP 内您必须使用 sp 来作为字体的单位, 否则此功能无效, 将此值设为 0 则取消此功能
      */
     private float privateFontScale;
+
     /**
      * 是否是 Miui 系统
      */
     private boolean isMiui;
+
     /**
      * Miui 系统中的 mTmpMetrics 字段
      */
     private Field mTmpMetricsField;
+
     /**
      * 屏幕适配监听器，用于监听屏幕适配时的一些事件
      */
@@ -231,7 +259,6 @@ public final class AutoSizeConfig {
         this.isBaseOnWidth = isBaseOnWidth;
         final DisplayMetrics displayMetrics = Resources.getSystem().getDisplayMetrics();
         final Configuration configuration = Resources.getSystem().getConfiguration();
-
         //设置一个默认值, 避免在低配设备上因为获取 MetaData 过慢, 导致适配时未能正常获取到设计图尺寸
         //建议使用者在低配设备上主动在 Application#onCreate 中调用 setDesignWidthInDp 替代以使用 AndroidManifest 配置设计图尺寸的方式
         if (AutoSizeConfig.getInstance().getUnitsManager().getSupportSubunits() == Subunits.NONE) {
@@ -241,7 +268,6 @@ public final class AutoSizeConfig {
             mDesignWidthInDp = 1080;
             mDesignHeightInDp = 1920;
         }
-
         getMetaData(application);
         isVertical = application.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
         int[] screenSize = ScreenUtils.getScreenSize(application);
@@ -249,7 +275,6 @@ public final class AutoSizeConfig {
         mScreenHeight = screenSize[1];
         mStatusBarHeight = ScreenUtils.getStatusBarHeight();
         AutoSizeLog.d("designWidthInDp = " + mDesignWidthInDp + ", designHeightInDp = " + mDesignHeightInDp + ", screenWidth = " + mScreenWidth + ", screenHeight = " + mScreenHeight);
-
         mInitDensity = displayMetrics.density;
         mInitDensityDpi = displayMetrics.densityDpi;
         mInitScaledDensity = displayMetrics.scaledDensity;
@@ -257,12 +282,12 @@ public final class AutoSizeConfig {
         mInitScreenWidthDp = configuration.screenWidthDp;
         mInitScreenHeightDp = configuration.screenHeightDp;
         application.registerComponentCallbacks(new ComponentCallbacks() {
+
             @Override
             public void onConfigurationChanged(Configuration newConfig) {
                 if (newConfig != null) {
                     if (newConfig.fontScale > 0) {
-                        mInitScaledDensity =
-                                Resources.getSystem().getDisplayMetrics().scaledDensity;
+                        mInitScaledDensity = Resources.getSystem().getDisplayMetrics().scaledDensity;
                         AutoSizeLog.d("initScaledDensity = " + mInitScaledDensity + " on ConfigurationChanged");
                     }
                     isVertical = newConfig.orientation == Configuration.ORIENTATION_PORTRAIT;
@@ -274,7 +299,6 @@ public final class AutoSizeConfig {
 
             @Override
             public void onLowMemory() {
-
             }
         });
         AutoSizeLog.d("initDensity = " + mInitDensity + ", initScaledDensity = " + mInitScaledDensity);
@@ -690,13 +714,13 @@ public final class AutoSizeConfig {
      */
     private void getMetaData(final Context context) {
         new Thread(new Runnable() {
+
             @Override
             public void run() {
                 PackageManager packageManager = context.getPackageManager();
                 ApplicationInfo applicationInfo;
                 try {
-                    applicationInfo = packageManager.getApplicationInfo(context
-                            .getPackageName(), PackageManager.GET_META_DATA);
+                    applicationInfo = packageManager.getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
                     if (applicationInfo != null && applicationInfo.metaData != null) {
                         if (applicationInfo.metaData.containsKey(KEY_DESIGN_WIDTH_IN_DP)) {
                             mDesignWidthInDp = (int) applicationInfo.metaData.get(KEY_DESIGN_WIDTH_IN_DP);

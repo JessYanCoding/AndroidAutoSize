@@ -27,6 +27,7 @@ import android.app.Activity;
  * ================================================
  */
 public interface onAdaptListener {
+
     /**
      * 在屏幕适配前调用
      *

@@ -16,7 +16,6 @@
 package me.jessyan.autosize.unit;
 
 import android.util.DisplayMetrics;
-
 import me.jessyan.autosize.utils.Preconditions;
 
 /**
@@ -40,6 +39,7 @@ import me.jessyan.autosize.utils.Preconditions;
  * ================================================
  */
 public class UnitsManager {
+
     /**
      * 设计图上的总宽度, 建议单位为 px, 当使用者想将旧项目从主单位过渡到副单位, 或从副单位过渡到主单位时使用
      * 因为在使用主单位时, 建议在 AndroidManifest 中填写设计图的 dp 尺寸, 比如 360 * 640
@@ -48,6 +48,7 @@ public class UnitsManager {
      * 所以当项目中同时存在副单位和主单位, 并且副单位的设计图尺寸与主单位的设计图尺寸不同时, 就需要在 {@link UnitsManager} 中保存副单位的设计图尺寸
      */
     private float mDesignWidth;
+
     /**
      * 设计图上的总高度, 建议单位为 px, 当使用者想将旧项目从主单位过渡到副单位, 或从副单位过渡到主单位时使用
      * 因为在使用主单位时, 建议在 AndroidManifest 中填写设计图的 dp 尺寸, 比如 360 * 640
@@ -56,18 +57,22 @@ public class UnitsManager {
      * 所以当项目中同时存在副单位和主单位, 并且副单位的设计图尺寸与主单位的设计图尺寸不同时, 就需要在 {@link UnitsManager} 中保存副单位的设计图尺寸
      */
     private float mDesignHeight;
+
     /**
      * 是否支持 dp 单位, 默认支持
      */
     private boolean isSupportDP = true;
+
     /**
      * 是否支持 sp 单位, 默认支持
      */
     private boolean isSupportSP = true;
+
     /**
      * 是否支持副单位, 以什么为副单位? 默认不支持
      */
     private Subunits mSupportSubunits = Subunits.NONE;
+
     /**
      * 是否支持 ScreenSizeDp 修改, 默认不支持
      */
@@ -206,8 +211,7 @@ public class UnitsManager {
      * @param supportSubunits {@link Subunits}
      */
     public UnitsManager setSupportSubunits(Subunits supportSubunits) {
-        mSupportSubunits = Preconditions.checkNotNull(supportSubunits,
-                "The supportSubunits can not be null, use Subunits.NONE instead");
+        mSupportSubunits = Preconditions.checkNotNull(supportSubunits, "The supportSubunits can not be null, use Subunits.NONE instead");
         return this;
     }
 }

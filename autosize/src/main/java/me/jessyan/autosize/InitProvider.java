@@ -21,7 +21,6 @@ import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-
 import me.jessyan.autosize.utils.AutoSizeUtils;
 
 /**
@@ -33,16 +32,14 @@ import me.jessyan.autosize.utils.AutoSizeUtils;
  * ================================================
  */
 public class InitProvider extends ContentProvider {
+
     @Override
     public boolean onCreate() {
         Context application = getContext().getApplicationContext();
         if (application == null) {
             application = AutoSizeUtils.getApplicationByReflect();
         }
-        AutoSizeConfig.getInstance()
-                .setLog(true)
-                .init((Application) application)
-                .setUseDeviceSize(false);
+        AutoSizeConfig.getInstance().setLog(true).init((Application) application).setUseDeviceSize(false);
         return true;
     }
 

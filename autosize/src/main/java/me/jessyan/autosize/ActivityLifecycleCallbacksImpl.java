@@ -18,7 +18,6 @@ package me.jessyan.autosize;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
-
 import static me.jessyan.autosize.AutoSizeConfig.DEPENDENCY_ANDROIDX;
 import static me.jessyan.autosize.AutoSizeConfig.DEPENDENCY_SUPPORT;
 
@@ -33,20 +32,23 @@ import static me.jessyan.autosize.AutoSizeConfig.DEPENDENCY_SUPPORT;
  * ================================================
  */
 public class ActivityLifecycleCallbacksImpl implements Application.ActivityLifecycleCallbacks {
+
     /**
      * 屏幕适配逻辑策略类
      */
     private AutoAdaptStrategy mAutoAdaptStrategy;
+
     /**
      * 让 Fragment 支持自定义适配参数
      */
     private FragmentLifecycleCallbacksImpl mFragmentLifecycleCallbacks;
+
     private FragmentLifecycleCallbacksImplToAndroidx mFragmentLifecycleCallbacksToAndroidx;
 
     public ActivityLifecycleCallbacksImpl(AutoAdaptStrategy autoAdaptStrategy) {
         if (DEPENDENCY_ANDROIDX) {
             mFragmentLifecycleCallbacksToAndroidx = new FragmentLifecycleCallbacksImplToAndroidx(autoAdaptStrategy);
-        } else if (DEPENDENCY_SUPPORT){
+        } else if (DEPENDENCY_SUPPORT) {
             mFragmentLifecycleCallbacks = new FragmentLifecycleCallbacksImpl(autoAdaptStrategy);
         }
         mAutoAdaptStrategy = autoAdaptStrategy;
@@ -61,7 +63,6 @@ public class ActivityLifecycleCallbacksImpl implements Application.ActivityLifec
                 ((android.support.v4.app.FragmentActivity) activity).getSupportFragmentManager().registerFragmentLifecycleCallbacks(mFragmentLifecycleCallbacks, true);
             }
         }
-
         //Activity 中的 setContentView(View) 一定要在 super.onCreate(Bundle); 之后执行
         if (mAutoAdaptStrategy != null) {
             mAutoAdaptStrategy.applyAdapt(activity, activity);
@@ -77,27 +78,22 @@ public class ActivityLifecycleCallbacksImpl implements Application.ActivityLifec
 
     @Override
     public void onActivityResumed(Activity activity) {
-
     }
 
     @Override
     public void onActivityPaused(Activity activity) {
-
     }
 
     @Override
     public void onActivityStopped(Activity activity) {
-
     }
 
     @Override
     public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-
     }
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-
     }
 
     /**

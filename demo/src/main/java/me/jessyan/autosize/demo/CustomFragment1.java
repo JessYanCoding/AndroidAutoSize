@@ -24,7 +24,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.internal.CustomAdapt;
 import me.jessyan.autosize.utils.AutoSizeUtils;
@@ -60,9 +59,7 @@ public class CustomFragment1 extends Fragment implements CustomAdapt {
 
     public static View createTextView(LayoutInflater inflater, String content, int backgroundColor) {
         TextView view = new TextView(inflater.getContext());
-        ViewGroup.LayoutParams layoutParams =
-                new ViewGroup.LayoutParams((AutoSizeUtils.dp2px(inflater.getContext(), 360)),
-                        ViewGroup.LayoutParams.MATCH_PARENT);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams((AutoSizeUtils.dp2px(inflater.getContext(), 360)), ViewGroup.LayoutParams.MATCH_PARENT);
         view.setLayoutParams(layoutParams);
         view.setText(content);
         view.setTextColor(0xffffffff);
