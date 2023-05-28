@@ -105,10 +105,8 @@ public class ScreenUtils {
 
     public static int getHeightOfNavigationBar(Context context) {
         //如果小米手机开启了全面屏手势隐藏了导航栏则返回 0
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            if (Settings.Global.getInt(context.getContentResolver(), "force_fsg_nav_bar", 0) != 0) {
-                return 0;
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && Settings.Global.getInt(context.getContentResolver(), "force_fsg_nav_bar", 0) != 0) {
+            return 0;
         }
         int realHeight = getRawScreenSize(context)[1];
         int displayHeight = getScreenSize(context)[1];
